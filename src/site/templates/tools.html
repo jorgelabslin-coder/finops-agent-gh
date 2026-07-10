@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}FinOps Tools Catalog{% endblock %}
+{% block content %}
+<h1>🛠️ FinOps Tools Catalog</h1>
+{% if tools %}
+{% for tool in tools %}
+<div class="card">
+<h3><a href="{{ tool.url }}" target="_blank" rel="noopener">{{ tool.name }}</a></h3>
+<div class="meta">
+{{ tool.vendor }} ·
+{% if tool.open_source %}Open Source ·{% endif %}
+{% if tool.cloud %}{{ tool.cloud }} ·{% endif %}
+{{ tool.category }}
+</div>
+{% if tool.description %}<div class="summary">{{ tool.description }}</div>{% endif %}
+{% if tool.github %}<p><a href="{{ tool.github }}" target="_blank">GitHub →</a></p>{% endif %}
+</div>
+{% endfor %}
+{% else %}
+<p>No tools cataloged yet. Tools are discovered during daily runs.</p>
+{% endif %}
+{% endblock %}
