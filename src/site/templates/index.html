@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}FinOps Timeline{% endblock %}
+{% block content %}
+<h1>☁️ FinOps Intelligence Timeline</h1>
+<p>{{ total_items }} items collected from {{ sources|length }} sources</p>
+
+<div class="stats">
+<div class="stat"><div class="stat-value">{{ dates|length }}</div><div class="stat-label">Days</div></div>
+<div class="stat"><div class="stat-value">{{ total_items }}</div><div class="stat-label">Items</div></div>
+</div>
+
+{% for d in dates[:30] %}
+<h2 class="date-header"><a href="/day/{{ d }}.html">📅 {{ d }}</a></h2>
+{% for item in grouped_by_date[d][:10] %}
+<div class="card">
+<h3><a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title }}</a></h3>
+<div class="meta">{{ item.source_name or item.source_id }} · {{ item.category }}</div>
+{% if item.summary %}<div class="summary">{{ item.summary[:200] }}{% if item.summary|length > 200 %}…{% endif %}</div>{% endif %}
+</div>
+{% endfor %}
+{% if grouped_by_date[d]|length > 10 %}
+<p><a href="/day/{{ d }}.html">View all {{ grouped_by_date[d]|length }} items →</a></p>
+{% endif %}
+{% else %}
+<p>No items collected yet. Run <code>python src/main.py --daily</code> to start.</p>
+{% endfor %}
+{% endblock %}

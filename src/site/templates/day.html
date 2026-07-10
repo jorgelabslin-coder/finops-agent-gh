@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}FinOps - {{ dt }}{% endblock %}
+{% block content %}
+<h1>📅 {{ dt }}</h1>
+<p>{{ items|length }} items</p>
+
+{% for cat, cat_items in grouped.items() %}
+<h2 class="date-header">{{ cat|capitalize }} ({{ cat_items|length }})</h2>
+{% for item in cat_items %}
+<div class="card">
+<h3><a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title }}</a></h3>
+<div class="meta">{{ item.source_name or item.source_id }} · {{ item.date }}
+{% if item.tags %}<br>{% for tag in item.tags.split(',') %}<span class="tag">{{ tag.strip() }}</span> {% endfor %}{% endif %}
+</div>
+{% if item.summary %}<div class="summary">{{ item.summary[:500] }}</div>{% endif %}
+</div>
+{% endfor %}
+{% endfor %}
+<p><a href="/index.html">← Back to timeline</a></p>
+{% endblock %}

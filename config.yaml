@@ -1,0 +1,48 @@
+sources:
+  rss:
+    - name: "FinOps Foundation Blog"
+      url: "https://www.finops.org/blog/feed.xml"
+      category: "community"
+    - name: "AWS What's New"
+      url: "https://aws.amazon.com/about-aws/whats-new/feed/"
+      category: "aws"
+    - name: "Google Cloud Blog"
+      url: "https://cloud.google.com/feeds/cloudblog.xml"
+      category: "gcp"
+    - name: "Azure Updates"
+      url: "https://azure.microsoft.com/en-us/updates/feed/"
+      category: "azure"
+    - name: "The Duckbill Group"
+      url: "https://www.lastweekinaws.com/feed/"
+      category: "community"
+    - name: "Infracost Blog"
+      url: "https://www.infracost.io/blog/rss.xml"
+      category: "tools"
+    - name: "KubeCost Blog"
+      url: "https://www.kubecost.com/blog/index.xml"
+      category: "tools"
+    - name: "OpenCost Updates"
+      url: "https://opencost.net/feed.xml"
+      category: "tools"
+
+  api:
+    github:
+      topics: ["finops", "cloud-cost", "cloud-finops", "finops-tools"]
+      min_stars: 5
+    hackernews:
+      keywords: ["finops", "cloud cost", "kubernetes cost", "cloud-finops"]
+    reddit:
+      subreddits: ["FinOps", "cloudcost", "devops"]
+    devto:
+      tags: ["finops", "cloudcost", "cloud-computing"]
+
+storage:
+  db_path: "data/finops.db"
+  snapshots_dir: "data/snapshots"
+  reports_dir: "data/reports"
+  site_dir: "data/site"
+
+collect:
+  max_items_per_source: 50
+  request_timeout: 30
+  user_agent: "FinOps-Agent/1.0"
