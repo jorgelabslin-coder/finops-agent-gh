@@ -1,7 +1,9 @@
-import argparse
 import sys
-from datetime import date, datetime
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+import argparse
+from datetime import date, datetime
 
 import yaml
 from rich.console import Console
