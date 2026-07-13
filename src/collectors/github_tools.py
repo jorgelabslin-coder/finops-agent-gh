@@ -36,7 +36,7 @@ class GitHubCollector(BaseCollector):
                         item_id = hashlib.sha256(
                             f"github|{repo['id']}".encode()
                         ).hexdigest()[:16]
-                        updated = datetime.fromiso_string(
+                        updated = datetime.fromisoformat(
                             repo["updated_at"].replace("Z", "+00:00")
                         )
                         items.append({
