@@ -9,6 +9,9 @@ concurrency:
   group: finops-daily
   cancel-in-progress: false
 
+permissions:
+  contents: write
+
 jobs:
   collect-and-publish:
     runs-on: ubuntu-latest
