@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}FinOps Archive{% endblock %}
+{% block content %}
+<h1>📚 Archive</h1>
+<p>Browse collected intelligence by month and year</p>
+
+{% for year, months in years.items() %}
+<h2 class="date-header">{{ year }}</h2>
+<div class="archive-grid">
+{% for month_key, month_data in months.items() %}
+<a href="month/{{ month_key }}.html" class="archive-card">
+<div class="month-name">{{ month_data.label }}</div>
+<div class="month-count">{{ month_data.count }} items</div>
+<div class="month-days">{{ month_data.days }} days</div>
+</a>
+{% endfor %}
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}FinOps - {{ month_label }}{% endblock %}
+{% block content %}
+<h1>📅 {{ month_label }}</h1>
+<p>{{ total_items }} items across {{ dates|length }} days</p>
+
+<div class="month-nav">
+{% if prev_month %}<a href="{{ prev_month_url }}">← {{ prev_month_label }}</a>{% endif %}
+<span class="current-month">{{ month_label }}</span>
+{% if next_month %}<a href="{{ next_month_url }}">{{ next_month_label }} →</a>{% endif %}
+</div>
+
+{% for d in dates %}
+<h2 class="date-header"><a href="{{ day_url_prefix }}{{ d }}.html">{{ d }}</a></h2>
+{% for item in items_by_date[d][:5] %}
+<div class="card">
+<h3><a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title }}</a></h3>
+<div class="meta">{{ item.source_name or item.source_id }} · {{ item.category }}</div>
+{% if item.summary %}<div class="summary">{{ item.summary[:200] }}{% if item.summary|length > 200 %}…{% endif %}</div>{% endif %}
+</div>
+{% endfor %}
+{% if items_by_date[d]|length > 5 %}
+<p><a href="{{ day_url_prefix }}{{ d }}.html">View all {{ items_by_date[d]|length }} items →</a></p>
+{% endif %}
+{% endfor %}
+{% endblock %}

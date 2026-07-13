@@ -25,6 +25,17 @@ sources:
       url: "https://opencost.net/feed.xml"
       category: "tools"
 
+  web:
+    - name: "The Duckbill Group Blog"
+      url: "https://www.duckbillgroup.com/blog/"
+      category: "community"
+    - name: "CloudZero Blog"
+      url: "https://www.cloudzero.com/blog"
+      category: "tools"
+    - name: "Vantage Blog"
+      url: "https://www.vantage.sh/blog"
+      category: "tools"
+
   api:
     github:
       topics: ["finops", "cloud-cost", "cloud-finops", "finops-tools"]

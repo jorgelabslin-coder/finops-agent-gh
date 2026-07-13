@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block title %}FinOps Dashboard{% endblock %}
+{% block content %}
+<h1>📊 FinOps Dashboard</h1>
+<p>Intelligence overview across all collected data</p>
+
+<div class="stats">
+<div class="stat"><div class="stat-value">{{ total_items }}</div><div class="stat-label">Total Items</div></div>
+<div class="stat"><div class="stat-value">{{ total_days }}</div><div class="stat-label">Days</div></div>
+<div class="stat"><div class="stat-value">{{ sources|length }}</div><div class="stat-label">Sources</div></div>
+<div class="stat"><div class="stat-value">{{ tools|length }}</div><div class="stat-label">Tools</div></div>
+</div>
+
+<div class="chart-grid">
+<div class="chart-card">
+<h2>Items per Day</h2>
+<canvas id="itemsPerDayChart" height="200"></canvas>
+</div>
+<div class="chart-card">
+<h2>Categories</h2>
+<canvas id="categoriesChart" height="200"></canvas>
+</div>
+<div class="chart-card">
+<h2>Items by Source</h2>
+<canvas id="sourcesChart" height="200"></canvas>
+</div>
+<div class="chart-card">
+<h2>Items per Month</h2>
+<canvas id="monthlyChart" height="200"></canvas>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+const colors = ['#38bdf8','#facc15','#4ade80','#f472b6','#a78bfa','#fb923c','#2dd4bf','#f87171','#c084fc','#34d399','#e879f9','#fbbf24'];
+
+new Chart(document.getElementById('itemsPerDayChart'), {
+type: 'line',
+data: {
+labels: {{ chart_dates_labels|safe }},
+datasets: [{
+label: 'Items',
+data: {{ chart_dates_data|safe }},
+borderColor: '#38bdf8',
+backgroundColor: 'rgba(56,189,248,0.1)',
+fill: true,
+tension: 0.3,
+pointRadius: 3
+}]
+},
+options: {
+responsive: true,
+plugins: { legend: { display: false } },
+scales: {
+x: { ticks: { color: '#94a3b8', maxTicksLimit: 14 } },
+y: { ticks: { color: '#94a3b8', beginAtZero: true } }
+}
+}
+});
+
+new Chart(document.getElementById('categoriesChart'), {
+type: 'doughnut',
+data: {
+labels: {{ chart_categories_labels|safe }},
+datasets: [{
+data: {{ chart_categories_data|safe }},
+backgroundColor: colors.slice(0, {{ chart_categories_labels|length }})
+}]
+},
+options: {
+responsive: true,
+plugins: {
+legend: { position: 'bottom', labels: { color: '#94a3b8' } }
+}
+}
+});
+
+new Chart(document.getElementById('sourcesChart'), {
+type: 'bar',
+data: {
+labels: {{ chart_sources_labels|safe }},
+datasets: [{
+label: 'Items',
+data: {{ chart_sources_data|safe }},
+backgroundColor: colors.slice(0, {{ chart_sources_labels|length }})
+}]
+},
+options: {
+responsive: true,
+plugins: { legend: { display: false } },
+scales: {
+x: { ticks: { color: '#94a3b8' } },
+y: { ticks: { color: '#94a3b8', beginAtZero: true } }
+}
+}
+});
+
+new Chart(document.getElementById('monthlyChart'), {
+type: 'bar',
+data: {
+labels: {{ chart_monthly_labels|safe }},
+datasets: [{
+label: 'Items',
+data: {{ chart_monthly_data|safe }},
+backgroundColor: '#4ade80'
+}]
+},
+options: {
+responsive: true,
+plugins: { legend: { display: false } },
+scales: {
+x: { ticks: { color: '#94a3b8' } },
+y: { ticks: { color: '#94a3b8', beginAtZero: true } }
+}
+}
+});
+</script>
+{% endblock %}

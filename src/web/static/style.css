@@ -1,0 +1,21 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0f172a; color:#e2e8f0; line-height:1.6; }
+.container { max-width:960px; margin:0 auto; padding:2rem 1rem; }
+h1 { color:#38bdf8; }
+a { color:#38bdf8; text-decoration:none; }
+a:hover { text-decoration:underline; }
+.card { background:#1e293b; border-radius:.5rem; padding:1rem; margin-bottom:.75rem; }
+.card h3 { font-size:1rem; }
+.card .meta { font-size:.8rem; color:#94a3b8; }
+.card .summary { font-size:.875rem; color:#cbd5e1; margin-top:.5rem; }
+.tag { display:inline-block; background:#334155; color:#38bdf8; font-size:.7rem; padding:.15rem .5rem; border-radius:999px; margin-right:.25rem; }
+.date-header { color:#facc15; font-size:1.1rem; margin:1.5rem 0 .5rem; padding-bottom:.25rem; border-bottom:1px solid #334155; }
+.search-box { margin-bottom:1.5rem; }
+.search-box input { width:100%; padding:.75rem; background:#1e293b; border:1px solid #334155; border-radius:.5rem; color:#e2e8f0; font-size:1rem; }
+.stats { display:flex; gap:1rem; margin-bottom:2rem; flex-wrap:wrap; }
+.stat { background:#1e293b; padding:1rem 1.5rem; border-radius:.5rem; text-align:center; }
+.stat-value { font-size:1.5rem; font-weight:700; color:#38bdf8; }
+.stat-label { font-size:.75rem; color:#94a3b8; text-transform:uppercase; }
+.footer { text-align:center; color:#475569; font-size:.8rem; margin-top:3rem; }
+.nav { margin-bottom:1rem; }
+.nav a { margin-right:1rem; }

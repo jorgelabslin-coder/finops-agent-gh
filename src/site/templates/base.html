@@ -4,17 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{% block title %}FinOps Intelligence{% endblock %}</title>
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="{{ css_path }}style.css">
 </head>
 <body>
 <div class="container">
 <div class="nav">
-<a href="/index.html">🏠 Timeline</a>
-<a href="/search.html">🔍 Search</a>
-<a href="/tools.html">🛠️ Tools</a>
+<a href="{{ css_path }}index.html">🏠 Timeline</a>
+<a href="{{ css_path }}dashboard.html">📊 Dashboard</a>
+<a href="{{ css_path }}search.html">🔍 Search</a>
+<a href="{{ css_path }}tools.html">🛠️ Tools</a>
+<a href="{{ css_path }}archive.html">📚 Archive</a>
 </div>
 {% block content %}{% endblock %}
-<div class="footer">FinOps Intelligence Agent</div>
+<div class="footer">FinOps Intelligence Agent · <a href="{{ css_path }}index.html">Home</a></div>
 </div>
 </body>
 </html>
