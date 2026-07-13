@@ -50,7 +50,12 @@ def collect_all(config: dict, db: Database) -> list[dict]:
 
 def store_items(db: Database, items: list[dict]):
     new_count = 0
+    seen_sources = set()
     for item in items:
+        sid = item.get("source_id", "")
+        if sid and sid not in seen_sources:
+            seen_sources.add(sid)
+            db.upsert_source(sid, sid.replace("-", " ").title(), "auto", "")
         if db.insert_item(item):
             new_count += 1
     return new_count

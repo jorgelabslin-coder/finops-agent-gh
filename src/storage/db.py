@@ -84,16 +84,16 @@ class Database:
 
     def get_items_by_date(self, dt: str) -> list[dict]:
         rows = self.conn.execute(
-            "SELECT i.*, s.name as source_name FROM items i "
-            "JOIN sources s ON i.source_id = s.id "
+            "SELECT i.*, COALESCE(s.name, i.source_id) as source_name FROM items i "
+            "LEFT JOIN sources s ON i.source_id = s.id "
             "WHERE i.date = ? ORDER BY i.collected_at DESC", (dt,)
         ).fetchall()
         return [dict(r) for r in rows]
 
     def get_items(self, limit: int = 100, offset: int = 0) -> list[dict]:
         rows = self.conn.execute(
-            "SELECT i.*, s.name as source_name FROM items i "
-            "JOIN sources s ON i.source_id = s.id "
+            "SELECT i.*, COALESCE(s.name, i.source_id) as source_name FROM items i "
+            "LEFT JOIN sources s ON i.source_id = s.id "
             "ORDER BY i.date DESC, i.collected_at DESC LIMIT ? OFFSET ?",
             (limit, offset),
         ).fetchall()
@@ -101,8 +101,8 @@ class Database:
 
     def search_items(self, query: str, limit: int = 50) -> list[dict]:
         rows = self.conn.execute(
-            "SELECT i.*, s.name as source_name FROM items i "
-            "JOIN sources s ON i.source_id = s.id "
+            "SELECT i.*, COALESCE(s.name, i.source_id) as source_name FROM items i "
+            "LEFT JOIN sources s ON i.source_id = s.id "
             "JOIN items_fts fts ON i.rowid = fts.rowid "
             "WHERE items_fts MATCH ? ORDER BY rank LIMIT ?",
             (query, limit),
