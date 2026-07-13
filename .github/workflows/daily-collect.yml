@@ -36,15 +36,9 @@ jobs:
           playwright install --with-deps chromium
 
       - name: Inject GITHUB_TOKEN for API access
-        run: |
-          python -c "
-import yaml
-with open('config.yaml') as f:
-    c = yaml.safe_load(f)
-c.setdefault('api_keys', {})['github'] = '${{ secrets.GITHUB_TOKEN }}'
-with open('config.yaml', 'w') as f:
-    yaml.dump(c, f)
-          "
+        run: python -c "import yaml,os;c=yaml.safe_load(open('config.yaml'));c.setdefault('api_keys',{})['github']=os.environ['GH_TOKEN'];yaml.dump(c,open('config.yaml','w'))"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run daily collection
         run: python -m src.main --daily
