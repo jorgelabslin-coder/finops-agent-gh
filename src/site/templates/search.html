@@ -14,7 +14,7 @@ let allItems = [];
 
 async function loadItems() {
 try {
-const resp = await fetch('{{ css_path }}day/items.json');
+const resp = await fetch('{{ root_path }}day/items.json');
 if (!resp.ok) throw new Error('Not found');
 allItems = await resp.json();
 fuse = new Fuse(allItems, { keys: ['title', 'summary', 'tags', 'source_name'], threshold: 0.4 });

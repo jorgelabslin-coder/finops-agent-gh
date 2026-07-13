@@ -29,7 +29,7 @@ class SiteBuilder:
 
         dates = sorted(grouped_by_date.keys(), reverse=True)
 
-        # root-level CSS path
+        root_path = ""
         css_path = "assets/"
 
         self._render("index.html", output_dir / "index.html", {
@@ -37,6 +37,7 @@ class SiteBuilder:
             "grouped_by_date": grouped_by_date,
             "sources": sources,
             "total_items": len(all_items),
+            "root_path": root_path,
             "css_path": css_path,
         })
 
@@ -52,27 +53,30 @@ class SiteBuilder:
                 "dt": d,
                 "items": items,
                 "grouped": grouped,
+                "root_path": "../",
                 "css_path": "../assets/",
             })
 
         self._render("search.html", output_dir / "search.html", {
             "dates": dates,
+            "root_path": root_path,
             "css_path": css_path,
         })
 
         self._render("tools.html", output_dir / "tools.html", {
             "tools": tools,
+            "root_path": root_path,
             "css_path": css_path,
         })
 
         # Generate dashboard
-        self._generate_dashboard(output_dir, all_items, sources, tools, css_path)
+        self._generate_dashboard(output_dir, all_items, sources, tools, root_path, css_path)
 
         # Generate monthly pages
         self._generate_monthly(output_dir, all_items, dates, day_dir)
 
         # Generate archive
-        self._generate_archive(output_dir, dates, css_path)
+        self._generate_archive(output_dir, dates, root_path, css_path)
 
         # Search items.json
         search_items = [
@@ -91,7 +95,7 @@ class SiteBuilder:
 
         self._write_assets(assets_dir)
 
-    def _generate_dashboard(self, output_dir, all_items, sources, tools, css_path):
+    def _generate_dashboard(self, output_dir, all_items, sources, tools, root_path, css_path):
         items_by_date = defaultdict(int)
         items_by_category = defaultdict(int)
         items_by_source = defaultdict(int)
@@ -121,6 +125,7 @@ class SiteBuilder:
             "chart_sources_data": json.dumps(list(items_by_source.values())),
             "chart_monthly_labels": json.dumps(sorted(items_by_month.keys())),
             "chart_monthly_data": json.dumps([items_by_month[m] for m in sorted(items_by_month.keys())]),
+            "root_path": root_path,
             "css_path": css_path,
         })
 
@@ -166,10 +171,11 @@ class SiteBuilder:
                 "next_month_label": fmt_month(next_month) if next_month else None,
                 "next_month_url": f"../month/{next_month}.html" if next_month else None,
                 "day_url_prefix": "../day/",
+                "root_path": "../",
                 "css_path": "../assets/",
             })
 
-    def _generate_archive(self, output_dir, dates, css_path):
+    def _generate_archive(self, output_dir, dates, root_path, css_path):
         years = defaultdict(lambda: defaultdict(dict))
         for d in dates:
             year = d[:4]
@@ -197,6 +203,7 @@ class SiteBuilder:
 
         self._render("archive.html", output_dir / "archive.html", {
             "years": dict(years_items),
+            "root_path": root_path,
             "css_path": css_path,
         })
 

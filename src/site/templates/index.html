@@ -10,7 +10,7 @@
 </div>
 
 {% for d in dates[:30] %}
-<h2 class="date-header"><a href="{{ css_path }}day/{{ d }}.html">📅 {{ d }}</a></h2>
+<h2 class="date-header"><a href="{{ root_path }}day/{{ d }}.html">📅 {{ d }}</a></h2>
 {% for item in grouped_by_date[d][:10] %}
 <div class="card">
 <h3><a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title }}</a></h3>
@@ -19,7 +19,7 @@
 </div>
 {% endfor %}
 {% if grouped_by_date[d]|length > 10 %}
-<p><a href="{{ css_path }}day/{{ d }}.html">View all {{ grouped_by_date[d]|length }} items →</a></p>
+<p><a href="{{ root_path }}day/{{ d }}.html">View all {{ grouped_by_date[d]|length }} items →</a></p>
 {% endif %}
 {% else %}
 <p>No items collected yet. Run <code>python src/main.py --daily</code> to start.</p>
