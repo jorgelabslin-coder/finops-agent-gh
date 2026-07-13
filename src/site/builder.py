@@ -1,3 +1,4 @@
+import json
 from datetime import date
 from pathlib import Path
 
@@ -16,7 +17,6 @@ class SiteBuilder:
         assets_dir = output_dir / "assets"
         assets_dir.mkdir(exist_ok=True)
 
-        dates = self.db.get_distinct_dates()
         all_items = self.db.get_items(limit=5000)
         sources = self.db.get_sources()
         tools = self.db.get_tools()
@@ -25,6 +25,8 @@ class SiteBuilder:
         for item in all_items:
             d = item["date"]
             grouped_by_date.setdefault(d, []).append(item)
+
+        dates = sorted(grouped_by_date.keys(), reverse=True)
 
         self._render("index.html", output_dir / "index.html", {
             "dates": dates,
@@ -54,6 +56,20 @@ class SiteBuilder:
         self._render("tools.html", output_dir / "tools.html", {
             "tools": tools,
         })
+
+        search_items = [
+            {
+                "title": item.get("title", ""),
+                "url": item.get("url", ""),
+                "summary": (item.get("summary") or "")[:300],
+                "date": item.get("date", ""),
+                "source_name": item.get("source_name", item.get("source_id", "")),
+                "tags": item.get("tags", ""),
+            }
+            for item in all_items
+        ]
+        with open(output_dir / "day" / "items.json", "w", encoding="utf-8") as f:
+            json.dump(search_items, f, ensure_ascii=False)
 
         self._write_assets(assets_dir)
 
