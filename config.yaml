@@ -53,7 +53,10 @@ storage:
   reports_dir: "data/reports"
   site_dir: "data/site"
 
+api_keys:
+  github: ""
+
 collect:
   max_items_per_source: 50
-  request_timeout: 30
+  request_timeout: 60
   user_agent: "FinOps-Agent/1.0"

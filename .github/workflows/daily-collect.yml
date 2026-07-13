@@ -23,10 +23,28 @@ jobs:
           python-version: '3.12'
           cache: 'pip'
 
+      - name: Cache data directory
+        uses: actions/cache@v4
+        with:
+          path: ./data
+          key: finops-data-${{ github.run_id }}
+          restore-keys: finops-data-
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
           playwright install --with-deps chromium
+
+      - name: Inject GITHUB_TOKEN for API access
+        run: |
+          python -c "
+import yaml
+with open('config.yaml') as f:
+    c = yaml.safe_load(f)
+c.setdefault('api_keys', {})['github'] = '${{ secrets.GITHUB_TOKEN }}'
+with open('config.yaml', 'w') as f:
+    yaml.dump(c, f)
+          "
 
       - name: Run daily collection
         run: python -m src.main --daily
