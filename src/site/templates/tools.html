@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% block title %}FinOps Tools Catalog{% endblock %}
 {% block content %}
-<h1>🛠️ FinOps Tools Catalog</h1>
+<div class="hero" style="padding:2rem 0 1.5rem;">
+<h1 style="font-size:clamp(1.8rem,3vw,2.5rem)">Tools Catalog</h1>
+<p>Discovered FinOps tools from community intelligence</p>
+</div>
+
 {% if tools %}
 {% for tool in tools %}
 <div class="card">
@@ -13,7 +17,7 @@
 {{ tool.category }}
 </div>
 {% if tool.description %}<div class="summary">{{ tool.description }}</div>{% endif %}
-{% if tool.github %}<p><a href="{{ tool.github }}" target="_blank">GitHub →</a></p>{% endif %}
+{% if tool.github %}<p style="margin-top:0.5rem;"><a href="{{ tool.github }}" target="_blank" class="view-all">GitHub →</a></p>{% endif %}
 </div>
 {% endfor %}
 {% else %}

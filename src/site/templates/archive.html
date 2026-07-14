@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block title %}FinOps Archive{% endblock %}
 {% block content %}
-<h1>📚 Archive</h1>
+<div class="hero" style="padding:2rem 0 1.5rem;">
+<h1 style="font-size:clamp(1.8rem,3vw,2.5rem)">Archive</h1>
 <p>Browse collected intelligence by month and year</p>
+</div>
 
 {% for year, months in years.items() %}
 <h2 class="date-header">{{ year }}</h2>

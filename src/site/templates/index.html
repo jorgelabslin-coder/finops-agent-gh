@@ -1,16 +1,19 @@
 {% extends "base.html" %}
 {% block title %}FinOps Timeline{% endblock %}
 {% block content %}
-<h1>☁️ FinOps Intelligence Timeline</h1>
-<p>{{ total_items }} items collected from {{ sources|length }} sources</p>
-
-<div class="stats">
-<div class="stat"><div class="stat-value">{{ dates|length }}</div><div class="stat-label">Days</div></div>
-<div class="stat"><div class="stat-value">{{ total_items }}</div><div class="stat-label">Items</div></div>
+<div class="hero">
+<h1>FinOps Intelligence</h1>
+<p>Real-time cloud financial intelligence — curated from RSS, GitHub, Hacker News, Reddit and more. Stay ahead of the latest tools, insights, and community discussions.</p>
+<div class="stats" style="margin-top:2.5rem;justify-content:center;">
+<div class="stat"><div class="stat-value">{{ dates|length }}</div><div class="stat-label">Days Tracked</div></div>
+<div class="stat"><div class="stat-value">{{ total_items }}</div><div class="stat-label">Items Collected</div></div>
+<div class="stat"><div class="stat-value">{{ sources|length }}</div><div class="stat-label">Sources</div></div>
+</div>
 </div>
 
+{% if dates %}
 {% for d in dates[:30] %}
-<h2 class="date-header"><a href="{{ root_path }}day/{{ d }}.html">📅 {{ d }}</a></h2>
+<h2 class="date-header"><a href="{{ root_path }}day/{{ d }}.html">{{ d }}</a></h2>
 {% for item in grouped_by_date[d][:10] %}
 <div class="card">
 <h3><a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title }}</a></h3>
@@ -19,9 +22,10 @@
 </div>
 {% endfor %}
 {% if grouped_by_date[d]|length > 10 %}
-<p><a href="{{ root_path }}day/{{ d }}.html">View all {{ grouped_by_date[d]|length }} items →</a></p>
+<a href="{{ root_path }}day/{{ d }}.html" class="view-all">View all {{ grouped_by_date[d]|length }} items →</a>
 {% endif %}
-{% else %}
-<p>No items collected yet. Run <code>python src/main.py --daily</code> to start.</p>
 {% endfor %}
+{% else %}
+<p>No items collected yet. Run <code>python src/main.py --daily</code> to start collecting.</p>
+{% endif %}
 {% endblock %}

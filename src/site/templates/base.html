@@ -4,19 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{% block title %}FinOps Intelligence{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{{ css_path }}style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>☁️</text></svg>">
 </head>
 <body>
 <div class="container">
 <div class="nav">
-<a href="{{ root_path }}index.html">🏠 Timeline</a>
-<a href="{{ root_path }}dashboard.html">📊 Dashboard</a>
-<a href="{{ root_path }}search.html">🔍 Search</a>
-<a href="{{ root_path }}tools.html">🛠️ Tools</a>
-<a href="{{ root_path }}archive.html">📚 Archive</a>
+<a href="{{ root_path }}index.html" class="nav-brand">FinOps Agent</a>
+<a href="{{ root_path }}index.html">Timeline</a>
+<a href="{{ root_path }}dashboard.html">Dashboard</a>
+<a href="{{ root_path }}search.html">Search</a>
+<a href="{{ root_path }}tools.html">Tools</a>
+<a href="{{ root_path }}archive.html">Archive</a>
 </div>
 {% block content %}{% endblock %}
-<div class="footer">FinOps Intelligence Agent · <a href="{{ root_path }}index.html">Home</a></div>
+<div class="footer">
+<span class="footer-brand">FinOps Intelligence Agent</span> · Built with data from RSS, GitHub, HN &amp; Reddit · <a href="{{ root_path }}index.html">Home</a>
 </div>
+</div>
+<script src="{{ css_path }}app.js"></script>
 </body>
 </html>

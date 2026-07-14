@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block title %}FinOps - {{ month_label }}{% endblock %}
 {% block content %}
-<h1>📅 {{ month_label }}</h1>
-<p>{{ total_items }} items across {{ dates|length }} days</p>
-
 <div class="month-nav">
-{% if prev_month %}<a href="{{ prev_month_url }}">← {{ prev_month_label }}</a>{% endif %}
+{% if prev_month %}<a href="{{ prev_month_url }}">← {{ prev_month_label }}</a>{% else %}<span></span>{% endif %}
 <span class="current-month">{{ month_label }}</span>
-{% if next_month %}<a href="{{ next_month_url }}">{{ next_month_label }} →</a>{% endif %}
+{% if next_month %}<a href="{{ next_month_url }}">{{ next_month_label }} →</a>{% else %}<span></span>{% endif %}
 </div>
+
+<h1>{{ month_label }}</h1>
+<p>{{ total_items }} items across {{ dates|length }} days</p>
 
 {% for d in dates %}
 <h2 class="date-header"><a href="{{ day_url_prefix }}{{ d }}.html">{{ d }}</a></h2>
@@ -20,7 +20,7 @@
 </div>
 {% endfor %}
 {% if items_by_date[d]|length > 5 %}
-<p><a href="{{ day_url_prefix }}{{ d }}.html">View all {{ items_by_date[d]|length }} items →</a></p>
+<a href="{{ day_url_prefix }}{{ d }}.html" class="view-all">View all {{ items_by_date[d]|length }} items →</a>
 {% endif %}
 {% endfor %}
 {% endblock %}

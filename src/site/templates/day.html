@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}FinOps - {{ dt }}{% endblock %}
 {% block content %}
-<h1>📅 {{ dt }}</h1>
+<h1>{{ dt }}</h1>
 <p>{{ items|length }} items</p>
 
 {% for cat, cat_items in grouped.items() %}
@@ -16,5 +16,5 @@
 </div>
 {% endfor %}
 {% endfor %}
-<p><a href="{{ root_path }}index.html">← Back to timeline</a></p>
+<a href="{{ root_path }}index.html" class="back-link">← Back to timeline</a>
 {% endblock %}

@@ -9,29 +9,34 @@ REPORT_TEMPLATE = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FinOps Daily - {{ dt }}</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; padding: 2rem; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #07070d; color: #e2e8f0; line-height: 1.7; padding: 2rem; -webkit-font-smoothing: antialiased; }
 .container { max-width: 900px; margin: 0 auto; }
-h1 { color: #38bdf8; font-size: 1.8rem; margin-bottom: .25rem; }
-.subtitle { color: #94a3b8; margin-bottom: 2rem; }
+h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; background: linear-gradient(135deg, #f1f5f9 0%, #60a5fa 50%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: .25rem; }
+.subtitle { color: #64748b; margin-bottom: 2rem; }
 .stats { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
-.stat { background: #1e293b; padding: 1rem 1.5rem; border-radius: .5rem; text-align: center; }
-.stat-value { font-size: 1.5rem; font-weight: 700; color: #38bdf8; }
-.stat-label { font-size: .75rem; color: #94a3b8; text-transform: uppercase; }
+.stat { background: #0d0d18; border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem 1.5rem; text-align: center; flex:1; min-width:100px; }
+.stat-value { font-size: 1.5rem; font-weight: 800; color: #60a5fa; }
+.stat-label { font-size: .75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
 .section { margin-bottom: 2rem; }
-h2 { color: #facc15; font-size: 1.2rem; margin-bottom: 1rem; padding-bottom: .5rem; border-bottom: 1px solid #334155; }
-.card { background: #1e293b; border-radius: .5rem; padding: 1rem; margin-bottom: .75rem; }
-.card h3 { font-size: 1rem; margin-bottom: .25rem; }
+h2 { color: #fbbf24; font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; padding-bottom: .5rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.card { background: #0d0d18; border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 1.25rem; margin-bottom: .75rem; transition: all 0.25s; }
+.card:hover { border-color: rgba(96,165,250,0.2); }
+.card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: .25rem; }
 .card h3 a { color: #e2e8f0; text-decoration: none; }
-.card h3 a:hover { color: #38bdf8; }
-.card .meta { font-size: .8rem; color: #94a3b8; }
+.card h3 a:hover { color: #60a5fa; }
+.card .meta { font-size: .8rem; color: #64748b; }
 .card .meta span { margin-right: 1rem; }
-.card .summary { font-size: .875rem; color: #cbd5e1; margin-top: .5rem; }
-.tag { display: inline-block; background: #334155; color: #38bdf8; font-size: .7rem; padding: .15rem .5rem; border-radius: 999px; margin-right: .25rem; }
+.card .summary { font-size: .85rem; color: #94a3b8; margin-top: .5rem; line-height: 1.6; }
+.tag { display: inline-block; background: linear-gradient(135deg, rgba(96,165,250,0.1), rgba(167,139,250,0.1)); color: #a78bfa; font-size: .7rem; font-weight: 500; padding: .15rem .6rem; border-radius: 999px; margin-right: .25rem; border: 1px solid rgba(167,139,250,0.15); }
 .search-box { margin-bottom: 1.5rem; }
-.search-box input { width: 100%; padding: .75rem 1rem; background: #1e293b; border: 1px solid #334155; border-radius: .5rem; color: #e2e8f0; font-size: 1rem; }
-.search-box input:focus { outline: none; border-color: #38bdf8; }
-.footer { text-align: center; color: #475569; font-size: .8rem; margin-top: 3rem; }
+.search-box input { width: 100%; padding: .875rem 1.25rem; background: #0d0d18; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; color: #f1f5f9; font-size: 1rem; font-family: 'Inter', sans-serif; outline: none; }
+.search-box input::placeholder { color: #475569; }
+.search-box input:focus { border-color: rgba(96,165,250,0.4); box-shadow: 0 0 0 3px rgba(96,165,250,0.08); }
+.footer { text-align: center; color: #334155; font-size: .8rem; margin-top: 3rem; }
+.footer a { color: #475569; }
+.footer a:hover { color: #60a5fa; }
 </style>
 </head>
 <body>

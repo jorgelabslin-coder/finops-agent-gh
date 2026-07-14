@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 {% block title %}Search FinOps{% endblock %}
 {% block content %}
-<h1>🔍 Search</h1>
+<div class="hero" style="padding:2rem 0 1.5rem;">
+<h1 style="font-size:clamp(1.8rem,3vw,2.5rem)">Search</h1>
+<p>Search across all collected FinOps intelligence</p>
+</div>
+
 <div class="search-box">
-<input type="text" id="searchInput" placeholder="Type to search..." oninput="doSearch(this.value)">
+<input type="text" id="searchInput" placeholder="Search titles, summaries, tags..." oninput="doSearch(this.value)">
 </div>
 <div id="results"></div>
 
@@ -19,7 +23,7 @@ if (!resp.ok) throw new Error('Not found');
 allItems = await resp.json();
 fuse = new Fuse(allItems, { keys: ['title', 'summary', 'tags', 'source_name'], threshold: 0.4 });
 } catch(e) {
-document.getElementById('results').innerHTML = '<p>Search index not available in static mode.</p>';
+document.getElementById('results').innerHTML = '<p style="text-align:center;color:#64748b;padding:2rem;">Search index not available in static mode.</p>';
 }
 }
 
