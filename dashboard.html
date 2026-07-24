@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FinOps Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>☁️</text></svg>">
+</head>
+<body>
+<div class="container">
+<div class="nav">
+<a href="index.html" class="nav-brand">FinOps Agent</a>
+<a href="index.html">Timeline</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="search.html">Search</a>
+<a href="tools.html">Tools</a>
+<a href="archive.html">Archive</a>
+</div>
+
+<div class="hero" style="padding:2rem 0 1.5rem;">
+<h1 style="font-size:clamp(1.8rem,3vw,2.5rem)">Dashboard</h1>
+<p>Intelligence overview across all collected data</p>
+</div>
+
+<div class="stats">
+<div class="stat animate-in"><div class="stat-value">115</div><div class="stat-label">Total Items</div></div>
+<div class="stat animate-in animate-in-delay-1"><div class="stat-value">30</div><div class="stat-label">Days</div></div>
+<div class="stat animate-in animate-in-delay-2"><div class="stat-value">5</div><div class="stat-label">Sources</div></div>
+<div class="stat animate-in animate-in-delay-3"><div class="stat-value">0</div><div class="stat-label">Tools</div></div>
+</div>
+
+<div class="chart-grid">
+<div class="chart-card">
+<h2>Items per Day</h2>
+<canvas id="itemsPerDayChart" height="200"></canvas>
+</div>
+<div class="chart-card">
+<h2>Categories</h2>
+<canvas id="categoriesChart" height="200"></canvas>
+</div>
+<div class="chart-card">
+<h2>Items by Source</h2>
+<canvas id="sourcesChart" height="200"></canvas>
+</div>
+<div class="chart-card">
+<h2>Items per Month</h2>
+<canvas id="monthlyChart" height="200"></canvas>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+const colors = ['#60a5fa','#fbbf24','#4ade80','#f472b6','#a78bfa','#fb923c','#2dd4bf','#f87171','#c084fc','#34d399','#e879f9','#fbbf24'];
+
+new Chart(document.getElementById('itemsPerDayChart'), {
+type: 'line',
+data: {
+labels: ["2025-07-09", "2025-07-23", "2025-07-30", "2025-08-20", "2025-10-14", "2025-11-27", "2026-01-08", "2026-01-14", "2026-02-05", "2026-03-18", "2026-04-07", "2026-05-28", "2026-06-14", "2026-06-23", "2026-06-25", "2026-06-26", "2026-07-07", "2026-07-12", "2026-07-13", "2026-07-14", "2026-07-15", "2026-07-16", "2026-07-17", "2026-07-18", "2026-07-19", "2026-07-20", "2026-07-21", "2026-07-22", "2026-07-23", "2026-07-24"],
+datasets: [{
+label: 'Items',
+data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 27, 18, 4, 5, 6, 7, 4, 6, 5, 6, 4, 4],
+borderColor: '#60a5fa',
+backgroundColor: 'rgba(96,165,250,0.1)',
+fill: true,
+tension: 0.3,
+pointRadius: 3,
+pointBackgroundColor: '#60a5fa'
+}]
+},
+options: {
+responsive: true,
+plugins: { legend: { display: false } },
+scales: {
+x: { ticks: { color: '#64748b', maxTicksLimit: 14 }, grid: { color: 'rgba(255,255,255,0.03)' } },
+y: { ticks: { color: '#64748b', beginAtZero: true }, grid: { color: 'rgba(255,255,255,0.03)' } }
+}
+}
+});
+
+new Chart(document.getElementById('categoriesChart'), {
+type: 'doughnut',
+data: {
+labels: ["tools", "community"],
+datasets: [{
+data: [87, 28],
+backgroundColor: colors.slice(0, 22),
+borderColor: '#0d0d18',
+borderWidth: 2
+}]
+},
+options: {
+responsive: true,
+plugins: {
+legend: { position: 'bottom', labels: { color: '#64748b', padding: 12 } }
+}
+}
+});
+
+new Chart(document.getElementById('sourcesChart'), {
+type: 'bar',
+data: {
+labels: ["Www.Vantage.Sh", "Www.Cloudzero.Com", "Www.Duckbillgroup.Com", "Github", "The Duckbill Group"],
+datasets: [{
+label: 'Items',
+data: [16, 16, 16, 55, 12],
+backgroundColor: colors.slice(0, 96),
+borderRadius: 4,
+borderSkipped: false
+}]
+},
+options: {
+responsive: true,
+plugins: { legend: { display: false } },
+scales: {
+x: { ticks: { color: '#64748b' }, grid: { color: 'rgba(255,255,255,0.03)' } },
+y: { ticks: { color: '#64748b', beginAtZero: true }, grid: { color: 'rgba(255,255,255,0.03)' } }
+}
+}
+});
+
+new Chart(document.getElementById('monthlyChart'), {
+type: 'bar',
+data: {
+labels: ["2025-07", "2025-08", "2025-10", "2025-11", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07"],
+datasets: [{
+label: 'Items',
+data: [3, 1, 1, 1, 2, 1, 1, 1, 1, 4, 99],
+backgroundColor: '#4ade80',
+borderRadius: 4,
+borderSkipped: false
+}]
+},
+options: {
+responsive: true,
+plugins: { legend: { display: false } },
+scales: {
+x: { ticks: { color: '#64748b' }, grid: { color: 'rgba(255,255,255,0.03)' } },
+y: { ticks: { color: '#64748b', beginAtZero: true }, grid: { color: 'rgba(255,255,255,0.03)' } }
+}
+}
+});
+</script>
+
+<div class="footer">
+<span class="footer-brand">FinOps Intelligence Agent</span> · Built with data from RSS, GitHub, HN &amp; Reddit · <a href="index.html">Home</a>
+</div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>
