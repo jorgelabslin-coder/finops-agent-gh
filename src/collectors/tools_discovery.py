@@ -14,27 +14,39 @@ TOOL_CATEGORIES = {
     "commitment": ["savings-plans", "reserved-instances", "commitment", "discount"],
     "governance": ["governance", "policy", "compliance", "tagging", "budget", "guardrails"],
     "multi-cloud": ["multi-cloud", "multicloud", "cross-cloud", "hybrid-cloud"],
-    "ai-cost": ["ai-cost", "gpu-cost", "ml-cost", "llm-cost", "model-cost"],
-    "finops-platform": ["finops", "cloud-finops", "finops-platform", "cloud-cost-platform"],
+    "ai-cost": ["ai-cost", "gpu-cost", "ml-cost", "llm-cost", "model-cost", "ai-finops"],
+    "finops-platform": ["finops", "cloud-finops", "finops-platform", "cloud-cost-platform", "finops-framework"],
     "open-source": ["open-source", "open source", "oss", "free"],
     "saas-cost": ["saas", "saas-cost", "saas-management", "software-management"],
+    "sustainability": ["greenops", "sustainability", "carbon", "energy", "green", "eco"],
+    "data-platform": ["data-platform", "data-cost", "snowflake", "databricks", "bigquery", "data-warehouse"],
+    "focus": ["focus", "open-cost", "cost-standard", "billing-data"],
+    "unit-economics": ["unit-economics", "unit-econ", "finops-kpis", "cost-per-request", "cost-per-transaction"],
 }
 
 CLOUD_KEYWORDS = {
     "aws": ["aws", "amazon web services"],
     "azure": ["azure", "microsoft azure"],
     "gcp": ["gcp", "google cloud", "google cloud platform"],
-    "multi-cloud": ["multi-cloud", "multicloud", "cross-cloud"],
+    "oracle": ["oracle", "oci", "oracle cloud"],
+    "multi-cloud": ["multi-cloud", "multicloud", "cross-cloud", "hybrid-cloud"],
 }
 
 FINOPPS_TOOL_BLOGS = [
     {"name": "CloudZero FinOps Tools", "url": "https://www.cloudzero.com/blog/finops-tools/", "category": "finops-platform"},
     {"name": "Vantage FinOps Guide", "url": "https://www.vantage.sh/blog/best-finops-tools-for-cloud-cost-management", "category": "finops-platform"},
+    {"name": "Vantage Top Tools 2026", "url": "https://www.vantage.sh/blog/top-finops-tools-for-cloud-cost-optimization", "category": "finops-platform"},
     {"name": "Finout FinOps Tools Guide", "url": "https://www.finout.io/blog/finops-tools-guide", "category": "finops-platform"},
     {"name": "Rapyer FinOps Tools", "url": "https://www.rapyder.com/blog/best-finops-tools/", "category": "finops-platform"},
     {"name": "Flexera FinOps Tools", "url": "https://www.flexera.com/blog/finops/finops-tools/", "category": "finops-platform"},
     {"name": "CloudFinOpsCost Tools", "url": "https://cloudfinopscost.com/tools", "category": "finops-platform"},
     {"name": "ResourceChest FinOps Tools", "url": "https://github.com/ResourceChest/finops-tools", "category": "finops-platform"},
+    {"name": "DoiT FinOps Toolbox", "url": "https://www.doit.com/blog/10-top-finops-tools-for-your-cloud-cost-optimization-toolbox", "category": "cost-visibility"},
+    {"name": "Platform Engineering FinOps Tools", "url": "https://platformengineering.org/blog/10-finops-tools-platform-engineers-should-evaluate-for-2026", "category": "kubernetes"},
+    {"name": "ProsperOps FinOps Framework", "url": "https://www.prosperops.com/blog/finops-framework/", "category": "commitment"},
+    {"name": "CloudZero FinOps 2026", "url": "https://www.cloudzero.com/blog/finops-tools/", "category": "finops-platform"},
+    {"name": "FinOps Foundation Tools Guide", "url": "https://www.finops.org/wg/finops-tools-and-services/", "category": "finops-platform"},
+    {"name": "Microsoft FinOps Docs", "url": "https://learn.microsoft.com/en-us/cloud-computing/finops/framework/finops-framework", "category": "finops-platform"},
 ]
 
 GITHUB_TOOL_TOPICS = [
@@ -42,6 +54,8 @@ GITHUB_TOOL_TOPICS = [
     "cloud-cost-optimization", "kubernetes-cost", "opencost",
     "kubecost", "infracost", "cloud-financial-management",
     "cost-optimization", "cloud-management",
+    "focus", "ai-finops", "unit-economics", "finops-framework",
+    "greenops", "cost-analysis", "savings-plans", "llm-cost",
 ]
 
 

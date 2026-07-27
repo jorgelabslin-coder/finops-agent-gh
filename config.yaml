@@ -78,6 +78,21 @@ sources:
     - name: "KodeKloud Blog"
       url: "https://kodekloud.com/blog/feed.xml"
       category: "community"
+    - name: "DoiT Blog"
+      url: "https://www.doit.com/blog/feed.xml"
+      category: "tools"
+    - name: "Platform Engineering Blog"
+      url: "https://platformengineering.org/blog/rss.xml"
+      category: "community"
+    - name: "ArXiv Cloud Computing"
+      url: "https://rss.arxiv.org/rss/cs.DC"
+      category: "research"
+    - name: "ArXiv Distributed Systems"
+      url: "https://rss.arxiv.org/rss/cs.Distributed"
+      category: "research"
+    - name: "Microsoft FinOps Blog"
+      url: "https://techcommunity.microsoft.com/feed/category/Azure/FinOps%20Blog"
+      category: "azure"
 
   web:
     # --- Original web sources ---
@@ -113,6 +128,24 @@ sources:
     - name: "Lighthouse Technology FinOps"
       url: "https://lighthousetechnology.ai/insights/"
       category: "community"
+    - name: "DoiT Blog"
+      url: "https://www.doit.com/blog/"
+      category: "tools"
+    - name: "ProsperOps Blog"
+      url: "https://www.prosperops.com/blog/"
+      category: "tools"
+    - name: "Platform Engineering FinOps"
+      url: "https://platformengineering.org/blog/topic/finops"
+      category: "community"
+    - name: "Microsoft FinOps Framework"
+      url: "https://learn.microsoft.com/en-us/cloud-computing/finops/"
+      category: "community"
+    - name: "FinOps X Conference"
+      url: "https://x.finops.org/"
+      category: "community"
+    - name: "State of FinOps Report"
+      url: "https://data.finops.org/"
+      category: "report"
 
   api:
     github:
@@ -127,6 +160,14 @@ sources:
         - "cost-optimization"
         - "infracost"
         - "opencost"
+        - "focus"
+        - "ai-finops"
+        - "unit-economics"
+        - "finops-framework"
+        - "greenops"
+        - "cost-analysis"
+        - "savings-plans"
+        - "llm-cost"
       min_stars: 5
     hackernews:
       keywords:
@@ -140,6 +181,13 @@ sources:
         - "ai cost management"
         - "unit economics"
         - "kubernetes optimization"
+        - "finops framework"
+        - "focus standard"
+        - "greenops"
+        - "shift left finops"
+        - "llm token cost"
+        - "open cost"
+        - "platform engineering"
     reddit:
       subreddits:
         - "FinOps"
@@ -150,6 +198,8 @@ sources:
         - "azure"
         - "kubernetes"
         - "cloudcomputing"
+        - "sre"
+        - "dataengineering"
     devto:
       tags:
         - "finops"
@@ -162,6 +212,11 @@ sources:
         - "devops"
         - "costoptimization"
         - "cloudnative"
+        - "sustainability"
+        - "greenops"
+        - "platformengineering"
+        - "artificial-intelligence"
+        - "terraform"
 
 storage:
   db_path: "data/finops.db"
