@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 
 import httpx
 
-from .base import BaseCollector
+from .base import BaseCollector, is_within_max_age
 
 
 class HackerNewsCollector(BaseCollector):
@@ -43,6 +43,9 @@ class HackerNewsCollector(BaseCollector):
 
                     ts = story.get("time", 0)
                     dt = datetime.fromtimestamp(ts, tz=timezone.utc) if ts else datetime.now(timezone.utc)
+
+                    if not is_within_max_age(dt):
+                        continue
 
                     item_id = hashlib.sha256(f"hn|{sid}".encode()).hexdigest()[:16]
                     items.append({

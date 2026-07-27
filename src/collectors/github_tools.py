@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 
 import httpx
 
-from .base import BaseCollector
+from .base import BaseCollector, is_within_max_age
 
 
 class GitHubCollector(BaseCollector):
@@ -33,6 +33,12 @@ class GitHubCollector(BaseCollector):
                         continue
                     data = resp.json()
                     for repo in data.get("items", []):
+                        pushed = repo.get("pushed_at")
+                        if pushed:
+                            pushed_dt = datetime.fromisoformat(pushed.replace("Z", "+00:00"))
+                            if not is_within_max_age(pushed_dt):
+                                continue
+
                         item_id = hashlib.sha256(
                             f"github|{repo['id']}".encode()
                         ).hexdigest()[:16]

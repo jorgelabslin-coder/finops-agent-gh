@@ -5,7 +5,7 @@ from datetime import date, datetime, timezone
 import httpx
 from bs4 import BeautifulSoup
 
-from .base import BaseCollector
+from .base import BaseCollector, is_within_max_age
 
 TOOL_CATEGORIES = {
     "cost-visibility": ["cost-explorer", "cost-management", "cost-analysis", "cost-visibility", "billing"],
@@ -105,6 +105,12 @@ class ToolsDiscoveryCollector(BaseCollector):
                         continue
                     data = resp.json()
                     for repo in data.get("items", []):
+                        pushed = repo.get("pushed_at")
+                        if pushed:
+                            pushed_dt = datetime.fromisoformat(pushed.replace("Z", "+00:00"))
+                            if not is_within_max_age(pushed_dt):
+                                continue
+
                         full_name = repo["full_name"]
                         topics = repo.get("topics", [])
                         lang = repo.get("language") or ""
@@ -172,6 +178,8 @@ class ToolsDiscoveryCollector(BaseCollector):
                         gh_url = gh_url.rstrip("/).,;:")
                         if gh_url in seen:
                             continue
+                        if "/blob/" in gh_url or "/tree/" in gh_url:
+                            continue
                         seen.add(gh_url)
                         parts = gh_url.strip("/").split("/")
                         if len(parts) >= 5:
@@ -207,21 +215,24 @@ class ToolsDiscoveryCollector(BaseCollector):
                     soup = BeautifulSoup(resp.text, "html.parser")
                     for link in soup.find_all("a", href=True):
                         href = link["href"]
-                        if "github.com" in href and "/" in href.replace("https://github.com/", ""):
-                            gh_url = href.split("?")[0].rstrip("/")
-                            parts = gh_url.strip("/").split("/")
-                            if len(parts) >= 5:
-                                tools.append({
-                                    "name": parts[-1],
-                                    "vendor": parts[-2],
-                                    "category": "finops-platform",
-                                    "cloud": "multi-cloud",
-                                    "open_source": True,
-                                    "url": gh_url,
-                                    "github": gh_url,
-                                    "description": link.get("title") or f"Tool from finops.org",
-                                    "tags": "finops,tool",
-                                })
+                        if not href.startswith("https://github.com/"):
+                            continue
+                        if "/blob/" in href or "/tree/" in href:
+                            continue
+                        gh_url = href.split("?")[0].rstrip("/")
+                        parts = gh_url.strip("/").split("/")
+                        if len(parts) >= 5:
+                            tools.append({
+                                "name": parts[-1],
+                                "vendor": parts[-2],
+                                "category": "finops-platform",
+                                "cloud": "multi-cloud",
+                                "open_source": True,
+                                "url": gh_url,
+                                "github": gh_url,
+                                "description": link.get("title") or f"Tool from finops.org",
+                                "tags": "finops,tool",
+                            })
                 except Exception:
                     pass
 

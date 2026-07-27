@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 
 import feedparser
 
-from .base import BaseCollector
+from .base import BaseCollector, is_within_max_age
 
 
 class RSSCollector(BaseCollector):
@@ -22,6 +22,9 @@ class RSSCollector(BaseCollector):
                         dt = datetime(*published[:6], tzinfo=timezone.utc)
                     else:
                         dt = datetime.now(timezone.utc)
+
+                    if not is_within_max_age(dt):
+                        continue
 
                     item_id = hashlib.sha256(
                         (cfg["url"] + "|" + entry.get("link", entry.get("id", ""))).encode()

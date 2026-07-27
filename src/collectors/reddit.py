@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 
 import httpx
 
-from .base import BaseCollector
+from .base import BaseCollector, is_within_max_age
 
 
 class RedditCollector(BaseCollector):
@@ -37,6 +37,9 @@ class RedditCollector(BaseCollector):
 
                         ts = p.get("created_utc", 0)
                         dt = datetime.fromtimestamp(ts, tz=timezone.utc) if ts else datetime.now(timezone.utc)
+
+                        if not is_within_max_age(dt):
+                            continue
 
                         item_id = hashlib.sha256(f"reddit|{p['id']}".encode()).hexdigest()[:16]
                         items.append({

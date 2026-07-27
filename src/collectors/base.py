@@ -1,5 +1,14 @@
 from abc import ABC, abstractmethod
+from datetime import datetime, timedelta, timezone
 from typing import Optional
+
+MAX_ITEM_AGE_DAYS = 1095  # 3 years
+
+
+def is_within_max_age(dt: datetime | None, max_days: int = MAX_ITEM_AGE_DAYS) -> bool:
+    if dt is None:
+        return True
+    return (datetime.now(timezone.utc) - dt).days <= max_days
 
 
 class BaseCollector(ABC):
