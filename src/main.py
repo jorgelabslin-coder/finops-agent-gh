@@ -15,6 +15,7 @@ from src.collectors.github_tools import GitHubCollector
 from src.collectors.hackernews import HackerNewsCollector
 from src.collectors.reddit import RedditCollector
 from src.collectors.web_scraper import WebScraper
+from src.collectors.tools_discovery import ToolsDiscoveryCollector
 from src.site.builder import SiteBuilder
 from src.reporters.html_report import HTMLReporter
 
@@ -79,8 +80,15 @@ def run_daily(config: dict):
 
     SnapshotManager(snapshots_dir).save(date.today(), items)
 
-    db.finish_run(run_id, new_count)
     console.print(f"\n[green]✓ Stored {new_count} new items[/green]")
+
+    console.print(f"\n  Discovering [bold]tools[/bold] from collected data...")
+    tools_collector = ToolsDiscoveryCollector(config, db)
+    discovered_tools = tools_collector.collect()
+    tools_count = tools_collector.persist_tools(discovered_tools)
+    console.print(f"  [green]→ {tools_count} tools discovered/updated[/green]")
+
+    db.finish_run(run_id, new_count + tools_count)
 
     reports_dir_path = Path(reports_dir)
     reports_dir_path.mkdir(parents=True, exist_ok=True)

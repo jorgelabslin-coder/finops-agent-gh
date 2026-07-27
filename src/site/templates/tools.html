@@ -6,21 +6,108 @@
 <p>Discovered FinOps tools from community intelligence</p>
 </div>
 
+{% if tools_stats %}
+<div class="stats">
+<div class="stat"><div class="stat-value">{{ tools_stats.total }}</div><div class="stat-label">Total Tools</div></div>
+<div class="stat"><div class="stat-value">{{ tools_stats.open_source }}</div><div class="stat-label">Open Source</div></div>
+{% for cat in tools_stats.by_category[:4] %}
+<div class="stat"><div class="stat-value">{{ cat.cnt }}</div><div class="stat-label">{{ cat.category|replace('-', ' ')|title }}</div></div>
+{% endfor %}
+</div>
+{% endif %}
+
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Search tools by name, vendor, description, tags..." oninput="filterTools()">
+</div>
+
+<div class="filter-bar" style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.5rem;align-items:center;">
+<span style="font-size:0.8rem;color:#64748b;font-weight:500;">Filter:</span>
+<select id="categoryFilter" onchange="filterTools()" style="background:#0d0d18;border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:#e2e8f0;padding:0.4rem 0.8rem;font-size:0.8rem;font-family:inherit;">
+<option value="">All Categories</option>
+{% set cats = tools_stats.by_category %}
+{% for cat in cats %}
+<option value="{{ cat.category }}">{{ cat.category|replace('-', ' ')|title }}</option>
+{% endfor %}
+</select>
+
+<select id="cloudFilter" onchange="filterTools()" style="background:#0d0d18;border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:#e2e8f0;padding:0.4rem 0.8rem;font-size:0.8rem;font-family:inherit;">
+<option value="">All Clouds</option>
+{% for c in tools_stats.by_cloud %}
+<option value="{{ c.cloud }}">{{ c.cloud|title }}</option>
+{% endfor %}
+</select>
+
+<label style="display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;color:#64748b;cursor:pointer;">
+<input type="checkbox" id="ossFilter" onchange="filterTools()" style="accent-color:#60a5fa;">
+Open Source only
+</label>
+
+<span id="resultCount" style="font-size:0.8rem;color:#64748b;margin-left:auto;"></span>
+</div>
+
+<div id="toolsContainer">
 {% if tools %}
 {% for tool in tools %}
-<div class="card">
-<h3><a href="{{ tool.url }}" target="_blank" rel="noopener">{{ tool.name }}</a></h3>
+<div class="card tool-card" data-name="{{ tool.name|lower }}" data-vendor="{{ tool.vendor|lower }}" data-category="{{ tool.category }}" data-cloud="{{ tool.cloud }}" data-open="{{ tool.open_source }}" data-tags="{{ tool.tags|lower }}" data-description="{{ (tool.description or '')|lower }}">
+<h3>
+<a href="{{ tool.url }}" target="_blank" rel="noopener">{{ tool.name }}</a>
+{% if tool.open_source %}<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>{% endif %}
+</h3>
 <div class="meta">
 {{ tool.vendor }} ·
-{% if tool.open_source %}Open Source ·{% endif %}
-{% if tool.cloud %}{{ tool.cloud }} ·{% endif %}
-{{ tool.category }}
+{% if tool.cloud %}<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">{{ tool.cloud }}</span> ·{% endif %}
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">{{ tool.category|replace('-', ' ')|title }}</span>
 </div>
-{% if tool.description %}<div class="summary">{{ tool.description }}</div>{% endif %}
-{% if tool.github %}<p style="margin-top:0.5rem;"><a href="{{ tool.github }}" target="_blank" class="view-all">GitHub →</a></p>{% endif %}
+{% if tool.description %}<div class="summary">{{ tool.description[:300] }}{% if tool.description|length > 300 %}…{% endif %}</div>{% endif %}
+{% if tool.github and tool.github != tool.url %}
+<p style="margin-top:0.5rem;"><a href="{{ tool.github }}" target="_blank" class="view-all">GitHub →</a></p>
+{% endif %}
+{% if tool.tags %}
+<div style="margin-top:0.5rem;">
+{% for tag in tool.tags.split(',')[:6] %}
+<span class="tag">{{ tag.strip() }}</span>
+{% endfor %}
+</div>
+{% endif %}
 </div>
 {% endfor %}
 {% else %}
-<p>No tools cataloged yet. Tools are discovered during daily runs.</p>
+<div class="empty-state" style="text-align:center;padding:3rem 1rem;color:#64748b;">
+<p style="font-size:1.1rem;margin-bottom:0.5rem;">No tools cataloged yet</p>
+<p>Tools are discovered during daily runs from GitHub repos, FinOps blog lists, and community sources.</p>
+</div>
 {% endif %}
+</div>
+
+<script>
+function filterTools() {
+const q = document.getElementById('searchInput').value.toLowerCase();
+const category = document.getElementById('categoryFilter').value;
+const cloud = document.getElementById('cloudFilter').value;
+const ossOnly = document.getElementById('ossFilter').checked;
+
+const cards = document.querySelectorAll('.tool-card');
+let visible = 0;
+
+cards.forEach(card => {
+const name = card.dataset.name || '';
+const vendor = card.dataset.vendor || '';
+const desc = card.dataset.description || '';
+const tags = card.dataset.tags || '';
+
+const matchesSearch = !q || name.includes(q) || vendor.includes(q) || desc.includes(q) || tags.includes(q);
+const matchesCategory = !category || card.dataset.category === category;
+const matchesCloud = !cloud || card.dataset.cloud === cloud;
+const matchesOss = !ossOnly || card.dataset.open === 'True' || card.dataset.open === 'true' || card.dataset.open === '1';
+
+const match = matchesSearch && matchesCategory && matchesCloud && matchesOss;
+card.style.display = match ? '' : 'none';
+if (match) visible++;
+});
+
+document.getElementById('resultCount').textContent = visible + ' tool' + (visible !== 1 ? 's' : '') + ' shown';
+}
+
+document.addEventListener('DOMContentLoaded', filterTools);
+</script>
 {% endblock %}

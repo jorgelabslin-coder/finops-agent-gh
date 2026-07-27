@@ -131,6 +131,24 @@ class Database:
         rows = self.conn.execute("SELECT * FROM tools ORDER BY discovered_date DESC").fetchall()
         return [dict(r) for r in rows]
 
+    def get_tools_stats(self) -> dict:
+        total = self.conn.execute("SELECT COUNT(*) FROM tools").fetchone()[0]
+        by_category = self.conn.execute(
+            "SELECT category, COUNT(*) as cnt FROM tools GROUP BY category ORDER BY cnt DESC"
+        ).fetchall()
+        by_cloud = self.conn.execute(
+            "SELECT cloud, COUNT(*) as cnt FROM tools GROUP BY cloud ORDER BY cnt DESC"
+        ).fetchall()
+        open_source = self.conn.execute(
+            "SELECT COUNT(*) FROM tools WHERE open_source = 1"
+        ).fetchone()[0]
+        return {
+            "total": total,
+            "by_category": [dict(r) for r in by_category],
+            "by_cloud": [dict(r) for r in by_cloud],
+            "open_source": open_source,
+        }
+
     def get_distinct_dates(self) -> list[str]:
         rows = self.conn.execute(
             "SELECT DISTINCT date FROM items ORDER BY date DESC"

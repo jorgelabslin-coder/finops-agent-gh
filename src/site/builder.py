@@ -63,8 +63,10 @@ class SiteBuilder:
             "css_path": css_path,
         })
 
+        tools_stats = self.db.get_tools_stats()
         self._render("tools.html", output_dir / "tools.html", {
             "tools": tools,
+            "tools_stats": tools_stats,
             "root_path": root_path,
             "css_path": css_path,
         })
@@ -92,6 +94,23 @@ class SiteBuilder:
         ]
         with open(day_dir / "items.json", "w", encoding="utf-8") as f:
             json.dump(search_items, f, ensure_ascii=False)
+
+        tools_json = [
+            {
+                "name": t.get("name", ""),
+                "vendor": t.get("vendor", ""),
+                "category": t.get("category", ""),
+                "cloud": t.get("cloud", ""),
+                "open_source": t.get("open_source", False),
+                "url": t.get("url", ""),
+                "github": t.get("github", ""),
+                "description": (t.get("description") or "")[:300],
+                "tags": t.get("tags", ""),
+            }
+            for t in tools
+        ]
+        with open(day_dir / "tools.json", "w", encoding="utf-8") as f:
+            json.dump(tools_json, f, ensure_ascii=False)
 
         self._write_assets(assets_dir)
 
