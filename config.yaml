@@ -1,7 +1,11 @@
 sources:
   rss:
+    # --- Original sources ---
     - name: "FinOps Foundation Blog"
       url: "https://www.finops.org/blog/feed.xml"
+      category: "community"
+    - name: "FinOps Foundation Insights"
+      url: "https://www.finops.org/insights/feed.xml"
       category: "community"
     - name: "AWS What's New"
       url: "https://aws.amazon.com/about-aws/whats-new/feed/"
@@ -25,7 +29,58 @@ sources:
       url: "https://opencost.net/feed.xml"
       category: "tools"
 
+    # --- New RSS sources ---
+    - name: "CloudZero Blog"
+      url: "https://www.cloudzero.com/blog/feed.xml"
+      category: "tools"
+    - name: "Vantage Blog"
+      url: "https://www.vantage.sh/blog/feed.xml"
+      category: "tools"
+    - name: "Finout Blog"
+      url: "https://www.finout.io/blog/feed.xml"
+      category: "tools"
+    - name: "Harness Cost Management"
+      url: "https://www.harness.io/blog/feed.xml"
+      category: "tools"
+    - name: "LeanOps Blog"
+      url: "https://leanopstech.com/blog/feed.xml"
+      category: "tools"
+    - name: "AppScale Blog"
+      url: "https://appscale.blog/en/feed.xml"
+      category: "tools"
+    - name: "Kion Blog"
+      url: "https://kion.io/feed.rss"
+      category: "tools"
+    - name: "The New Stack"
+      url: "https://thenewstack.io/feed.xml"
+      category: "community"
+    - name: "InfoQ FinOps"
+      url: "https://www.infoq.com/finops/feed.xml"
+      category: "community"
+    - name: "CloudCostChefs Podcast"
+      url: "https://www.cloudcostchefs.com/podcast/feed.xml"
+      category: "community"
+    - name: "FinOps Weekly Newsletter"
+      url: "https://newsletter.finopsweekly.com/feed.xml"
+      category: "community"
+    - name: "Wring Blog"
+      url: "https://www.wring.co/blog/feed.xml"
+      category: "tools"
+    - name: "Flexera FinOps Blog"
+      url: "https://www.flexera.com/blog/finops/feed.xml"
+      category: "tools"
+    - name: "TCOIQ Blog"
+      url: "https://tcoiq.com/blog/feed.xml"
+      category: "tools"
+    - name: "Rapyer Blog"
+      url: "https://www.rapyder.com/blog/feed.xml"
+      category: "tools"
+    - name: "KodeKloud Blog"
+      url: "https://kodekloud.com/blog/feed.xml"
+      category: "community"
+
   web:
+    # --- Original web sources ---
     - name: "The Duckbill Group Blog"
       url: "https://www.duckbillgroup.com/blog/"
       category: "community"
@@ -36,16 +91,77 @@ sources:
       url: "https://www.vantage.sh/blog"
       category: "tools"
 
+    # --- New web sources ---
+    - name: "FinOps Weekly TV"
+      url: "https://www.youtube.com/@FinOpsWeeklyTV"
+      category: "community"
+    - name: "Google Cloud FinOps"
+      url: "https://cloud.google.com/blog/topics/cost-management"
+      category: "gcp"
+    - name: "Microsoft FinOps Blog"
+      url: "https://techcommunity.microsoft.com/category/azure/blog/finopsblog"
+      category: "azure"
+    - name: "Cloud Cost Optimization Blog"
+      url: "https://www.cloud-cost-optimization.org/"
+      category: "tools"
+    - name: "FinOpsPod"
+      url: "https://www.finops.org/community/finops-podcast/"
+      category: "community"
+    - name: "Forbes FinOps Council"
+      url: "https://www.forbes.com/councils/forbestechcouncil/"
+      category: "community"
+    - name: "Lighthouse Technology FinOps"
+      url: "https://lighthousetechnology.ai/insights/"
+      category: "community"
+
   api:
     github:
-      topics: ["finops", "cloud-cost", "cloud-finops", "finops-tools"]
+      topics:
+        - "finops"
+        - "cloud-cost"
+        - "cloud-finops"
+        - "finops-tools"
+        - "cloud-cost-optimization"
+        - "kubernetes-cost"
+        - "cloud-financial-management"
+        - "cost-optimization"
+        - "infracost"
+        - "opencost"
       min_stars: 5
     hackernews:
-      keywords: ["finops", "cloud cost", "kubernetes cost", "cloud-finops"]
+      keywords:
+        - "finops"
+        - "cloud cost"
+        - "kubernetes cost"
+        - "cloud-finops"
+        - "cloud-cost-optimization"
+        - "finops tools"
+        - "gpu cost"
+        - "ai cost management"
+        - "unit economics"
+        - "kubernetes optimization"
     reddit:
-      subreddits: ["FinOps", "cloudcost", "devops"]
+      subreddits:
+        - "FinOps"
+        - "cloudcost"
+        - "devops"
+        - "aws"
+        - "googlecloud"
+        - "azure"
+        - "kubernetes"
+        - "cloudcomputing"
     devto:
-      tags: ["finops", "cloudcost", "cloud-computing"]
+      tags:
+        - "finops"
+        - "cloudcost"
+        - "cloud-computing"
+        - "kubernetes"
+        - "aws"
+        - "azure"
+        - "gcp"
+        - "devops"
+        - "costoptimization"
+        - "cloudnative"
 
 storage:
   db_path: "data/finops.db"
