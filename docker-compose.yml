@@ -16,6 +16,9 @@ services:
     command: ["--serve"]
     ports:
       - "8000:8000"
+    environment:
+      - FINOPS_API_TOKEN=${FINOPS_API_TOKEN:-}
+      - FINOPS_HOST=0.0.0.0
     volumes:
       - ./data:/app/data
       - ./config.yaml:/app/config.yaml

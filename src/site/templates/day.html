@@ -8,7 +8,7 @@
 <h2 class="date-header">{{ cat|capitalize }} ({{ cat_items|length }})</h2>
 {% for item in cat_items %}
 <div class="card">
-<h3><a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title }}</a></h3>
+<h3><a href="{{ item.url | safe_url }}" target="_blank" rel="noopener">{{ item.title }}</a></h3>
 <div class="meta">{{ item.source_name or item.source_id }} · {{ item.date }}
 {% if item.tags %}<br>{% for tag in item.tags.split(',') %}<span class="tag">{{ tag.strip() }}</span> {% endfor %}{% endif %}
 </div>

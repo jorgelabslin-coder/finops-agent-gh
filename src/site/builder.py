@@ -6,12 +6,23 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
 
 
+def _js_json(data) -> str:
+    return json.dumps(data).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+
+
+def _safe_url(url: str) -> str:
+    if url and (url.startswith("http://") or url.startswith("https://")):
+        return url
+    return "#"
+
+
 class SiteBuilder:
     def __init__(self, config: dict, db):
         self.config = config
         self.db = db
         template_dir = Path(__file__).parent / "templates"
-        self.env = Environment(loader=FileSystemLoader(str(template_dir)))
+        self.env = Environment(loader=FileSystemLoader(str(template_dir)), autoescape=True)
+        self.env.filters["safe_url"] = _safe_url
 
     def build(self, output_dir: Path):
         output_dir.mkdir(parents=True, exist_ok=True)
@@ -136,14 +147,14 @@ class SiteBuilder:
             "total_days": len(items_by_date),
             "sources": sources,
             "tools": tools,
-            "chart_dates_labels": json.dumps(sorted_dates[-30:]),
-            "chart_dates_data": json.dumps([items_by_date[d] for d in sorted_dates[-30:]]),
-            "chart_categories_labels": json.dumps(list(items_by_category.keys())),
-            "chart_categories_data": json.dumps(list(items_by_category.values())),
-            "chart_sources_labels": json.dumps(list(items_by_source.keys())),
-            "chart_sources_data": json.dumps(list(items_by_source.values())),
-            "chart_monthly_labels": json.dumps(sorted(items_by_month.keys())),
-            "chart_monthly_data": json.dumps([items_by_month[m] for m in sorted(items_by_month.keys())]),
+            "chart_dates_labels": _js_json(sorted_dates[-30:]),
+            "chart_dates_data": _js_json([items_by_date[d] for d in sorted_dates[-30:]]),
+            "chart_categories_labels": _js_json(list(items_by_category.keys())),
+            "chart_categories_data": _js_json(list(items_by_category.values())),
+            "chart_sources_labels": _js_json(list(items_by_source.keys())),
+            "chart_sources_data": _js_json(list(items_by_source.values())),
+            "chart_monthly_labels": _js_json(sorted(items_by_month.keys())),
+            "chart_monthly_data": _js_json([items_by_month[m] for m in sorted(items_by_month.keys())]),
             "root_path": root_path,
             "css_path": css_path,
         })

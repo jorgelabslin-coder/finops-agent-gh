@@ -50,7 +50,7 @@ Open Source only
 {% for tool in tools %}
 <div class="card tool-card" data-name="{{ tool.name|lower }}" data-vendor="{{ tool.vendor|lower }}" data-category="{{ tool.category }}" data-cloud="{{ tool.cloud }}" data-open="{{ tool.open_source }}" data-tags="{{ tool.tags|lower }}" data-description="{{ (tool.description or '')|lower }}">
 <h3>
-<a href="{{ tool.url }}" target="_blank" rel="noopener">{{ tool.name }}</a>
+<a href="{{ tool.url | safe_url }}" target="_blank" rel="noopener">{{ tool.name }}</a>
 {% if tool.open_source %}<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>{% endif %}
 </h3>
 <div class="meta">
@@ -60,7 +60,7 @@ Open Source only
 </div>
 {% if tool.description %}<div class="summary">{{ tool.description[:300] }}{% if tool.description|length > 300 %}…{% endif %}</div>{% endif %}
 {% if tool.github and tool.github != tool.url %}
-<p style="margin-top:0.5rem;"><a href="{{ tool.github }}" target="_blank" class="view-all">GitHub →</a></p>
+<p style="margin-top:0.5rem;"><a href="{{ tool.github | safe_url }}" target="_blank" class="view-all">GitHub →</a></p>
 {% endif %}
 {% if tool.tags %}
 <div style="margin-top:0.5rem;">

@@ -9,7 +9,7 @@ class Database:
     def __init__(self, db_path: str):
         self.db_path = db_path
         Path(db_path).parent.mkdir(parents=True, exist_ok=True)
-        self.conn = sqlite3.connect(db_path)
+        self.conn = sqlite3.connect(db_path, check_same_thread=False)
         self.conn.row_factory = sqlite3.Row
         self._init_schema()
 
@@ -100,14 +100,17 @@ class Database:
         return [dict(r) for r in rows]
 
     def search_items(self, query: str, limit: int = 50) -> list[dict]:
-        rows = self.conn.execute(
-            "SELECT i.*, COALESCE(s.name, i.source_id) as source_name FROM items i "
-            "LEFT JOIN sources s ON i.source_id = s.id "
-            "JOIN items_fts fts ON i.rowid = fts.rowid "
-            "WHERE items_fts MATCH ? ORDER BY rank LIMIT ?",
-            (query, limit),
-        ).fetchall()
-        return [dict(r) for r in rows]
+        try:
+            rows = self.conn.execute(
+                "SELECT i.*, COALESCE(s.name, i.source_id) as source_name FROM items i "
+                "LEFT JOIN sources s ON i.source_id = s.id "
+                "JOIN items_fts fts ON i.rowid = fts.rowid "
+                "WHERE items_fts MATCH ? ORDER BY rank LIMIT ?",
+                (query, limit),
+            ).fetchall()
+            return [dict(r) for r in rows]
+        except sqlite3.OperationalError:
+            return []
 
     def upsert_tool(self, tool: dict):
         self.conn.execute(

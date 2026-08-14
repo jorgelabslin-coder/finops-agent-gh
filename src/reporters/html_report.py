@@ -1,6 +1,16 @@
 from datetime import date
 
-from jinja2 import Template
+from jinja2 import Environment
+
+
+def _safe_url(url: str) -> str:
+    if url and (url.startswith("http://") or url.startswith("https://")):
+        return url
+    return "#"
+
+
+_REPORT_ENV = Environment(autoescape=True)
+_REPORT_ENV.filters["safe_url"] = _safe_url
 
 REPORT_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
@@ -59,7 +69,7 @@ h2 { color: #fbbf24; font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; p
 <h2>{% if cat == 'tools' %}🛠️{% elif cat == 'aws' %}☁️{% elif cat == 'gcp' %}☁️{% elif cat == 'azure' %}☁️{% elif cat == 'community' %}📰{% else %}📌{% endif %} {{ cat|capitalize }}</h2>
 {% for item in cat_items %}
 <div class="card searchable" data-title="{{ item.title|lower }}" data-summary="{{ (item.summary or '')|lower }}">
-<h3><a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title }}</a></h3>
+<h3><a href="{{ item.url | safe_url }}" target="_blank" rel="noopener">{{ item.title }}</a></h3>
 <div class="meta">
 <span>📅 {{ item.date }}</span>
 <span>🔗 {{ item.source_name or item.source_id }}</span>
@@ -107,7 +117,7 @@ class HTMLReporter:
             cat = item.get("category", "general")
             grouped.setdefault(cat, []).append(item)
 
-        template = Template(REPORT_TEMPLATE)
+        template = _REPORT_ENV.from_string(REPORT_TEMPLATE)
         html = template.render(
             dt=dt,
             items=items,

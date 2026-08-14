@@ -32,7 +32,9 @@ class GitHubCollector(BaseCollector):
                     if resp.status_code != 200:
                         continue
                     data = resp.json()
-                    for repo in data.get("items", []):
+                    for repo in data.get("items") or []:
+                        if not repo:
+                            continue
                         pushed = repo.get("pushed_at")
                         if pushed:
                             pushed_dt = datetime.fromisoformat(pushed.replace("Z", "+00:00"))
@@ -49,9 +51,9 @@ class GitHubCollector(BaseCollector):
                             "id": item_id,
                             "date": updated.strftime("%Y-%m-%d"),
                             "source_id": "github",
-                            "title": f"[{repo['full_name']}] {repo.get('description', '')[:120]}",
+                            "title": f"[{repo['full_name']}] {(repo.get('description') or '')[:120]}",
                             "url": repo["html_url"],
-                            "summary": repo.get("description", "")[:2000],
+                            "summary": (repo.get("description") or "")[:2000],
                             "tags": topic,
                             "category": "tools",
                             "content_raw": "",

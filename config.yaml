@@ -231,3 +231,7 @@ collect:
   max_items_per_source: 50
   request_timeout: 60
   user_agent: "FinOps-Agent/1.0"
+
+server:
+  host: "127.0.0.1"
+  port: 8000

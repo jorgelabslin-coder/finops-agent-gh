@@ -1,19 +1,40 @@
 from pathlib import Path
 
 import yaml
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Header, HTTPException, Query
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from src.storage.db import Database
 from src.reporters.html_report import HTMLReporter
 
-app = FastAPI(title="FinOps Intelligence Agent")
+import os
+import re
+import time
 
+_DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+_RATE_LIMIT_SECONDS = 60.0
+_last_collect_ts: dict = {"ts": 0.0}
+
+
+def _require_token(x_api_token: str = Header(default="")) -> None:
+    expected = os.environ.get("FINOPS_API_TOKEN", "")
+    if not expected:
+        raise HTTPException(status_code=503, detail="API token not configured")
+    if x_api_token != expected:
+        raise HTTPException(status_code=401, detail="Invalid or missing API token")
+
+
+def _validate_date(d: str) -> str:
+    if d and not _DATE_RE.fullmatch(d):
+        raise HTTPException(status_code=400, detail="Invalid date, expected YYYY-MM-DD")
+    return d or time.strftime("%Y-%m-%d")
 
 def create_app(config_path: str = "config.yaml") -> FastAPI:
     with open(config_path) as f:
         config = yaml.safe_load(f)
+
+    app = FastAPI(title="FinOps Intelligence Agent")
 
     db_path = config.get("storage", {}).get("db_path", "data/finops.db")
     db = Database(db_path)
@@ -44,15 +65,19 @@ def create_app(config_path: str = "config.yaml") -> FastAPI:
         return {"runs": db.get_recent_runs()}
 
     @app.post("/api/collect/now", summary="Trigger collection")
-    def trigger_collect():
+    def trigger_collect(x_api_token: str = Header(default="")):
+        _require_token(x_api_token)
+        now = time.time()
+        if now - _last_collect_ts["ts"] < _RATE_LIMIT_SECONDS:
+            raise HTTPException(status_code=429, detail="Rate limited, wait before triggering another collection")
+        _last_collect_ts["ts"] = now
         from src.main import run_daily
         run_daily(config)
         return {"status": "completed"}
 
     @app.get("/api/report/daily", response_class=HTMLResponse, summary="Get daily HTML report")
     def report_daily(date: str = Query(default=None, description="Date YYYY-MM-DD")):
-        from datetime import date as dt_date
-        d = date or dt_date.today().isoformat()
+        d = _validate_date(date)
         reporter = HTMLReporter(config, db)
         reports_dir = Path(config.get("storage", {}).get("reports_dir", "data/reports"))
         reports_dir.mkdir(parents=True, exist_ok=True)
@@ -62,8 +87,7 @@ def create_app(config_path: str = "config.yaml") -> FastAPI:
 
     @app.get("/api/report/daily/pdf", summary="Get daily PDF report")
     def report_daily_pdf(date: str = Query(default=None, description="Date YYYY-MM-DD")):
-        from datetime import date as dt_date
-        d = date or dt_date.today().isoformat()
+        d = _validate_date(date)
         from src.reporters.pdf_report import PDFReporter
         pdf_reporter = PDFReporter(config, db)
         reports_dir = Path(config.get("storage", {}).get("reports_dir", "data/reports"))
@@ -77,7 +101,7 @@ def create_app(config_path: str = "config.yaml") -> FastAPI:
 
 def start_server(config: dict):
     import uvicorn
-    app.state.config = config
-    port = config.get("server", {}).get("port", 8000)
-    host = config.get("server", {}).get("host", "0.0.0.0")
+    app = create_app()
+    port = int(os.environ.get("FINOPS_PORT", config.get("server", {}).get("port", 8000)))
+    host = os.environ.get("FINOPS_HOST", config.get("server", {}).get("host", "127.0.0.1"))
     uvicorn.run(app, host=host, port=port)
