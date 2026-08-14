@@ -29,13 +29,14 @@ class WebScraper(BaseCollector):
                     soup = BeautifulSoup(resp.text, "html.parser")
                     text = soup.get_text(separator=" ", strip=True)
                     if any(kw.lower() in text.lower() for kw in keywords):
+                        today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
                         item_id = hashlib.sha256(
-                            f"web|{source['url']}|{datetime.now().isoformat()}".encode()
+                            f"web|{source['url']}|{today}".encode()
                         ).hexdigest()[:16]
                         title = soup.title.string if soup.title else source["url"]
                         items.append({
                             "id": item_id,
-                            "date": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+                            "date": today,
                             "source_id": urlparse(source["url"]).netloc,
                             "title": title[:500] if title else source["url"],
                             "url": source["url"],

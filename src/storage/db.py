@@ -45,6 +45,23 @@ class Database:
             CREATE VIRTUAL TABLE IF NOT EXISTS items_fts USING fts5(
                 title, summary, content_parsed, tags, content='items', content_rowid='rowid'
             );
+
+            CREATE TRIGGER IF NOT EXISTS items_ai AFTER INSERT ON items BEGIN
+                INSERT INTO items_fts(rowid, title, summary, content_parsed, tags)
+                VALUES (new.rowid, new.title, new.summary, new.content_parsed, new.tags);
+            END;
+
+            CREATE TRIGGER IF NOT EXISTS items_ad AFTER DELETE ON items BEGIN
+                INSERT INTO items_fts(items_fts, rowid, title, summary, content_parsed, tags)
+                VALUES ('delete', old.rowid, old.title, old.summary, old.content_parsed, old.tags);
+            END;
+
+            CREATE TRIGGER IF NOT EXISTS items_au AFTER UPDATE ON items BEGIN
+                INSERT INTO items_fts(items_fts, rowid, title, summary, content_parsed, tags)
+                VALUES ('delete', old.rowid, old.title, old.summary, old.content_parsed, old.tags);
+                INSERT INTO items_fts(rowid, title, summary, content_parsed, tags)
+                VALUES (new.rowid, new.title, new.summary, new.content_parsed, new.tags);
+            END;
         """)
         self.conn.commit()
 
@@ -67,12 +84,6 @@ class Database:
                     item.get("tags", ""), item.get("category", ""),
                     item.get("content_raw", ""), item.get("content_parsed", ""),
                 ),
-            )
-            self.conn.execute(
-                "INSERT INTO items_fts (rowid, title, summary, content_parsed, tags) "
-                "VALUES (?, ?, ?, ?, ?)",
-                (self.conn.execute("SELECT rowid FROM items WHERE id=?", (item["id"],)).fetchone()[0],
-                 item["title"], item.get("summary", ""), item.get("content_parsed", ""), item.get("tags", "")),
             )
             self.conn.commit()
             return True
