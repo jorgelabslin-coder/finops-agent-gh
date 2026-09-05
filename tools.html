@@ -1,0 +1,2698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FinOps Tools Catalog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>☁️</text></svg>">
+</head>
+<body>
+<div class="container">
+<div class="nav">
+<a href="index.html" class="nav-brand">FinOps Agent</a>
+<a href="index.html">Timeline</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="search.html">Search</a>
+<a href="tools.html">Tools</a>
+<a href="archive.html">Archive</a>
+</div>
+
+<div class="hero" style="padding:2rem 0 1.5rem;">
+<h1 style="font-size:clamp(1.8rem,3vw,2.5rem)">Tools Catalog</h1>
+<p>Discovered FinOps tools from community intelligence</p>
+</div>
+
+
+<div class="stats">
+<div class="stat"><div class="stat-value">81</div><div class="stat-label">Total Tools</div></div>
+<div class="stat"><div class="stat-value">81</div><div class="stat-label">Open Source</div></div>
+
+<div class="stat"><div class="stat-value">23</div><div class="stat-label">Kubernetes</div></div>
+
+<div class="stat"><div class="stat-value">18</div><div class="stat-label">General</div></div>
+
+<div class="stat"><div class="stat-value">17</div><div class="stat-label">Cost Visibility</div></div>
+
+<div class="stat"><div class="stat-value">11</div><div class="stat-label">Finops Platform</div></div>
+
+</div>
+
+
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Search tools by name, vendor, description, tags..." oninput="filterTools()">
+</div>
+
+<div class="filter-bar" style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.5rem;align-items:center;">
+<span style="font-size:0.8rem;color:#64748b;font-weight:500;">Filter:</span>
+<select id="categoryFilter" onchange="filterTools()" style="background:#0d0d18;border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:#e2e8f0;padding:0.4rem 0.8rem;font-size:0.8rem;font-family:inherit;">
+<option value="">All Categories</option>
+
+
+<option value="kubernetes">Kubernetes</option>
+
+<option value="general">General</option>
+
+<option value="cost-visibility">Cost Visibility</option>
+
+<option value="finops-platform">Finops Platform</option>
+
+<option value="governance">Governance</option>
+
+<option value="open-source">Open Source</option>
+
+<option value="multi-cloud">Multi Cloud</option>
+
+<option value="sustainability">Sustainability</option>
+
+<option value="data-platform">Data Platform</option>
+
+</select>
+
+<select id="cloudFilter" onchange="filterTools()" style="background:#0d0d18;border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:#e2e8f0;padding:0.4rem 0.8rem;font-size:0.8rem;font-family:inherit;">
+<option value="">All Clouds</option>
+
+<option value="aws">Aws</option>
+
+<option value="multi-cloud">Multi-Cloud</option>
+
+<option value="azure">Azure</option>
+
+<option value="gcp">Gcp</option>
+
+</select>
+
+<label style="display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;color:#64748b;cursor:pointer;">
+<input type="checkbox" id="ossFilter" onchange="filterTools()" style="accent-color:#60a5fa;">
+Open Source only
+</label>
+
+<span id="resultCount" style="font-size:0.8rem;color:#64748b;margin-left:auto;"></span>
+</div>
+
+<div id="toolsContainer">
+
+
+<div class="card tool-card" data-name="lakemeter-oss" data-vendor="databrickslabs" data-category="finops-platform" data-cloud="multi-cloud" data-open="1" data-tags="cloud-cost,cost-estimation,cost-optimization,databricks,databricks-apps,dbu,finops,lakebase,lakehouse,pricing" data-description="open-source databricks cost estimator for workload sizing, dbu pricing, cloud costs, and exportable estimates.">
+<h3>
+<a href="https://databrickslabs.github.io/lakemeter-oss/" target="_blank" rel="noopener">lakemeter-oss</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Databrickslabs ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Finops Platform</span>
+</div>
+<div class="summary">Open-source Databricks cost estimator for workload sizing, DBU pricing, cloud costs, and exportable estimates.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/databrickslabs/lakemeter-oss" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">cloud-cost</span>
+
+<span class="tag">cost-estimation</span>
+
+<span class="tag">cost-optimization</span>
+
+<span class="tag">databricks</span>
+
+<span class="tag">databricks-apps</span>
+
+<span class="tag">dbu</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="coda" data-vendor="coda oa" data-category="kubernetes" data-cloud="multi-cloud" data-open="1" data-tags="apc,open-access,opencost,publications,publishing-workflow,reporting" data-description="coda is a web app for academic libraries and research institutions to manage the full open access publication fee workflow: funding requests, review/approval, invoicing, and opencost cost reporting.">
+<h3>
+<a href="https://coda-oa.github.io/coda/" target="_blank" rel="noopener">coda</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Coda Oa ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">CODA is a web app for academic libraries and research institutions to manage the full open access publication fee workflow: funding requests, review/approval, invoicing, and openCost cost reporting.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/coda-oa/coda" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">apc</span>
+
+<span class="tag">open-access</span>
+
+<span class="tag">opencost</span>
+
+<span class="tag">publications</span>
+
+<span class="tag">publishing-workflow</span>
+
+<span class="tag">reporting</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="untagged" data-vendor="dimasatinaev" data-category="governance" data-cloud="aws" data-open="1" data-tags="aws,azure,cloud-cost,cloud-cost-efficiency,cloud-cost-optimization,cloud-costs,cost-allocation,finops,focus-spec,tagging" data-description="free client-side cloud cost allocation readiness auditor — your csv never leaves the browser">
+<h3>
+<a href="https://untagged.pages.dev" target="_blank" rel="noopener">untagged</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Dimasatinaev ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Governance</span>
+</div>
+<div class="summary">Free client-side cloud cost allocation readiness auditor — your CSV never leaves the browser</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/dimasatinaev/untagged" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">cloud-cost</span>
+
+<span class="tag">cloud-cost-efficiency</span>
+
+<span class="tag">cloud-cost-optimization</span>
+
+<span class="tag">cloud-costs</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="spotinfo" data-vendor="alexei led" data-category="multi-cloud" data-cloud="aws" data-open="1" data-tags="ai,aws,aws-spot,aws-spot-cli,azure,azure-spot,cloud-cost,devops,ec2-spot,finops,gcp,google-cloud,mcp,mcp-server,multicloud,spot-advisor,spot-instances" data-description="cli for exploring spot instance pricing across aws, gcp and azure. inspect spot instance types, savings, price, and aws interruption frequency — offline, from embedded data.">
+<h3>
+<a href="https://github.com/alexei-led/spotinfo" target="_blank" rel="noopener">spotinfo</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Alexei Led ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Multi Cloud</span>
+</div>
+<div class="summary">CLI for exploring Spot instance pricing across AWS, GCP and Azure. Inspect Spot instance types, savings, price, and AWS interruption frequency — offline, from embedded data.</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">ai</span>
+
+<span class="tag">aws</span>
+
+<span class="tag">aws-spot</span>
+
+<span class="tag">aws-spot-cli</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">azure-spot</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="stategraph" data-vendor="stategraph" data-category="general" data-cloud="multi-cloud" data-open="1" data-tags="automation,cloud-management,devops,github-actions,infrastructure-as-code,infrastructure-automation,infrastructure-orchestration,ocaml,opentofu,pulumi,tacos,terraform,terraform-github-actions" data-description="terraform without the state file bottleneck">
+<h3>
+<a href="https://stategraph.com" target="_blank" rel="noopener">stategraph</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Stategraph ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">Terraform without the state file bottleneck</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/stategraph/stategraph" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">automation</span>
+
+<span class="tag">cloud-management</span>
+
+<span class="tag">devops</span>
+
+<span class="tag">github-actions</span>
+
+<span class="tag">infrastructure-as-code</span>
+
+<span class="tag">infrastructure-automation</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="infracost" data-vendor="infracost" data-category="cost-visibility" data-cloud="aws" data-open="1" data-tags="aws,azure,cdk,cloud,cloud-cost-estimates,cloud-formation,cost-estimation,cost-management,cost-optimization,devops,finops,gcp,google,infrastructure-as-code,monthly-costs,terraform,terraform-cost-estimation" data-description="cloud cost intelligence for engineers, ai coding agents, and ci/cd 💰📉 shift finops left!">
+<h3>
+<a href="https://infracost.io" target="_blank" rel="noopener">infracost</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Infracost ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Cost Visibility</span>
+</div>
+<div class="summary">Cloud cost intelligence for engineers, AI coding agents, and CI/CD 💰📉 Shift FinOps Left!</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/infracost/infracost" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">cdk</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-cost-estimates</span>
+
+<span class="tag">cloud-formation</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="thebytebook" data-vendor="isno" data-category="kubernetes" data-cloud="multi-cloud" data-open="1" data-tags="cloud-native,container,devops,distributed-systems,finops,kubernetes,networking,paas,service-mesh,sre" data-description="⭐ 【出版书籍】京东购买链接 https://item.jd.com/14531549.html  深入讲解内核网络、kubernetes、servicemesh、容器等云原生相关技术。经历实践检验的“大规模分布式系统”开发指南。">
+<h3>
+<a href="https://www.thebyte.com.cn" target="_blank" rel="noopener">theByteBook</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Isno ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">⭐ 【出版书籍】京东购买链接 https://item.jd.com/14531549.html  深入讲解内核网络、Kubernetes、ServiceMesh、容器等云原生相关技术。经历实践检验的“大规模分布式系统”开发指南。</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/isno/theByteBook" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">cloud-native</span>
+
+<span class="tag">container</span>
+
+<span class="tag">devops</span>
+
+<span class="tag">distributed-systems</span>
+
+<span class="tag">finops</span>
+
+<span class="tag">kubernetes</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="opencost" data-vendor="opencost" data-category="kubernetes" data-cloud="aws" data-open="1" data-tags="aws,azure,cncf,cost,cost-optimization,finops,gcp,k8s,kubernetes,monitoring,opencost,prometheus" data-description="cost monitoring for kubernetes workloads and cloud costs">
+<h3>
+<a href="http://opencost.io" target="_blank" rel="noopener">opencost</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Opencost ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">Cost monitoring for Kubernetes workloads and cloud costs</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/opencost/opencost" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">cncf</span>
+
+<span class="tag">cost</span>
+
+<span class="tag">cost-optimization</span>
+
+<span class="tag">finops</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="cloud-custodian" data-vendor="cloud custodian" data-category="kubernetes" data-cloud="aws" data-open="1" data-tags="aws,azure,cloud,cloud-computing,compliance,finops,gcp,kubernetes,management,oci,rules-engine,serverless,tencent-cloud,terraform" data-description="rules engine for cloud security, cost optimization, and governance, dsl in yaml for policies to query, filter, and take actions on resources">
+<h3>
+<a href="https://cloudcustodian.io" target="_blank" rel="noopener">cloud-custodian</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Cloud Custodian ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">Rules engine for cloud security, cost optimization, and governance, DSL in yaml for policies to query, filter, and take actions on resources</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/cloud-custodian/cloud-custodian" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-computing</span>
+
+<span class="tag">compliance</span>
+
+<span class="tag">finops</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="ec2instances.info" data-vendor="vantage sh" data-category="finops-platform" data-cloud="aws" data-open="1" data-tags="amazon,aws,cloud,cloud-cost,cloud-cost-intelligence,cost-estimation,cost-optimization,ec2,finops,rds" data-description="amazon ec2 instance comparison site">
+<h3>
+<a href="https://instances.vantage.sh" target="_blank" rel="noopener">ec2instances.info</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Vantage Sh ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Finops Platform</span>
+</div>
+<div class="summary">Amazon EC2 instance comparison site</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/vantage-sh/ec2instances.info" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">amazon</span>
+
+<span class="tag">aws</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-cost</span>
+
+<span class="tag">cloud-cost-intelligence</span>
+
+<span class="tag">cost-estimation</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="krr" data-vendor="robusta dev" data-category="kubernetes" data-cloud="multi-cloud" data-open="1" data-tags="cost-control,cost-saving,finops,kubectl,kubernetes,metrics,monitoring,prometheus,rightsizing,vpa" data-description="prometheus-based kubernetes resource recommendations">
+<h3>
+<a href="https://github.com/robusta-dev/krr" target="_blank" rel="noopener">krr</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Robusta Dev ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">Prometheus-based Kubernetes Resource Recommendations</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">cost-control</span>
+
+<span class="tag">cost-saving</span>
+
+<span class="tag">finops</span>
+
+<span class="tag">kubectl</span>
+
+<span class="tag">kubernetes</span>
+
+<span class="tag">metrics</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="ice" data-vendor="teevity" data-category="cost-visibility" data-cloud="aws" data-open="1" data-tags="aws,aws-billing,cost,finops,ice" data-description="aws usage tool">
+<h3>
+<a href="https://github.com/Teevity/ice" target="_blank" rel="noopener">ice</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Teevity ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Cost Visibility</span>
+</div>
+<div class="summary">AWS Usage Tool</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">aws-billing</span>
+
+<span class="tag">cost</span>
+
+<span class="tag">finops</span>
+
+<span class="tag">ice</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="openmeter" data-vendor="openmeterio" data-category="cost-visibility" data-cloud="multi-cloud" data-open="1" data-tags="analytics,billing,clickhouse,cost,finops,fintech,golang,kafka,metering,payment,pricing,stripe,usage,usage-based-billing,usage-based-pricing" data-description="metering and billing for ai, api and devops. collect and aggregate millions of usage events in real-time and enable usage-based billing.">
+<h3>
+<a href="https://openmeter.io" target="_blank" rel="noopener">openmeter</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Openmeterio ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Cost Visibility</span>
+</div>
+<div class="summary">Metering and Billing for AI, API and DevOps. Collect and aggregate millions of usage events in real-time and enable usage-based billing.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/openmeterio/openmeter" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">analytics</span>
+
+<span class="tag">billing</span>
+
+<span class="tag">clickhouse</span>
+
+<span class="tag">cost</span>
+
+<span class="tag">finops</span>
+
+<span class="tag">fintech</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="optscale" data-vendor="hystax" data-category="kubernetes" data-cloud="aws" data-open="1" data-tags="aws,azure,cloud,cloud-cost,cloud-cost-intelligence,cost-optimization,devops,finops,gcp,kubernetes,paas-instrumentation,paas-profiling,s3-optimization" data-description="finops and cloud cost optimization tool. supports aws, azure, gcp, alibaba cloud and kubernetes.">
+<h3>
+<a href="https://hystax.com" target="_blank" rel="noopener">optscale</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Hystax ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">FinOps and cloud cost optimization tool. Supports AWS, Azure, GCP, Alibaba Cloud and Kubernetes.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/hystax/optscale" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-cost</span>
+
+<span class="tag">cloud-cost-intelligence</span>
+
+<span class="tag">cost-optimization</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="crane" data-vendor="gocrane" data-category="kubernetes" data-cloud="multi-cloud" data-open="1" data-tags="analytics,autoscaling,cloud-computing,cloud-native,cncf,cost-control,cost-estimation,cost-optimization,finops,kubernetes,monitoring,prediction,time-series" data-description="crane is a finops platform for cloud resource analytics and economics in kubernetes clusters. the goal is not only to help users to manage cloud cost easier but also ensure the quality of applications.  ">
+<h3>
+<a href="https://gocrane.io" target="_blank" rel="noopener">crane</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Gocrane ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">Crane is a FinOps Platform for Cloud Resource Analytics and Economics in Kubernetes clusters. The goal is not only to help users to manage cloud cost easier but also ensure the quality of applications.  </div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/gocrane/crane" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">analytics</span>
+
+<span class="tag">autoscaling</span>
+
+<span class="tag">cloud-computing</span>
+
+<span class="tag">cloud-native</span>
+
+<span class="tag">cncf</span>
+
+<span class="tag">cost-control</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="vscode-infracost" data-vendor="infracost" data-category="cost-visibility" data-cloud="aws" data-open="1" data-tags="aws,azure,cloud-cost-estimates,cost-estimation,cost-management,cost-optimization,finops,gcp,google,infrastructure-as-code,shift-left,terraform,terraform-cost-estimation" data-description="see cost estimates for terraform right in your editor💰📉">
+<h3>
+<a href="https://www.infracost.io/" target="_blank" rel="noopener">vscode-infracost</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Infracost ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Cost Visibility</span>
+</div>
+<div class="summary">See cost estimates for Terraform right in your editor💰📉</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/infracost/vscode-infracost" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">cloud-cost-estimates</span>
+
+<span class="tag">cost-estimation</span>
+
+<span class="tag">cost-management</span>
+
+<span class="tag">cost-optimization</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="cloudburn" data-vendor="towardsthecloud" data-category="cost-visibility" data-cloud="aws" data-open="1" data-tags="amazon-web-services,aws,cloud,command-line-tool,cost-management,cost-optimization,devops,devops-tools,finops,homebrew,npm-package" data-description="open-source policy engine that blocks bad aws spending patterns before they ship and remediates what&#39;s already burning.">
+<h3>
+<a href="https://cloudburn.io" target="_blank" rel="noopener">cloudburn</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Towardsthecloud ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Cost Visibility</span>
+</div>
+<div class="summary">Open-source policy engine that blocks bad AWS spending patterns before they ship and remediates what&#39;s already burning.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/towardsthecloud/cloudburn" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">amazon-web-services</span>
+
+<span class="tag">aws</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">command-line-tool</span>
+
+<span class="tag">cost-management</span>
+
+<span class="tag">cost-optimization</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="valqore" data-vendor="valqore" data-category="kubernetes" data-cloud="multi-cloud" data-open="1" data-tags="ai-safety,cloud-governance,devops,finops,greenops,kubernetes,mlops" data-description="safety-first guardrails for ai-driven cloud and kubernetes operations">
+<h3>
+<a href="https://www.valqore.io" target="_blank" rel="noopener">valqore</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Valqore ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">Safety-first guardrails for AI-driven cloud and Kubernetes operations</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/valqore/valqore" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">ai-safety</span>
+
+<span class="tag">cloud-governance</span>
+
+<span class="tag">devops</span>
+
+<span class="tag">finops</span>
+
+<span class="tag">greenops</span>
+
+<span class="tag">kubernetes</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="azure-cost-cli" data-vendor="mivano" data-category="cost-visibility" data-cloud="azure" data-open="1" data-tags="azure,cli,command-line,cost,cost-management,dotnet-tool,finops,governance" data-description="cli tool to perform cost analysis on your azure subscription">
+<h3>
+<a href="https://github.com/mivano/azure-cost-cli" target="_blank" rel="noopener">azure-cost-cli</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Mivano ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">azure</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Cost Visibility</span>
+</div>
+<div class="summary">CLI tool to perform cost analysis on your Azure subscription</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">azure</span>
+
+<span class="tag">cli</span>
+
+<span class="tag">command-line</span>
+
+<span class="tag">cost</span>
+
+<span class="tag">cost-management</span>
+
+<span class="tag">dotnet-tool</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="openops" data-vendor="openops cloud" data-category="governance" data-cloud="multi-cloud" data-open="1" data-tags="ai-agent,ai-agents,cloud-governance,cloud-optimization,enterprise-automation,finops,finops-automation,low-code,mcp-server,mcp-servers,mcp-tools,no-code,openops,self-hosted,workflow-automation,workflow-engine" data-description="the batteries-included, no-code finops automation platform, with the ai you trust.">
+<h3>
+<a href="https://www.openops.com" target="_blank" rel="noopener">openops</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Openops Cloud ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Governance</span>
+</div>
+<div class="summary">The batteries-included, No-Code FinOps automation platform, with the AI you trust.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/openops-cloud/openops" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">ai-agent</span>
+
+<span class="tag">ai-agents</span>
+
+<span class="tag">cloud-governance</span>
+
+<span class="tag">cloud-optimization</span>
+
+<span class="tag">enterprise-automation</span>
+
+<span class="tag">finops</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="handbook.vantage.sh" data-vendor="vantage sh" data-category="cost-visibility" data-cloud="aws" data-open="1" data-tags="aws,cloud,cloud-cost,cloud-cost-intelligence,cost-estimation,cost-management,cost-optimization,education,finops,guide" data-description="the cloud cost handbook is a free, open-source, community-supported set of guides meant to help explain often-times complex pricing of public cloud infrastructure and service providers in plain english. ">
+<h3>
+<a href="https://handbook.vantage.sh" target="_blank" rel="noopener">handbook.vantage.sh</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Vantage Sh ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Cost Visibility</span>
+</div>
+<div class="summary">The Cloud Cost Handbook is a free, open-source, community-supported set of guides meant to help explain often-times complex pricing of public cloud infrastructure and service providers in plain english. </div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/vantage-sh/handbook.vantage.sh" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-cost</span>
+
+<span class="tag">cloud-cost-intelligence</span>
+
+<span class="tag">cost-estimation</span>
+
+<span class="tag">cost-management</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="cleancloud" data-vendor="cleancloud io" data-category="governance" data-cloud="aws" data-open="1" data-tags="aws,azure,cicd,cloud,cloud-cost,cloud-cost-optimisation,cloud-security,devops,fin-ops,gcp,infrastructure,policy-as-code,sovereign,sovereign-cloud,sovereign-tech,sre" data-description="the cloud hygiene platform - including ai and gpu infrastructure">
+<h3>
+<a href="https://www.getcleancloud.com" target="_blank" rel="noopener">cleancloud</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Cleancloud Io ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Governance</span>
+</div>
+<div class="summary">The cloud hygiene platform - including AI and GPU infrastructure</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/cleancloud-io/cleancloud" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">cicd</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-cost</span>
+
+<span class="tag">cloud-cost-optimisation</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="iris3" data-vendor="doitintl" data-category="data-platform" data-cloud="gcp" data-open="1" data-tags="bigquery,cloud-cost,cloud-storage,cloudsql,cost-control,gce,gce-instance,gcp,gcp-projects,gcp-pubsub,google-cloud,google-cloud-platform,google-cloud-pubsub,google-cloud-sql,google-pubsub,labeling,organization-administrator,pubsub,set-labels" data-description="an upgraded and improved version of the iris automatic gcp-labeling project">
+<h3>
+<a href="https://github.com/doitintl/iris3" target="_blank" rel="noopener">iris3</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Doitintl ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">gcp</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Data Platform</span>
+</div>
+<div class="summary">An upgraded and improved version of the Iris automatic GCP-labeling project</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">bigquery</span>
+
+<span class="tag">cloud-cost</span>
+
+<span class="tag">cloud-storage</span>
+
+<span class="tag">cloudsql</span>
+
+<span class="tag">cost-control</span>
+
+<span class="tag">gce</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="infracost-azure-devops" data-vendor="infracost" data-category="general" data-cloud="aws" data-open="1" data-tags="aws,azure,azure-devops,cloud-cost,cost-estimates,cost-estimation,gcp,google-cloud,iac,infrastructure-as-code,terraform,terraform-cost-estimation,terragrunt" data-description="azure devops integration for infracost. shows cloud cost estimates for terraform in pull requests for azure devops repos and github repos.">
+<h3>
+<a href="https://infracost.io" target="_blank" rel="noopener">infracost-azure-devops</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Infracost ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">Azure DevOps integration for Infracost. Shows cloud cost estimates for Terraform in pull requests for Azure DevOps repos and GitHub repos.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/infracost/infracost-azure-devops" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">azure-devops</span>
+
+<span class="tag">cloud-cost</span>
+
+<span class="tag">cost-estimates</span>
+
+<span class="tag">cost-estimation</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="awesome-cloud-cost-control" data-vendor="funkmyster" data-category="cost-visibility" data-cloud="multi-cloud" data-open="1" data-tags="accounting,budget,cloud-cost,cloud-cost-estimates,cloud-finance,compliance,cost-accounting,cost-control,cost-management,finance,hacktoberfest,hacktoberfest2023,hacktoberfestcebu" data-description="a curated list of awesome cloud cost control blogs, podcasts, standards, projects, and examples.">
+<h3>
+<a href="https://github.com/Funkmyster/awesome-cloud-cost-control" target="_blank" rel="noopener">awesome-cloud-cost-control</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Funkmyster ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Cost Visibility</span>
+</div>
+<div class="summary">A curated list of awesome cloud cost control blogs, podcasts, standards, projects, and examples.</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">accounting</span>
+
+<span class="tag">budget</span>
+
+<span class="tag">cloud-cost</span>
+
+<span class="tag">cloud-cost-estimates</span>
+
+<span class="tag">cloud-finance</span>
+
+<span class="tag">compliance</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="finops-agents" data-vendor="cletrics" data-category="cost-visibility" data-cloud="aws" data-open="1" data-tags="agents,ai-agents,aider,aws,azure,billing,claude-code,cloud-cost,copilot,cost-optimization,cur,cursor,devops,finops,focus-spec,gcp,kubernetes,prompt-engineering,sre,windsurf" data-description="34 finops specialist ai agents + 6 named-pattern playbooks. drop into claude code, copilot, cursor, windsurf, aider, gemini cli. mit.">
+<h3>
+<a href="https://realtimecost.com" target="_blank" rel="noopener">finops-agents</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Cletrics ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Cost Visibility</span>
+</div>
+<div class="summary">34 FinOps specialist AI agents + 6 named-pattern playbooks. Drop into Claude Code, Copilot, Cursor, Windsurf, Aider, Gemini CLI. MIT.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/Cletrics/finops-agents" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">agents</span>
+
+<span class="tag">ai-agents</span>
+
+<span class="tag">aider</span>
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">billing</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="awesome-cloud-cost" data-vendor="elementtech" data-category="general" data-cloud="multi-cloud" data-open="1" data-tags="awesome,awesome-list,cloud,cloud-cost,cloud-costs,cost" data-description="a curated list of awesome tips, tricks and hacks for saving cost on the cloud">
+<h3>
+<a href="https://github.com/ElementTech/awesome-cloud-cost" target="_blank" rel="noopener">awesome-cloud-cost</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Elementtech ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">A curated list of awesome tips, tricks and hacks for saving cost on the cloud</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">awesome</span>
+
+<span class="tag">awesome-list</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-cost</span>
+
+<span class="tag">cloud-costs</span>
+
+<span class="tag">cost</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="cloudvac" data-vendor="realadeel" data-category="finops-platform" data-cloud="aws" data-open="1" data-tags="aws,aws-cleanup,aws-resources,cloud-cost,cost-optimization,devops,finops,typescript" data-description="good housekeeping for aws. scan, inspect, and clean up unused resources across multiple profiles and regions.">
+<h3>
+<a href="https://github.com/realadeel/CloudVac" target="_blank" rel="noopener">CloudVac</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Realadeel ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Finops Platform</span>
+</div>
+<div class="summary">Good housekeeping for AWS. Scan, inspect, and clean up unused resources across multiple profiles and regions.</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">aws-cleanup</span>
+
+<span class="tag">aws-resources</span>
+
+<span class="tag">cloud-cost</span>
+
+<span class="tag">cost-optimization</span>
+
+<span class="tag">devops</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="cloudspecs" data-vendor="tum dis" data-category="general" data-cloud="aws" data-open="1" data-tags="aws,aws-ec2,benchmark,cidr2026,cloud,cloud-cost,cloud-cost-efficiency,duckdb-wasm" data-description="an interactive tool for exploring cloud virtual machine instances in the browser. powered by duckdb-wasm">
+<h3>
+<a href="https://cloudspecs.fyi" target="_blank" rel="noopener">cloudspecs</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Tum Dis ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">An interactive tool for exploring Cloud Virtual Machine Instances in the browser. Powered by DuckDB-WASM</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/TUM-DIS/cloudspecs" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">aws-ec2</span>
+
+<span class="tag">benchmark</span>
+
+<span class="tag">cidr2026</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-cost</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="awesome-agentic-finops" data-vendor="gregoire costory" data-category="cost-visibility" data-cloud="aws" data-open="1" data-tags="awesome,awesome-list,aws,azure,claude,cloud-billing,cloud-billing-dev,cloud-billing-platform,cloud-cost,cost-optimization,devops,finops,finops-mcp,kubernetes,mcp,model-context-protocol" data-description="a curated list of open-source and ai-native (mcp servers, assistant skills, ai cost agents) tooling for cloud cost management and finops.">
+<h3>
+<a href="https://github.com/gregoire-costory/awesome-agentic-finops" target="_blank" rel="noopener">awesome-agentic-finops</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Gregoire Costory ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Cost Visibility</span>
+</div>
+<div class="summary">A curated list of open-source and AI-native (MCP servers, assistant skills, AI cost agents) tooling for cloud cost management and FinOps.</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">awesome</span>
+
+<span class="tag">awesome-list</span>
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">claude</span>
+
+<span class="tag">cloud-billing</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="claude-aws-cost-saver" data-vendor="prajapatimehul" data-category="finops-platform" data-cloud="aws" data-open="1" data-tags="ai-tools,aws,aws-cost,claude-code,claude-plugin,cloud-computing,cloud-cost,cost-optimization,cost-savings,devops,ec2,finops,lambda,rds,s3" data-description="claude code plugin that finds aws cost savings. 163 checks across ec2, rds, s3, lambda, and 30+ services.">
+<h3>
+<a href="https://github.com/prajapatimehul/claude-aws-cost-saver" target="_blank" rel="noopener">claude-aws-cost-saver</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Prajapatimehul ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Finops Platform</span>
+</div>
+<div class="summary">Claude Code plugin that finds AWS cost savings. 163 checks across EC2, RDS, S3, Lambda, and 30+ services.</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">ai-tools</span>
+
+<span class="tag">aws</span>
+
+<span class="tag">aws-cost</span>
+
+<span class="tag">claude-code</span>
+
+<span class="tag">claude-plugin</span>
+
+<span class="tag">cloud-computing</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="kulshan" data-vendor="missionfinops" data-category="cost-visibility" data-cloud="aws" data-open="1" data-tags="aws,aws-cost,cli,cloud-cost,cloud-security,cost-anomaly-detection,cost-management,cost-optimization,cur,devops,finops,local-first,python,read-only,security-audit" data-description="local-first aws cost analysis and evidence cli. read-only by construction.">
+<h3>
+<a href="https://github.com/MissionFinOps/kulshan" target="_blank" rel="noopener">kulshan</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Missionfinops ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Cost Visibility</span>
+</div>
+<div class="summary">Local-first AWS cost analysis and evidence CLI. Read-only by construction.</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">aws-cost</span>
+
+<span class="tag">cli</span>
+
+<span class="tag">cloud-cost</span>
+
+<span class="tag">cloud-security</span>
+
+<span class="tag">cost-anomaly-detection</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="awscostoptimization" data-vendor="somrajroy" data-category="governance" data-cloud="aws" data-open="1" data-tags="automation,aws,aws-cost-saving,cloud-cost,cloud-cost-estimates,finops,finopsandgovernance-a" data-description="finops : cost optimization techniques in aws cloud. cloud cost optimization">
+<h3>
+<a href="https://github.com/somrajroy/AWSCostOptimization" target="_blank" rel="noopener">AWSCostOptimization</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Somrajroy ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Governance</span>
+</div>
+<div class="summary">FinOps : Cost Optimization techniques in AWS Cloud. Cloud Cost Optimization</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">automation</span>
+
+<span class="tag">aws</span>
+
+<span class="tag">aws-cost-saving</span>
+
+<span class="tag">cloud-cost</span>
+
+<span class="tag">cloud-cost-estimates</span>
+
+<span class="tag">finops</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="r2upload-architecture" data-vendor="4kamruzzaman" data-category="finops-platform" data-cloud="aws" data-open="1" data-tags="aws-s3,ci-cd,cloud-finops,cloudflare-r2,cloudflare-waf,docker,edge-security,high-availability,infrastructure,kamal-deploy,kamal-proxy,laravel,nextjs,postgresql,r2-upload,r2upload,saas-architecture,supervisord,zero-downtime,zero-egress" data-description="v2 enterprise refactor: high-availability saas architecture for r2upload. features a decoupled next.js edge and laravel 12 api core. engineered for zero-egress cloud economics utilizing cloudflare r2 vaults and supervisord-managed redis workers. orchestrated via kamal 2 for &gt;99.9% uptime.">
+<h3>
+<a href="https://r2upload.io" target="_blank" rel="noopener">r2upload-architecture</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+4Kamruzzaman ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Finops Platform</span>
+</div>
+<div class="summary">V2 Enterprise Refactor: High-availability SaaS architecture for R2Upload. Features a decoupled Next.js edge and Laravel 12 API core. Engineered for Zero-Egress cloud economics utilizing Cloudflare R2 Vaults and Supervisord-managed Redis workers. Orchestrated via Kamal 2 for &gt;99.9% uptime.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/4kamruzzaman/r2upload-architecture" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws-s3</span>
+
+<span class="tag">ci-cd</span>
+
+<span class="tag">cloud-finops</span>
+
+<span class="tag">cloudflare-r2</span>
+
+<span class="tag">cloudflare-waf</span>
+
+<span class="tag">docker</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="finopsmcp" data-vendor="getnable" data-category="cost-visibility" data-cloud="aws" data-open="1" data-tags="ai,anomaly-detection,aws,azure,claude,claude-desktop,cloud-cost,cost,cost-management,cost-optimization,cursor,devops,finops,finops-tools,gcp,kubernetes,llm,local-first,mcp,mcp-server" data-description="the headless finops intelligence layer: api-first, agent-first cost control for cloud + ai. connect your cloud stack in claude, cursor, or the terminal, and gate what agents do to your infra before they act. propose-only. open source, local-first.">
+<h3>
+<a href="https://getnable.com" target="_blank" rel="noopener">finopsmcp</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Getnable ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Cost Visibility</span>
+</div>
+<div class="summary">The headless FinOps intelligence layer: API-first, agent-first cost control for cloud + AI. Connect your cloud stack in Claude, Cursor, or the terminal, and gate what agents do to your infra before they act. Propose-only. Open source, local-first.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/getnable/finopsmcp" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">ai</span>
+
+<span class="tag">anomaly-detection</span>
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">claude</span>
+
+<span class="tag">claude-desktop</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="focus-mcp" data-vendor="glassity" data-category="cost-visibility" data-cloud="aws" data-open="1" data-tags="aws,azure,claude,cloud-cost,cloud-cost-optimization,cost-optimization,duckdb,finops,finops-tools,focus,gcp,mcp,mcp-server,model-context-protocol" data-description="mcp server for finops cloud cost analysis using focus billing data. query aws, azure &amp; gcp costs with ai assistants like claude.">
+<h3>
+<a href="https://github.com/glassity/focus-mcp" target="_blank" rel="noopener">focus-mcp</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Glassity ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Cost Visibility</span>
+</div>
+<div class="summary">MCP server for FinOps cloud cost analysis using FOCUS billing data. Query AWS, Azure &amp; GCP costs with AI assistants like Claude.</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">claude</span>
+
+<span class="tag">cloud-cost</span>
+
+<span class="tag">cloud-cost-optimization</span>
+
+<span class="tag">cost-optimization</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="cloud-finops-skills" data-vendor="optimnow" data-category="cost-visibility" data-cloud="aws" data-open="1" data-tags="agent-skills,ai-cost-management,aws,azure,chargeback,claude-code,cloud-cost-optimization,cloud-financial-management,cloud-governance,databricks,finops,finops-foundation,gcp,llm-cost,mcp,mcp-server,model-context-protocol,skill-md,snowflake,tagging" data-description="cloud finops skill &amp; mcp by optimnow. finops foundation aligned knowledge for ai agents: cloud cost (aws/azure/gcp/oci), ai inference economics, kubernetes, data platforms, allocation, chargeback, anomaly management, waste detection, greenops. installs into 12 ai tools, or connect the hosted mcp server by url. refreshed twice a month.">
+<h3>
+<a href="https://www.optimnow.io" target="_blank" rel="noopener">cloud-finops-skills</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Optimnow ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Cost Visibility</span>
+</div>
+<div class="summary">Cloud FinOps Skill &amp; MCP by OptimNow. FinOps Foundation aligned knowledge for AI agents: cloud cost (AWS/Azure/GCP/OCI), AI inference economics, Kubernetes, data platforms, allocation, chargeback, anomaly management, waste detection, GreenOps. Installs into 12 AI tools, or connect the hosted MCP ser…</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/OptimNow/cloud-finops-skills" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">agent-skills</span>
+
+<span class="tag">ai-cost-management</span>
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">chargeback</span>
+
+<span class="tag">claude-code</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="finops-as-code" data-vendor="vantage sh" data-category="finops-platform" data-cloud="multi-cloud" data-open="1" data-tags="cloud-cost-optimization,finops,infrastructure-as-code,terraform,vantage" data-description="finops as code tutorials and demos">
+<h3>
+<a href="https://github.com/vantage-sh/finops-as-code" target="_blank" rel="noopener">finops-as-code</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Vantage Sh ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Finops Platform</span>
+</div>
+<div class="summary">FinOps as Code Tutorials and Demos</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">cloud-cost-optimization</span>
+
+<span class="tag">finops</span>
+
+<span class="tag">infrastructure-as-code</span>
+
+<span class="tag">terraform</span>
+
+<span class="tag">vantage</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="k8s-sustain" data-vendor="noony" data-category="kubernetes" data-cloud="aws" data-open="1" data-tags="aws,cloud-cost-optimization,cost-optimization,cost-saving,finops,gcp,k8s,kubernetes,kubernetes-cost,right-sizing,rightsizing" data-description="get right sizing for your kubernetes workload">
+<h3>
+<a href="https://noony.github.io/k8s-sustain" target="_blank" rel="noopener">k8s-sustain</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Noony ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">Get right sizing for your kubernetes workload</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/noony/k8s-sustain" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">cloud-cost-optimization</span>
+
+<span class="tag">cost-optimization</span>
+
+<span class="tag">cost-saving</span>
+
+<span class="tag">finops</span>
+
+<span class="tag">gcp</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="cloudoracle" data-vendor="cro22" data-category="cost-visibility" data-cloud="aws" data-open="1" data-tags="aws,azure,cloud-cost-optimization,cost-management,devops,finops,gcp,golang,infrastructure,llm,react,recharts" data-description="multi-cloud finops tool that analyzes aws, gcp &amp; azure resources to find waste and optimize costs. built in go with llm-powered insights and react dashboard.">
+<h3>
+<a href="https://github.com/Cro22/CloudOracle#readme" target="_blank" rel="noopener">CloudOracle</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Cro22 ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Cost Visibility</span>
+</div>
+<div class="summary">Multi-cloud FinOps tool that analyzes AWS, GCP &amp; Azure resources to find waste and optimize costs. Built in Go with LLM-powered insights and React dashboard.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/Cro22/CloudOracle" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">cloud-cost-optimization</span>
+
+<span class="tag">cost-management</span>
+
+<span class="tag">devops</span>
+
+<span class="tag">finops</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="k8s-rightsizer" data-vendor="mcpunzo" data-category="kubernetes" data-cloud="multi-cloud" data-open="1" data-tags="automation,cloud-cost,cloud-cost-optimization,cost-optimization,finops,golang,helm,k8s,kubernetes,platform-engineering,rightsizing,workload-optimization" data-description="🔄 kubernetes automation tool for safe workload right‑sizing.">
+<h3>
+<a href="https://github.com/mcpunzo/k8s-rightsizer" target="_blank" rel="noopener">k8s-rightsizer</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Mcpunzo ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">🔄 Kubernetes automation tool for safe workload right‑sizing.</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">automation</span>
+
+<span class="tag">cloud-cost</span>
+
+<span class="tag">cloud-cost-optimization</span>
+
+<span class="tag">cost-optimization</span>
+
+<span class="tag">finops</span>
+
+<span class="tag">golang</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="opencost-mixin" data-vendor="adinhodovic" data-category="kubernetes" data-cloud="multi-cloud" data-open="1" data-tags="cost-optimization,grafana-dashboard,kubernetes,kubernetes-mixins,kubernetes-monitoring,mixins,opencost,prometheus" data-description="monitoring mixin for kubernetes cost monitoring. a set of grafana dashboards and prometheus rules for opencost.">
+<h3>
+<a href="https://github.com/adinhodovic/opencost-mixin" target="_blank" rel="noopener">opencost-mixin</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Adinhodovic ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">Monitoring mixin for Kubernetes cost monitoring. A set of Grafana dashboards and Prometheus rules for OpenCost.</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">cost-optimization</span>
+
+<span class="tag">grafana-dashboard</span>
+
+<span class="tag">kubernetes</span>
+
+<span class="tag">kubernetes-mixins</span>
+
+<span class="tag">kubernetes-monitoring</span>
+
+<span class="tag">mixins</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="opencost" data-vendor="azure samples" data-category="kubernetes" data-cloud="azure" data-open="1" data-tags="azure-kubernetes-service,bicep,finops,opencost" data-description="sample of using opencost on aks">
+<h3>
+<a href="https://github.com/Azure-Samples/opencost" target="_blank" rel="noopener">opencost</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Azure Samples ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">azure</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">Sample of using OpenCost on AKS</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">azure-kubernetes-service</span>
+
+<span class="tag">bicep</span>
+
+<span class="tag">finops</span>
+
+<span class="tag">opencost</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="dev-portfolio" data-vendor="saurabhkr952" data-category="kubernetes" data-cloud="aws" data-open="1" data-tags="argocd,aws,devops,devops-tools,devopsproject,docker,eks-cluster,github-actions,grafana,horizontal-pod-autoscaler,karpenter-cluster-autoscaler,keda,kubecost,kubernetes,nginx,nodejs,prometheus,react,terraform,trivy" data-description="implementing end-to-end ci/cd, iac, and monitoring using kubernetes, gitops (argo cd), github actions, terraform, aws eks, prometheus, grafana, and kubecost.">
+<h3>
+<a href="https://github.com/Saurabhkr952/dev-portfolio" target="_blank" rel="noopener">dev-portfolio</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Saurabhkr952 ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">Implementing End-to-End CI/CD, IaC, and Monitoring using Kubernetes, GitOps (Argo CD), GitHub Actions, Terraform, AWS EKS, Prometheus, Grafana, and Kubecost.</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">argocd</span>
+
+<span class="tag">aws</span>
+
+<span class="tag">devops</span>
+
+<span class="tag">devops-tools</span>
+
+<span class="tag">devopsproject</span>
+
+<span class="tag">docker</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="spyglass" data-vendor="oslabs beta" data-category="kubernetes" data-cloud="multi-cloud" data-open="1" data-tags="docker,grafana,helm,kubecost,kubernetes,kubeview,material-ui,nosql-database,react,typescript" data-description="kubernetes just got a whole lot clearer with spyglass. we are a one-stop shop for cluster health metrics, cluster visualization, and  cost optimization.">
+<h3>
+<a href="http://spyglass-website.vercel.app" target="_blank" rel="noopener">spyglass</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Oslabs Beta ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">Kubernetes just got a whole lot clearer with Spyglass. We are a one-stop shop for cluster health metrics, cluster visualization, and  cost optimization.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/oslabs-beta/spyglass" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">docker</span>
+
+<span class="tag">grafana</span>
+
+<span class="tag">helm</span>
+
+<span class="tag">kubecost</span>
+
+<span class="tag">kubernetes</span>
+
+<span class="tag">kubeview</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="docs" data-vendor="kubecost" data-category="kubernetes" data-cloud="multi-cloud" data-open="1" data-tags="documentation,kubecost" data-description="github repository for the official kubecost documentation.">
+<h3>
+<a href="http://docs.kubecost.com" target="_blank" rel="noopener">docs</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Kubecost ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">GitHub repository for the official Kubecost documentation.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/kubecost/docs" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">documentation</span>
+
+<span class="tag">kubecost</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="poseidon" data-vendor="oslabs beta" data-category="kubernetes" data-cloud="multi-cloud" data-open="1" data-tags="cypress-tests,docker,e2e-testing,formik-yup,grafana,grafana-plugin,helm,kubecost,kubernetes,nextjs,nosql-database,prometheus-metrics,react,tailwindcss,typescript" data-description="this product was created specifically for developers that strongly desire a harmonious integration of various technologies into a single, one-stop-shop for managing your kubernetes clusters!">
+<h3>
+<a href="https://www.os-poseidon.com/" target="_blank" rel="noopener">poseidon</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Oslabs Beta ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">This product was created specifically for developers that strongly desire a harmonious integration of various technologies into a single, one-stop-shop for managing your Kubernetes clusters!</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/oslabs-beta/poseidon" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">cypress-tests</span>
+
+<span class="tag">docker</span>
+
+<span class="tag">e2e-testing</span>
+
+<span class="tag">formik-yup</span>
+
+<span class="tag">grafana</span>
+
+<span class="tag">grafana-plugin</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="disk-autoscaler" data-vendor="kubecost" data-category="kubernetes" data-cloud="multi-cloud" data-open="1" data-tags="cost-optimization,kubecost,kubernetes,persistent-storage,savings" data-description="resize kubernetes persistentvolumes automatically based on kubecost recommendations.">
+<h3>
+<a href="https://github.com/kubecost/disk-autoscaler" target="_blank" rel="noopener">disk-autoscaler</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Kubecost ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">Resize Kubernetes PersistentVolumes automatically based on Kubecost recommendations.</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">cost-optimization</span>
+
+<span class="tag">kubecost</span>
+
+<span class="tag">kubernetes</span>
+
+<span class="tag">persistent-storage</span>
+
+<span class="tag">savings</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="actions" data-vendor="infracost" data-category="finops-platform" data-cloud="aws" data-open="1" data-tags="actions,aws,azure,cost-estimation,finops,github-actions,google,infracost,terraform" data-description="github action for infracost.  see cloud cost estimates for terraform in pull requests. 💰📉 love your cloud bill! ">
+<h3>
+<a href="https://infracost.io" target="_blank" rel="noopener">actions</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Infracost ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Finops Platform</span>
+</div>
+<div class="summary">GitHub Action for Infracost.  See cloud cost estimates for Terraform in pull requests. 💰📉 Love your cloud bill! </div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/infracost/actions" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">actions</span>
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">cost-estimation</span>
+
+<span class="tag">finops</span>
+
+<span class="tag">github-actions</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="devopsterraformpipeline" data-vendor="russmckendrick" data-category="general" data-cloud="azure" data-open="1" data-tags="azure-devops,checkov,infracost,terraform" data-description="this repo accompanies my azure devops terraform pipeline blog post. now updated to included cost tracking.">
+<h3>
+<a href="https://www.mediaglasses.blog/2021/08/24/tracking-costs-in-your-terraform-azure-devops-pipeline-using-infracost/" target="_blank" rel="noopener">DevOpsTerraformPipeline</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Russmckendrick ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">azure</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">This repo accompanies my Azure DevOps Terraform Pipeline blog post. Now updated to included cost tracking.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/russmckendrick/DevOpsTerraformPipeline" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">azure-devops</span>
+
+<span class="tag">checkov</span>
+
+<span class="tag">infracost</span>
+
+<span class="tag">terraform</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="add-aws-elb-ec2-terraform" data-vendor="kunduso" data-category="general" data-cloud="aws" data-open="1" data-tags="aws-ec2-intances,aws-ec2-userdata,aws-load-balancer,aws-vpc,checkov,github-actions,infracost,terraform" data-description="add an application load balancer to three amazon ec2 instances belonging to three separate availability zones in a public subnet using terraform and github actions.">
+<h3>
+<a href="https://skundunotes.com/2022/07/30/add-an-application-load-balancer-to-aws-ec2-using-terraform/" target="_blank" rel="noopener">add-aws-elb-ec2-terraform</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Kunduso ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">Add an application load balancer to three Amazon EC2 instances belonging to three separate availability zones in a public subnet using Terraform and GitHub Actions.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/kunduso/add-aws-elb-ec2-terraform" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws-ec2-intances</span>
+
+<span class="tag">aws-ec2-userdata</span>
+
+<span class="tag">aws-load-balancer</span>
+
+<span class="tag">aws-vpc</span>
+
+<span class="tag">checkov</span>
+
+<span class="tag">github-actions</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="infrasketch" data-vendor="pandey raghvendra" data-category="open-source" data-cloud="aws" data-open="1" data-tags="aws,azure,checkov,devops,diagram,gcp,infracost,infrastructure-as-code,pulumi,sre,terraform,terragrunt" data-description="paste terraform hcl or docker-compose.yml → get a clean architecture diagram instantly. free, open-source, runs entirely in your browser. no cloud credentials needed.">
+<h3>
+<a href="https://infrasketch.cloud/" target="_blank" rel="noopener">infrasketch</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Pandey Raghvendra ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Open Source</span>
+</div>
+<div class="summary">Paste Terraform HCL or docker-compose.yml → get a clean architecture diagram instantly. Free, open-source, runs entirely in your browser. No cloud credentials needed.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/pandey-raghvendra/infrasketch" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">checkov</span>
+
+<span class="tag">devops</span>
+
+<span class="tag">diagram</span>
+
+<span class="tag">gcp</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="se_cloud_app_administration_and_development" data-vendor="wojciech11" data-category="general" data-cloud="multi-cloud" data-open="1" data-tags="grafana,infracost,infrastructure-as-code,observability,oncall,opentelemetry,prometheus,spacelift,terraform,terragrunt" data-description="kontynuacja z https://github.com/wojciech11/cloud_dev_tools_and_platforms, tym razem więcej o ops, infrastrukturze, oraz admnistracji">
+<h3>
+<a href="https://github.com/wojciech11/se_cloud_app_administration_and_development" target="_blank" rel="noopener">se_cloud_app_administration_and_development</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Wojciech11 ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">Kontynuacja z https://github.com/wojciech11/cloud_dev_tools_and_platforms, tym razem więcej o Ops, infrastrukturze, oraz admnistracji</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">grafana</span>
+
+<span class="tag">infracost</span>
+
+<span class="tag">infrastructure-as-code</span>
+
+<span class="tag">observability</span>
+
+<span class="tag">oncall</span>
+
+<span class="tag">opentelemetry</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="azure-terraform-infracost" data-vendor="asilvajunior" data-category="general" data-cloud="azure" data-open="1" data-tags="azure,cloud,infracost,microsoft,terraform" data-description="a repository for hands-on presentation at cloud conference day 2023.">
+<h3>
+<a href="https://unicast.com.br/" target="_blank" rel="noopener">azure-terraform-infracost</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Asilvajunior ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">azure</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">A repository for Hands-On presentation at Cloud Conference Day 2023.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/asilvajunior/azure-terraform-infracost" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">azure</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">infracost</span>
+
+<span class="tag">microsoft</span>
+
+<span class="tag">terraform</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="ansible-role-infracost" data-vendor="darkwizard242" data-category="cost-visibility" data-cloud="multi-cloud" data-open="1" data-tags="ansible,ansible-galaxy,ansible-role,billing,infracost,infrastructure-as-code,linux,system" data-description="ansible role for &#39;infracost&#39;. available on ansible galaxy. ">
+<h3>
+<a href="https://galaxy.ansible.com/darkwizard242/infracost" target="_blank" rel="noopener">ansible-role-infracost</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Darkwizard242 ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Cost Visibility</span>
+</div>
+<div class="summary">Ansible role for &#39;infracost&#39;. Available on Ansible Galaxy. </div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/darkwizard242/ansible-role-infracost" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">ansible</span>
+
+<span class="tag">ansible-galaxy</span>
+
+<span class="tag">ansible-role</span>
+
+<span class="tag">billing</span>
+
+<span class="tag">infracost</span>
+
+<span class="tag">infrastructure-as-code</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="finops-mcp-resources" data-vendor="optimnow" data-category="finops-platform" data-cloud="multi-cloud" data-open="1" data-tags="ai-agents,cloud,cloud-cost-efficiency,cloud-cost-intelligence,cloud-financial-management,cloudops,finops,gouvernance,mcp,mcp-server,mcp-tools" data-description="ai for finops: curated collection of mcp servers and resources for cloud finops practitioners">
+<h3>
+<a href="https://github.com/OptimNow/finops-mcp-resources" target="_blank" rel="noopener">finops-mcp-resources</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Optimnow ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Finops Platform</span>
+</div>
+<div class="summary">AI for FinOps: Curated collection of MCP servers and resources for Cloud FinOps practitioners</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">ai-agents</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-cost-efficiency</span>
+
+<span class="tag">cloud-cost-intelligence</span>
+
+<span class="tag">cloud-financial-management</span>
+
+<span class="tag">cloudops</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="skypilot" data-vendor="skypilot org" data-category="multi-cloud" data-cloud="multi-cloud" data-open="1" data-tags="cloud-computing,cloud-management,cost-optimization,deep-learning,distributed-training,gpu,hyperparameter-tuning,job-queue,job-scheduler,llm-serving,llm-training,machine-learning,ml-infrastructure,ml-platform,mlops,multicloud,slurm,spot-instances,tpu" data-description="the ai compute platform for frontier teams. skypilot turns fragmented ai compute into one ai supercomputer, so frontier ai teams build custom intelligence faster.">
+<h3>
+<a href="https://skypilot.ai/" target="_blank" rel="noopener">skypilot</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Skypilot Org ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Multi Cloud</span>
+</div>
+<div class="summary">The AI Compute Platform for frontier teams. SkyPilot turns fragmented AI compute into one AI supercomputer, so frontier AI teams build custom intelligence faster.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/skypilot-org/skypilot" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">cloud-computing</span>
+
+<span class="tag">cloud-management</span>
+
+<span class="tag">cost-optimization</span>
+
+<span class="tag">deep-learning</span>
+
+<span class="tag">distributed-training</span>
+
+<span class="tag">gpu</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="metaflow" data-vendor="netflix" data-category="kubernetes" data-cloud="aws" data-open="1" data-tags="agents,ai,aws,azure,cost-optimization,datascience,distributed-training,gcp,generative-ai,high-performance-computing,kubernetes,llm,llmops,machine-learning,ml,ml-infrastructure,ml-platform,mlops,model-management,python" data-description="build, manage and deploy ai/ml systems">
+<h3>
+<a href="https://metaflow.org" target="_blank" rel="noopener">metaflow</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Netflix ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">Build, Manage and Deploy AI/ML Systems</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/Netflix/metaflow" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">agents</span>
+
+<span class="tag">ai</span>
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">cost-optimization</span>
+
+<span class="tag">datascience</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="clawrouter" data-vendor="blockrunai" data-category="sustainability" data-cloud="multi-cloud" data-open="1" data-tags="ai,ai-agents,anthropic,cost-optimization,deepseek,gemini,llm,llm-router,micropayments,openai,openclaw,smart-routing,stablecoin-payment,stablecoin-payments,usdc,x402" data-description="the agent-native llm router for autonomous agents. every frontier model behind one wallet, &lt;1ms local routing, usdc payments on base &amp; solana via x402.">
+<h3>
+<a href="https://www.npmjs.com/package/@blockrun/clawrouter" target="_blank" rel="noopener">ClawRouter</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Blockrunai ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Sustainability</span>
+</div>
+<div class="summary">The agent-native LLM router for autonomous agents. Every frontier model behind one wallet, &lt;1ms local routing, USDC payments on Base &amp; Solana via x402.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/BlockRunAI/ClawRouter" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">ai</span>
+
+<span class="tag">ai-agents</span>
+
+<span class="tag">anthropic</span>
+
+<span class="tag">cost-optimization</span>
+
+<span class="tag">deepseek</span>
+
+<span class="tag">gemini</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="komiser" data-vendor="mlabouardy" data-category="kubernetes" data-cloud="aws" data-open="1" data-tags="aws,azure,civo,cost-optimization,digitalocean,gcp,hacktoberfest,inventory-management,kubernetes,linode,oci,open-source,tencent" data-description="open-source cloud-environment inspector. supporting aws, gcp, azure, and more! your cloud resources will have nowhere to hide!">
+<h3>
+<a href="https://komiser.io" target="_blank" rel="noopener">komiser</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Mlabouardy ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">Open-source cloud-environment inspector. Supporting AWS, GCP, Azure, and more! Your cloud resources will have nowhere to hide!</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/mlabouardy/komiser" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">civo</span>
+
+<span class="tag">cost-optimization</span>
+
+<span class="tag">digitalocean</span>
+
+<span class="tag">gcp</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="cascadeflow" data-vendor="lemony ai" data-category="governance" data-cloud="multi-cloud" data-open="1" data-tags="agent,ai,anthropic,api,budgets,claude,cost-optimization,cost-transparency,google-adk,gpt,huggingface,llm,model-cascading,n8n,ollama,openai,python,together-ai,typescript,vllm" data-description="cascading runtime for ai agents. optimize cost, latency, quality, and policy decisions inside the agent loop.">
+<h3>
+<a href="https://cascadeflow.ai" target="_blank" rel="noopener">cascadeflow</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Lemony Ai ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Governance</span>
+</div>
+<div class="summary">Cascading runtime for AI agents. Optimize cost, latency, quality, and policy decisions inside the agent loop.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/lemony-ai/cascadeflow" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">agent</span>
+
+<span class="tag">ai</span>
+
+<span class="tag">anthropic</span>
+
+<span class="tag">api</span>
+
+<span class="tag">budgets</span>
+
+<span class="tag">claude</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="koordinator" data-vendor="koordinator sh" data-category="kubernetes" data-cloud="multi-cloud" data-open="1" data-tags="cloud-native,colocation,cost-optimization,kubernetes,scheduling,workload-consolidation" data-description="a qos-based scheduling system brings optimal layout and status to workloads such as microservices, web services, big data jobs, ai jobs, etc.">
+<h3>
+<a href="https://koordinator.sh" target="_blank" rel="noopener">koordinator</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Koordinator Sh ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">A QoS-based scheduling system brings optimal layout and status to workloads such as microservices, web services, big data jobs, AI jobs, etc.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/koordinator-sh/koordinator" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">cloud-native</span>
+
+<span class="tag">colocation</span>
+
+<span class="tag">cost-optimization</span>
+
+<span class="tag">kubernetes</span>
+
+<span class="tag">scheduling</span>
+
+<span class="tag">workload-consolidation</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="cloud-design-patterns" data-vendor="azure samples" data-category="general" data-cloud="azure" data-open="1" data-tags="azure,cloud,cost-optimization,design-patterns,operational-excellence,performance-efficiency,reliability,security" data-description="sample implementations for cloud design patterns found in the azure architecture center.">
+<h3>
+<a href="https://aka.ms/cloud-design-patterns" target="_blank" rel="noopener">cloud-design-patterns</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Azure Samples ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">azure</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">Sample implementations for cloud design patterns found in the Azure Architecture Center.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/Azure-Samples/cloud-design-patterns" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">azure</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cost-optimization</span>
+
+<span class="tag">design-patterns</span>
+
+<span class="tag">operational-excellence</span>
+
+<span class="tag">performance-efficiency</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="finala" data-vendor="similarweb" data-category="cost-visibility" data-cloud="aws" data-open="1" data-tags="analyzes,aws,aws-billing,cloud,cloud-provider,cost,cost-effectiveness,cost-optimization,cost-saving,finala,finops,go,golang,infrastructure,unused-resources" data-description="finala is an open-source resource cloud scanner that analyzes, discloses, presents and notifies about wasteful and unused resources.">
+<h3>
+<a href="https://finala.io" target="_blank" rel="noopener">finala</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Similarweb ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Cost Visibility</span>
+</div>
+<div class="summary">Finala is an open-source resource cloud scanner that analyzes, discloses, presents and notifies about wasteful and unused resources.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/similarweb/finala" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">analyzes</span>
+
+<span class="tag">aws</span>
+
+<span class="tag">aws-billing</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-provider</span>
+
+<span class="tag">cost</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="terraform" data-vendor="hashicorp" data-category="general" data-cloud="multi-cloud" data-open="1" data-tags="cloud,cloud-management,graph,infrastructure-as-code,terraform" data-description="terraform enables you to safely and predictably create, change, and improve infrastructure. it is a source-available tool that codifies apis into declarative configuration files that can be shared amongst team members, treated as code, edited, reviewed, and versioned.">
+<h3>
+<a href="http://developer.hashicorp.com/terraform" target="_blank" rel="noopener">terraform</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Hashicorp ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">Terraform enables you to safely and predictably create, change, and improve infrastructure. It is a source-available tool that codifies APIs into declarative configuration files that can be shared amongst team members, treated as code, edited, reviewed, and versioned.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/hashicorp/terraform" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-management</span>
+
+<span class="tag">graph</span>
+
+<span class="tag">infrastructure-as-code</span>
+
+<span class="tag">terraform</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="aws-cli" data-vendor="aws" data-category="general" data-cloud="aws" data-open="1" data-tags="aws,aws-cli,cloud,cloud-management" data-description="universal command line interface for amazon web services">
+<h3>
+<a href="https://github.com/aws/aws-cli" target="_blank" rel="noopener">aws-cli</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Aws ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">Universal Command Line Interface for Amazon Web Services</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">aws-cli</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-management</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="salt" data-vendor="saltstack" data-category="general" data-cloud="multi-cloud" data-open="1" data-tags="cloud,cloud-management,cloud-providers,cloud-provisioning,configuration-management,edge,event-management,event-stream,infrastructure,infrastructure-as-a-code,infrastructure-as-code,infrastructure-automation,infrastructure-management,iot,python,remote-execution,zeromq" data-description="software to automate the management and configuration of infrastructure and applications at scale.">
+<h3>
+<a href="https://docs.saltproject.io/salt/install-guide/en/latest/" target="_blank" rel="noopener">salt</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Saltstack ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">Software to automate the management and configuration of infrastructure and applications at scale.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/saltstack/salt" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-management</span>
+
+<span class="tag">cloud-providers</span>
+
+<span class="tag">cloud-provisioning</span>
+
+<span class="tag">configuration-management</span>
+
+<span class="tag">edge</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="awesome-aws" data-vendor="donnemartin" data-category="open-source" data-cloud="aws" data-open="1" data-tags="aws,aws-cli,aws-sdk,cloud,cloud-management,cloudformation,cloudwatch,dynamodb,ec2,ecs,elasticsearch,iam,kinesis,lambda,machine-learning,rds,redshift,route53,s3,serverless" data-description="a curated list of awesome amazon web services (aws) libraries, open source repos, guides, blogs, and other resources.  featuring the fiery meter of awsome.">
+<h3>
+<a href="https://github.com/donnemartin/awesome-aws" target="_blank" rel="noopener">awesome-aws</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Donnemartin ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Open Source</span>
+</div>
+<div class="summary">A curated list of awesome Amazon Web Services (AWS) libraries, open source repos, guides, blogs, and other resources.  Featuring the Fiery Meter of AWSome.</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">aws-cli</span>
+
+<span class="tag">aws-sdk</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-management</span>
+
+<span class="tag">cloudformation</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="crossplane" data-vendor="crossplane" data-category="kubernetes" data-cloud="multi-cloud" data-open="1" data-tags="cloud-computing,cloud-management,cloud-native,cncf,containers,control-plane,infrastructure,infrastructure-as-code,kubernetes,multicloud,serverless" data-description="the cloud native control plane">
+<h3>
+<a href="https://crossplane.io" target="_blank" rel="noopener">crossplane</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Crossplane ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">The Cloud Native Control Plane</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/crossplane/crossplane" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">cloud-computing</span>
+
+<span class="tag">cloud-management</span>
+
+<span class="tag">cloud-native</span>
+
+<span class="tag">cncf</span>
+
+<span class="tag">containers</span>
+
+<span class="tag">control-plane</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="boto3" data-vendor="boto" data-category="general" data-cloud="aws" data-open="1" data-tags="aws,aws-sdk,cloud,cloud-management,python" data-description="boto3, an aws sdk for python">
+<h3>
+<a href="https://aws.amazon.com/sdk-for-python/" target="_blank" rel="noopener">boto3</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Boto ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">Boto3, an AWS SDK for Python</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/boto/boto3" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">aws-sdk</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-management</span>
+
+<span class="tag">python</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="aws-shell" data-vendor="awslabs" data-category="general" data-cloud="aws" data-open="1" data-tags="aws,aws-cli,cloud,cloud-management" data-description="an integrated shell for working with the aws cli.">
+<h3>
+<a href="https://github.com/awslabs/aws-shell" target="_blank" rel="noopener">aws-shell</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Awslabs ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">An integrated shell for working with the AWS CLI.</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">aws-cli</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-management</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="pyinfra" data-vendor="pyinfra dev" data-category="kubernetes" data-cloud="multi-cloud" data-open="1" data-tags="cloud-management,configuration-management,high-performance,infrastructure,pyinfra,python,remote-execution" data-description="🔧 pyinfra turns python code into shell commands and runs them on your servers. execute ad-hoc commands and write declarative operations. target ssh servers, local machine and docker containers. fast and scales from one server to thousands.">
+<h3>
+<a href="https://pyinfra.com" target="_blank" rel="noopener">pyinfra</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Pyinfra Dev ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">🔧 pyinfra turns Python code into shell commands and runs them on your servers. Execute ad-hoc commands and write declarative operations. Target SSH servers, local machine and Docker containers. Fast and scales from one server to thousands.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/pyinfra-dev/pyinfra" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">cloud-management</span>
+
+<span class="tag">configuration-management</span>
+
+<span class="tag">high-performance</span>
+
+<span class="tag">infrastructure</span>
+
+<span class="tag">pyinfra</span>
+
+<span class="tag">python</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="saws" data-vendor="donnemartin" data-category="general" data-cloud="aws" data-open="1" data-tags="aws,aws-cli,cli,client,cloud,cloud-management,developer-tools,development,linux,macos,programming,python,shell,terminal,utilities,utility,windows" data-description="a supercharged aws command line interface (cli).">
+<h3>
+<a href="https://github.com/donnemartin/saws" target="_blank" rel="noopener">saws</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Donnemartin ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">A supercharged AWS command line interface (CLI).</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">aws-cli</span>
+
+<span class="tag">cli</span>
+
+<span class="tag">client</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-management</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="awless" data-vendor="wallix" data-category="general" data-cloud="aws" data-open="1" data-tags="awless,aws,aws-cli,cli,cloud,cloud-management,devops,devops-tools,golang" data-description="a mighty cli for aws">
+<h3>
+<a href="http://awless.io/" target="_blank" rel="noopener">awless</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Wallix ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">A Mighty CLI for AWS</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/wallix/awless" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">awless</span>
+
+<span class="tag">aws</span>
+
+<span class="tag">aws-cli</span>
+
+<span class="tag">cli</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-management</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="mist-ce" data-vendor="mistio" data-category="kubernetes" data-cloud="aws" data-open="1" data-tags="aws,cloud,cloud-management,containers,devops,docker,hypervisors,kvm,monitoring,openstack,python,server,vsphere" data-description="mist is an open source, multicloud management platform">
+<h3>
+<a href="https://mist.io" target="_blank" rel="noopener">mist-ce</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Mistio ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Kubernetes</span>
+</div>
+<div class="summary">Mist is an open source, multicloud management platform</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/mistio/mist-ce" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aws</span>
+
+<span class="tag">cloud</span>
+
+<span class="tag">cloud-management</span>
+
+<span class="tag">containers</span>
+
+<span class="tag">devops</span>
+
+<span class="tag">docker</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="aiobotocore" data-vendor="aio libs" data-category="general" data-cloud="aws" data-open="1" data-tags="aiohttp,asyncio,aws,aws-sdk,botocore,cloud,cloud-management" data-description="asyncio support for botocore library using aiohttp">
+<h3>
+<a href="https://aiobotocore.aio-libs.org" target="_blank" rel="noopener">aiobotocore</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Aio Libs ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">aws</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">asyncio support for botocore library using aiohttp</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/aio-libs/aiobotocore" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">aiohttp</span>
+
+<span class="tag">asyncio</span>
+
+<span class="tag">aws</span>
+
+<span class="tag">aws-sdk</span>
+
+<span class="tag">botocore</span>
+
+<span class="tag">cloud</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="terrateam" data-vendor="terrateamio" data-category="open-source" data-cloud="multi-cloud" data-open="1" data-tags="automation,cloud-management,devops,github-actions,infrastructure-as-code,infrastructure-automation,infrastructure-orchestration,ocaml,opentofu,pulumi,tacos,terraform,terraform-github-actions" data-description="terrateam is open-source gitops infrastructure orchestration. it integrates with github to automate terraform, opentofu, cdktf, terragrunt, and pulumi workflows through pull requests.">
+<h3>
+<a href="https://docs.terrateam.io" target="_blank" rel="noopener">terrateam</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Terrateamio ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Open Source</span>
+</div>
+<div class="summary">Terrateam is open-source GitOps infrastructure orchestration. It integrates with GitHub to automate Terraform, OpenTofu, CDKTF, Terragrunt, and Pulumi workflows through pull requests.</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/terrateamio/terrateam" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">automation</span>
+
+<span class="tag">cloud-management</span>
+
+<span class="tag">devops</span>
+
+<span class="tag">github-actions</span>
+
+<span class="tag">infrastructure-as-code</span>
+
+<span class="tag">infrastructure-automation</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="awesome-azure-bicep" data-vendor="elyusubov" data-category="general" data-cloud="azure" data-open="1" data-tags="awesome,awesome-list,azure,azure-bicep,azure-bicep-github,azure-resource-manager,cloud-management,code-as-infrastructure,command-line,community,devops,infrastructure-as-code,learn-azure-bicep" data-description="a curated list of blogs, videos, tutorials, code, tools, scripts, and anything useful to help you learn azure bicep - by @elyusubov, @johnlokerse and @lukemurraynz">
+<h3>
+<a href="https://aka.ms/bicep" target="_blank" rel="noopener">AWESOME-Azure-Bicep</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+Elyusubov ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">azure</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">General</span>
+</div>
+<div class="summary">A curated list of blogs, videos, tutorials, code, tools, scripts, and anything useful to help you learn Azure Bicep - by @ElYusubov, @johnlokerse and @lukemurraynz</div>
+
+<p style="margin-top:0.5rem;"><a href="https://github.com/ElYusubov/AWESOME-Azure-Bicep" target="_blank" class="view-all">GitHub →</a></p>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">awesome</span>
+
+<span class="tag">awesome-list</span>
+
+<span class="tag">azure</span>
+
+<span class="tag">azure-bicep</span>
+
+<span class="tag">azure-bicep-github</span>
+
+<span class="tag">azure-resource-manager</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="resourcechest/finops-tools" data-vendor="resourcechest" data-category="finops-platform" data-cloud="multi-cloud" data-open="1" data-tags="finops,tools,curated-list" data-description="finops tools curated list from resourcechest finops tools">
+<h3>
+<a href="https://github.com/ResourceChest/finops-tools" target="_blank" rel="noopener">ResourceChest/finops-tools</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+ResourceChest ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Finops Platform</span>
+</div>
+<div class="summary">FinOps tools curated list from ResourceChest FinOps Tools</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">finops</span>
+
+<span class="tag">tools</span>
+
+<span class="tag">curated-list</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="charter.md" data-vendor="master" data-category="finops-platform" data-cloud="multi-cloud" data-open="1" data-tags="finops,tool" data-description="tool from finops.org">
+<h3>
+<a href="https://github.com/finopsfoundation/tac/blob/master/charter.md" target="_blank" rel="noopener">charter.md</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+master ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Finops Platform</span>
+</div>
+<div class="summary">Tool from finops.org</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">finops</span>
+
+<span class="tag">tool</span>
+
+</div>
+
+</div>
+
+<div class="card tool-card" data-name="03-code_of_conduct.md" data-vendor="main" data-category="finops-platform" data-cloud="multi-cloud" data-open="1" data-tags="finops,tool" data-description="tool from finops.org">
+<h3>
+<a href="https://github.com/finopsfoundation/foundation/blob/main/03-code_of_conduct.md" target="_blank" rel="noopener">03-code_of_conduct.md</a>
+<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>
+</h3>
+<div class="meta">
+main ·
+<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">multi-cloud</span> ·
+<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">Finops Platform</span>
+</div>
+<div class="summary">Tool from finops.org</div>
+
+
+<div style="margin-top:0.5rem;">
+
+<span class="tag">finops</span>
+
+<span class="tag">tool</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+<script>
+function filterTools() {
+const q = document.getElementById('searchInput').value.toLowerCase();
+const category = document.getElementById('categoryFilter').value;
+const cloud = document.getElementById('cloudFilter').value;
+const ossOnly = document.getElementById('ossFilter').checked;
+
+const cards = document.querySelectorAll('.tool-card');
+let visible = 0;
+
+cards.forEach(card => {
+const name = card.dataset.name || '';
+const vendor = card.dataset.vendor || '';
+const desc = card.dataset.description || '';
+const tags = card.dataset.tags || '';
+
+const matchesSearch = !q || name.includes(q) || vendor.includes(q) || desc.includes(q) || tags.includes(q);
+const matchesCategory = !category || card.dataset.category === category;
+const matchesCloud = !cloud || card.dataset.cloud === cloud;
+const matchesOss = !ossOnly || card.dataset.open === 'True' || card.dataset.open === 'true' || card.dataset.open === '1';
+
+const match = matchesSearch && matchesCategory && matchesCloud && matchesOss;
+card.style.display = match ? '' : 'none';
+if (match) visible++;
+});
+
+document.getElementById('resultCount').textContent = visible + ' tool' + (visible !== 1 ? 's' : '') + ' shown';
+}
+
+document.addEventListener('DOMContentLoaded', filterTools);
+</script>
+
+<div class="footer">
+<span class="footer-brand">FinOps Intelligence Agent</span> · Built with data from RSS, GitHub, HN &amp; Reddit · <a href="index.html">Home</a>
+</div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FinOps - 2026-07-28</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>☁️</text></svg>">
+</head>
+<body>
+<div class="container">
+<div class="nav">
+<a href="../index.html" class="nav-brand">FinOps Agent</a>
+<a href="../index.html">Timeline</a>
+<a href="../dashboard.html">Dashboard</a>
+<a href="../search.html">Search</a>
+<a href="../tools.html">Tools</a>
+<a href="../archive.html">Archive</a>
+</div>
+
+<h1>2026-07-28</h1>
+<p>55 items</p>
+
+
+<h2 class="date-header">Research (41)</h2>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.22866" target="_blank" rel="noopener">$g$MAGNUS: Fast SpGEMM on GPUs for Irregular Matrices via Hierarchical Multisplit</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.22866v1 Announce Type: new 
+Abstract: We present $g$MAGNUS, a novel algorithm for sparse matrix-matrix multiplication (SpGEMM) of irregular matrices on GPUs. Such matrices often contain many \emph{heavy rows}, those with large intermediate products that force local memory accumulators to spill to global memory. $g$MAGNUS addresses this by computing an intra-row reordering of intermediate products, subdividing heavy rows into independent chunks that can be accumulated completely in loc</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.23042" target="_blank" rel="noopener">Application-Driven Architecture Exploration for Cross-Layer Heterogeneous Systems</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.23042v1 Announce Type: new 
+Abstract: AI and HPC infrastructure increasingly serves workload portfolios that combine dense tensor computation, sparse kernels, large memory footprints, and communication-intensive collectives. Supporting these portfolios requires coordinated choices across accelerators, memory tiers, scale-up fabrics, and cluster networks. The resulting Cross-layer Heterogeneous System (XHS) design space is difficult to explore: hardware choices change legal task mappin</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.23115" target="_blank" rel="noopener">Gleam: Adaptive Network-Efficient CUDA API Remoting for Cross-Device GPU Sharing over LANs</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> <span class="tag">cs.LG</span> 
+</div>
+<div class="summary">arXiv:2607.23115v1 Announce Type: new 
+Abstract: This paper aims to enable computation- and communication-efficient GPU sharing across devices within local area networks (LANs), facilitating ubiquitous AI inference on heterogeneous personal devices. We achieve distributed task offloading via CUDA API remoting. However, beyond raw computation, network constraints emerge as the primary bottleneck: limited bandwidth, high-frequency API invocations, and cross-task contention significantly hinder per</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.23250" target="_blank" rel="noopener">Libra: Taming Attention Workload Skew in Long-Context LLM Training with Bounded Sequence Pool</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.23250v1 Announce Type: new 
+Abstract: Long-context LLM training suffers from a load-balancing problem that sequence packing does not solve. Packing samples into fixed-token sequences balances memory and linear-cost operators, but the dominant attention cost scales with the sum of squared sequence lengths. Thus, equally sized packed sequences drawn from a long-tailed corpus can carry substantially different attention workloads, creating data-parallel stragglers and pipeline bubbles. Ex</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.23264" target="_blank" rel="noopener">X-Stage: An Overlooked Pipeline Stage for Communication-Computation Overlap in DiT Inference</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> <span class="tag">cs.AI</span> 
+</div>
+<div class="summary">arXiv:2607.23264v1 Announce Type: new 
+Abstract: Fine-grained, device-initiated communication lets persistent GPU kernels in distributed diffusion transformer (DiT) inference issue remote stores and overlap data movement with Tensor Core computation. Existing systems schedule when communication is issued and when received data becomes consumable, but omit post-issue progress before remote-visible completion, making sender backpressure hard to predict.
+  We identify X-Stage, a software-visible po</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.23933" target="_blank" rel="noopener">SpecBox: Speculative Sandbox Scheduling for Efficient LLM Agent Serving</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> <span class="tag">cs.AI</span> <span class="tag">cs.LG</span> <span class="tag">cs.PF</span> 
+</div>
+<div class="summary">arXiv:2607.23933v1 Announce Type: new 
+Abstract: As LLM agents increasingly rely on the Model Context Protocol (MCP) to invoke isolated external sandboxes, disaggregated sandbox deployment introduces a fundamental tension between resource utilization and interactive tail latency. Persistent long-lived sandbox reservations incur excessive memory overhead at scale, while lazy on-demand instantiation generates severe cold-start penalties that degrade response performance under multi-tenant, multi-t</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.24095" target="_blank" rel="noopener">Consensus In Asynchrony: Strictly Formal</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.24095v1 Announce Type: new 
+Abstract: In this paper, we resolve the apparent contradiction between the proven possibility of deterministic crash-tolerant consensus in a fully asynchronous environment and the reconfirmation of the FLP impossibility result by Attiya, Casta\~neda, and Rajsbaum. With the use of a strictly formal framework that extends their reasoning, we close this fundamental gap in theory. Specifically, we demonstrate that a single protocol phase separates their finding</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.24741" target="_blank" rel="noopener">Certified Parallel-in-Time Sinkhorn for Dynamic Entropic Optimal Transport</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> <span class="tag">cs.LG</span> 
+</div>
+<div class="summary">arXiv:2607.24741v1 Announce Type: new 
+Abstract: Dynamic applications, including optimal-transport Flow Matching, repeatedly solve related entropic optimal transport problems, yet conventional distributed Sinkhorn processes frames sequentially and synchronizes after every iteration. We present TemporalSinkhorn, a parallel-in-time executor that batches future candidates and their repairs without making output accuracy speculative. A centered, row-sharded certificate accepts only a deterministic s</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.22588" target="_blank" rel="noopener">ParBench: A Benchmark for Reliable Evaluation of LLM Parallel Code Translation</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.AI</span> <span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.22588v1 Announce Type: cross 
+Abstract: Modern compute-intensive software must migrate across a changing ecosystem of accelerators, programming APIs, compiler stacks, and portability layers, including CUDA, OpenMP, OpenCL, and OpenMP target offload. Large language models and autonomous coding agents are increasingly proposed for such migration, but the field lacks reliable ways to measure whether they preserve the low-level parallel semantics that make translations behaviorally valid,</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.22648" target="_blank" rel="noopener">PTStore (Prefix Tensor Store): Distributed Prefix Caching and Replication for High Throughput Inference Serving</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.AI</span> <span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.22648v1 Announce Type: cross 
+Abstract: Inspired by the design of client caching in Content Delivery Networks (CDNs), PTStore distributes and replicates popular tensors that form reusable KV cache prefixes, which are the main technique used by state of art approaches to accelerate inferences. This reduces the latency of accessing the KV cache and alleviates load imbalance caused by a disproportionately large number of requests on servers containing popular tensors. Furthermore, thanks</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.22785" target="_blank" rel="noopener">FusionML: Prefill, Not Decode - Mechanism and Boundaries of CPU+GPU Co-Execution on Unified-Memory Apple Silicon</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.AR</span> <span class="tag">cs.DC</span> <span class="tag">cs.LG</span> <span class="tag">cs.PF</span> 
+</div>
+<div class="summary">arXiv:2607.22785v1 Announce Type: cross 
+Abstract: Apple-Silicon SoCs share CPU, GPU, and Neural Engine over one unified memory system, raising the question of whether transformer inference can be accelerated by splitting single operators across units. Prior attempts, including our own, failed or produced precision-confounded wins. We identify the cause: MLX&#39;s lazy-graph scheduler \emph{serializes} cross-stream work whenever a CPU-stream operation consumes an unmaterialized GPU result inside one</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.22786" target="_blank" rel="noopener">Optimizing Transformer Neural Network for Real-Time Outlier Detection on FPGAs</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.LG</span> <span class="tag">cs.AI</span> <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> <span class="tag">cs.PF</span> <span class="tag">stat.CO</span> 
+</div>
+<div class="summary">arXiv:2607.22786v1 Announce Type: cross 
+Abstract: In this work, we explore how the inference time of a Transformer Neural Network can be efficiently optimized with applications to real-time anomaly detection in financial time series. The financial time series are price series such as asset prices. Unfortunately, the data is often with errors or outliers that make the downstream data processing tasks useless, unstable or even harmful. Moreover, the amount of financial time-series data has been s</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.22806" target="_blank" rel="noopener">SLA-Constrained Carbon-Aware Routing in Geo-Distributed Serverless Clouds</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.LG</span> <span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.22806v1 Announce Type: cross 
+Abstract: Modern cloud deployments distribute applications across multiple geographic regions, yet standard routing mechanisms prioritize latency while ignoring the fluctuating carbon intensity of local power grids. Latency-driven routing incurs avoidable carbon emissions, particularly when cleaner regions are within acceptable latency bounds. The proposed model formulates the carbon-aware serverless routing problem as a constrained optimization over geo-</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.22956" target="_blank" rel="noopener">3D Gaussian Splatting for Scientific Particle Data Compression and Rendering</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.GR</span> <span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.22956v1 Announce Type: cross 
+Abstract: Large-scale particle simulations produce hundreds of millions of particles, straining storage, transfer, and interactive visualization. Existing lossy compressors such as SZ3 operate in data space and provide no guarantees on downstream visualization fidelity. We propose ParticleGS, a visualization-aware framework based on 3D Gaussian Splatting (3DGS) that learns a compact representation directly optimized for rendered image quality, combining (</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.22998" target="_blank" rel="noopener">A Resource Estimation Model for the Hardware-Software Co-Design of Distributed Quantum Architectures</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">quant-ph</span> <span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.22998v1 Announce Type: cross 
+Abstract: In distributed quantum computing (DQC), executing monolithic quantum circuits across multiple interconnected quantum processing units (QPUs) requires dedicated communication qubits to generate and distribute entanglement. Because the number of physical qubits within a QPU is finite, a trade-off emerges where allocating more communication qubits increases the capacity of quantum channels for concurrent non-local operations, but reduces the number</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.23120" target="_blank" rel="noopener">A scalable online machine learning approach for Stock Recommendation</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.CE</span> <span class="tag">cs.AI</span> <span class="tag">cs.DC</span> <span class="tag">cs.GT</span> 
+</div>
+<div class="summary">arXiv:2607.23120v1 Announce Type: cross 
+Abstract: Stock recommendation systems face the dual challenge of adapting to rapidly changing market conditions while maintaining low-latency predictions for end users. Traditional batch-trained models fail to capture concept drift, and monolithic architectures struggle to provide fault tolerance under load. This paper presents a scalable online deep learning-based stock recommendation system built on a distributed microservices architecture using Kubern</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.23196" target="_blank" rel="noopener">A Fixed-Point Construction of the Elementary Transcendental Functions</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">math.CA</span> <span class="tag">cs.DC</span> <span class="tag">cs.MS</span> <span class="tag">cs.NA</span> <span class="tag">math.FA</span> <span class="tag">math.NA</span> 
+</div>
+<div class="summary">arXiv:2607.23196v1 Announce Type: cross 
+Abstract: We present a unified fixed-point construction of the elementary transcendental functions, encompassing the real exponential, the complex exponential (sine and cosine), and the natural logarithm. Each function is characterized as the unique solution of a duplication identity established through the Banach contraction principle. These foundational identities are $e(2x)=e^2(x)$ for the exponentials, and $\log(x^{2})=2\log x$ for the logarithm. Beca</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.23763" target="_blank" rel="noopener">Parallel Cascaded Recursive Filtering on Multi-Core CPUs and GPUs</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">eess.SP</span> <span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.23763v1 Announce Type: cross 
+Abstract: The companion of this paper reformulated cascaded second-order (biquad) recursive filtering as a block-tridiagonal linear system and developed two parallel solution algorithms, PH factorization and cyclic reduction, reaching over 600 Megasamples per second on a single SIMD core. This paper scales that framework to multi-core CPUs and GPUs, where a new obstacle appears: the terminal outputs of each signal block group are the initial conditions of</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.23935" target="_blank" rel="noopener">A Sustainable Remote Access Architecture for Digital Inclusion through the Reuse of Discredited TV-BOX Devices</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.HC</span> <span class="tag">cs.CY</span> <span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.23935v1 Announce Type: cross 
+Abstract: Digital inclusion and the volume of electronic waste (e-waste) are major challenges for society, with direct impacts on the educational context. Educational institutions, especially those with limited resources, face difficulties in expanding and maintaining computer laboratories. This paper presents the implementation of a sustainable, low-cost Desktop Virtualization Infrastructure (VDI) developed through the reuse of discarded electronic equip</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.24006" target="_blank" rel="noopener">Agentic Cloud Decoys: A Deception-Driven Framework for Autonomous Intrusion Investigation</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.CR</span> <span class="tag">cs.AI</span> <span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.24006v1 Announce Type: cross 
+Abstract: Cloud telemetry arrives at a scale that, paradoxically, makes intrusion understanding harder rather than easier. Attackers operate through legitimate identity, federated session tokens, and cloud native APIs indistinguishable from routine administration, and analysts spend an incident reconstructing context the logs already contain. We present Cloud Decoy AI Agent, a framework pairing a high fidelity cloud decoy with an autonomous language model</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.24396" target="_blank" rel="noopener">The SpiNNaker2 chip: a many-core platform for flexible and scalable brain-inspired computing</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.ET</span> <span class="tag">cs.AI</span> <span class="tag">cs.AR</span> <span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.24396v1 Announce Type: cross 
+Abstract: In deep learning, efficiency gets more and more important to compensate for the ongoing growth in model sizes and applications. Neuromorphic hardware has long been advocated as an upcoming alternative to deep networks, taking inspiration from the brain for achieving unprecedented energy efficiency. However, demonstrations of these gains only recently began to grow in complexity and real-world applicability. With SpiNNaker2, we present a chip tha</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.24692" target="_blank" rel="noopener">Denial of Deadline: Network-Driven Accuracy Collapse in Distributed Inference Pipelines</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.NI</span> <span class="tag">cs.AI</span> <span class="tag">cs.CR</span> <span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.24692v1 Announce Type: cross 
+Abstract: Inference systems increasingly combine a fast path that returns predictions within the application&#39;s latency deadline together with a higher-accuracy slow path that runs higher-compute methods on stronger, remote hardware, so its results can be returned on time and combined with the fast path predictions. Across several application domains, we abstract this inference architecture as a fast path, a slow path, and a coordination layer with two fun</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2102.03863" target="_blank" rel="noopener">Hemlock : Compact and Scalable Mutual Exclusion</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> <span class="tag">cs.OS</span> 
+</div>
+<div class="summary">arXiv:2102.03863v5 Announce Type: replace 
+Abstract: We present Hemlock, a novel mutual exclusion locking algorithm that is extremely compact, requiring just one word per thread plus one word per lock, but which still provides local spinning in most circumstances, high throughput under contention, and low latency in the uncontended case. Hemlock is context-free -- not requiring any information to be passed from a lock operation to the corresponding unlock -- and FIFO. The performance of Hemlock </div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2404.15132" target="_blank" rel="noopener">Black Hole Search by Scattered Agents in Dynamic Rings</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2404.15132v4 Announce Type: replace 
+Abstract: In this paper, we address the challenge of locating a black hole within a dynamic graph using a set of scattered agents, which start from arbitrary positions in the graph. A black hole is defined as a node that silently eliminates any agent that visits it, effectively modeling network failures such as a crashed host or a destructive virus. The black hole search problem is considered solved when at least one agent survives and possesses a compl</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2409.00688" target="_blank" rel="noopener">Universal Finite-State and Self-Stabilizing Computation in Anonymous Dynamic Networks</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2409.00688v4 Announce Type: replace 
+Abstract: A communication network is said to be &#34;anonymous&#34; if its agents are indistinguishable from each other; it is &#34;dynamic&#34; if its communication links may appear or disappear unpredictably over time. Assuming that each of the $n$ agents of an anonymous dynamic network is initially given an input, it takes $2\tau n$ communication rounds for the agents to compute an arbitrary (frequency-based) function of such inputs (Di Luna-Viglietta, DISC 2023), w</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2602.01404" target="_blank" rel="noopener">BOA Constrictor: Squeezing Performance out of GPUs in the Cloud via Budget-Optimal Allocation</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2602.01404v2 Announce Type: replace 
+Abstract: The past decade has seen a dramatic increase in demand for GPUs to train Machine Learning (ML) models. Because it is prohibitively expensive for most organizations to build and maintain a large GPU cluster, organizations instead choose to rent GPUs from cloud providers. The customer is responsible for devising a policy for (i) deciding how many GPUs to rent at every moment in time to process a stream of ML training jobs and (ii) allocating the</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2603.05666" target="_blank" rel="noopener">Why Ethereum Needs Fairness Mechanisms that Do Not Depend on Participants&#39; Altruism</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2603.05666v2 Announce Type: replace 
+Abstract: Ethereum&#39;s ideal of censorship resistance, together with related fairness properties, is undermined in practice, motivating fairness mechanisms that aim to restore these properties. Several of these mechanisms hand control over block contents to a committee of proposers under a 1-of-n honest assumption: at least one committee member complies with the mechanism even when deviating would increase personal revenue. We refer to such proposers as a</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2606.27217" target="_blank" rel="noopener">CHAMB-GA: A Containerized HPC Scalable Microservice-Based Framework for Genetic Algorithms</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> <span class="tag">math.OC</span> 
+</div>
+<div class="summary">arXiv:2606.27217v2 Announce Type: replace 
+Abstract: Metaheuristic-based global optimization with embedded, long-running simulations is a computationally expensive process. To support various stages of development and execution, a seamless transition from personal computers to distributed clusters is desired, enabling execution across all computational scales. However, existing tool chains are often characterized by rigidity and hardware-bound constraints, which impede scalability and the integr</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.12839" target="_blank" rel="noopener">HeteroMosaic: Exposing and Exploiting Heterogeneous Execution Opportunities for Energy-Efficient Edge LLM Inference</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> <span class="tag">cs.AR</span> 
+</div>
+<div class="summary">arXiv:2607.12839v4 Announce Type: replace 
+Abstract: Modern edge system-on-chips (SoCs) combine CPUs, integrated GPUs (iGPUs), and neural processing units (NPUs), yet existing LLM runtimes typically make coarse device-level decisions or optimize operators in isolation. As a result, they underutilize heterogeneous resources, particularly on unified-memory platforms where performance depends on both device placement and task-graph coordination. We present HeteroMosaic, a heterogeneity-first schedu</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.16836" target="_blank" rel="noopener">Beyond Storage: State as a Runtime Control Problem in Parallel and Distributed Systems</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> <span class="tag">cs.DB</span> 
+</div>
+<div class="summary">arXiv:2607.16836v2 Announce Type: replace 
+Abstract: Shared state increasingly shapes both performance and failure behavior in streaming, serving, retrieval, and continual-learning systems. Existing studies, however, often isolate access control, hardware-aware execution, memory management, and long-horizon updates. The review organizes this literature around three coupled dimensions: state access and scheduling, state-aware execution, and state evolution and reuse. Across these dimensions, the </div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.18141" target="_blank" rel="noopener">HyMCache: A KV Cache Framework for Multi-Turn LLM Serving with CXL-Hybrid Memory</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.18141v2 Announce Type: replace 
+Abstract: Long-context, multi-turn, and agentic LLM workloads increasingly reuse previously processed context, making KV-cache reuse essential for reducing redundant computation. However, this reuse shifts the bottleneck to the memory tier that stores and serves reusable KV states at cluster scale. GPU HBM and host DRAM are too costly to scale to TB-scale shared context capacity, motivating remote tiers built from lower-cost, higher-capacity media. This</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.19182" target="_blank" rel="noopener">ARBITER: Guarded Agentic Control for SLO-Oriented Kubernetes Remediation</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.19182v2 Announce Type: replace 
+Abstract: Maintaining service-level objectives (SLOs) on Kubernetes microservices remains difficult because autoscalers observe coarse resource metrics, recent SLO controllers often depend on custom telemetry, and unconstrained agentic operators cannot safely mutate production clusters. We present ARBITER, a guarded control plane for SLO-oriented Kubernetes remediation. ARBITER builds an OpenTelemetry-native causal resource graph, assembles bounded Diag</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2408.12225" target="_blank" rel="noopener">Fair Combinatorial Auctions: Endogenous Best Execution in Blockchain Trade-Intent Markets</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">econ.TH</span> <span class="tag">cs.DC</span> <span class="tag">cs.GT</span> 
+</div>
+<div class="summary">arXiv:2408.12225v4 Announce Type: replace-cross 
+Abstract: Trade-intent auctions intermediate around USD~9~billion in monthly trading volume. In these auctions, specialized intermediaries called solvers compete for the right to execute orders across fragmented blockchain-based financial markets. These auctions are combinatorial because executing multiple trade intents jointly generates additional efficiencies. However, there is no best-execution benchmark to determine how to share those efficien</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2507.19802" target="_blank" rel="noopener">CleANN: Efficient Full Dynamism in Graph-based Approximate Nearest Neighbor Search</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.DB</span> <span class="tag">cs.DC</span> <span class="tag">cs.DS</span> <span class="tag">cs.IR</span> 
+</div>
+<div class="summary">arXiv:2507.19802v2 Announce Type: replace-cross 
+Abstract: Approximate nearest neighbor search (ANNS) has become a quintessential algorithmic problem for various other foundational data tasks for AI workloads. Graph-based ANNS indexes have superb empirical trade-offs in indexing cost, query efficiency, and query approximation quality. Most existing graph-based indexes are designed for the static scenario, where there are no updates to the data after the index is constructed. However, full dynami</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2601.17957" target="_blank" rel="noopener">Moded Types for Grassroots Logic Programs, by AI, for AI (Full Version)</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.PL</span> <span class="tag">cs.DC</span> <span class="tag">cs.FL</span> <span class="tag">cs.LO</span> <span class="tag">cs.MA</span> 
+</div>
+<div class="summary">arXiv:2601.17957v5 Announce Type: replace-cross 
+Abstract: Grassroots Logic Programs (GLP) is a concurrent logic programming language in which logic variables are partitioned into paired readers and writers. An assignment is produced at most once via a writer and consumed at most once via its paired reader, and may contain additional readers and/or writers. This enables the concise expression of rich multidirectional communication modalities.
+  ``Logic Programs as Types for Logic Programs&#39;&#39; (LIC</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2602.18673" target="_blank" rel="noopener">When Coordination Is Avoidable: A Monotonicity Analysis of Organizational Tasks</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.MA</span> <span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2602.18673v4 Announce Type: replace-cross 
+Abstract: Organizations devote substantial resources to coordination, yet which tasks actually require it for correctness remains unclear. The problem is acute in multi-agent AI systems, where coordination cost is directly measurable and can exceed the cost of the work itself. Distributed systems theory provides a precise criterion: coordination is required when a task specification is non-monotonic, meaning that as histories grow, new information</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2603.20317" target="_blank" rel="noopener">Which Workloads Belong in Orbit? A Workload-First Framework for Orbital Data Centers Using Semantic Abstraction</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.CV</span> <span class="tag">cs.DC</span> <span class="tag">cs.NI</span> 
+</div>
+<div class="summary">arXiv:2603.20317v2 Announce Type: replace-cross 
+Abstract: Space-based compute is becoming plausible as launch costs fall and data-intensive AI workloads grow. This paper proposes a workload-centric framework for deciding which tasks belong in orbit versus terrestrial cloud, along with a phased adoption model tied to orbital data center maturity. We ground the framework with in-orbit semantic-reduction prototypes. An Earth-observation pipeline on Sentinel-2 imagery from Seattle and Bengaluru (fo</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2604.19053" target="_blank" rel="noopener">CHRONOS: A Hardware-Assisted Phase-Decoupled Framework for Secure Federated Learning in IoT</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.CR</span> <span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2604.19053v3 Announce Type: replace-cross 
+Abstract: Federated learning enables collaborative training on IoT gateways without sharing raw data, yet gradients remain susceptible to inversion attacks. Existing Secure Multiparty Computation defenses impose prohibitive communication overhead, exceeding strict IoT latency and energy budgets.
+  We propose CHRONOS, a hardware-assisted framework that decouples cryptographic setup from active training. During idle windows, CHRONOS executes a once-</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2606.00552" target="_blank" rel="noopener">Edge-Based QoS-Aware Adaptive Task Placement: A Closed-Loop Control in Multi-Robot Systems</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.OS</span> <span class="tag">cs.DC</span> <span class="tag">cs.NI</span> <span class="tag">cs.RO</span> <span class="tag">cs.SY</span> <span class="tag">eess.SY</span> 
+</div>
+<div class="summary">arXiv:2606.00552v3 Announce Type: replace-cross 
+Abstract: Multi-robot systems (MRS) increasingly offload compute-intensive perception tasks to edge nodes to meet strict time-sensitive Quality-of-Service (QoS) constraints. However, static task orchestration on a shared edge node can severely degrade QoS due to network latency, jitter, and edge-resource contention. We present a pilot edge-centric MRS testbed using Raspberry Pi nodes to evaluate a camera-to-manipulator pipeline under three modes: </div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.01342" target="_blank" rel="noopener">Design rules for fault-tolerant multi-gate teleportation</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">quant-ph</span> <span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.01342v2 Announce Type: replace-cross 
+Abstract: Multi-gate teleportation (MGT) packages $n$ remote gates into a single ebit via a 1-ebit fan-out quantum circuit, saving $n{-}1$ entangled pairs relative to sequential gate teleportation. The cost is a correlated failure mode: a single network fault propagates through the fan-out tree, injecting a weight-$n$ Pauli error on the target register (weight $n{+}1$ including the control). We establish a design rule for fault-tolerant packet siz</div>
+</div>
+
+<div class="card">
+<h3><a href="https://arxiv.org/abs/2607.14952" target="_blank" rel="noopener">LongStraw: Long-Context RL Beyond 2M Tokens under a Fixed GPU Budget</a></h3>
+<div class="meta">Arxiv Cloud Computing · 2026-07-28
+<br><span class="tag">cs.LG</span> <span class="tag">cs.DC</span> 
+</div>
+<div class="summary">arXiv:2607.14952v3 Announce Type: replace-cross 
+Abstract: Long-context RL post-training is constrained by the lifetime of state and gradients, not attention cost alone. In GRPO, one multi-million-token prompt must serve old-policy and reference scoring plus multiple policy responses, while conventional autograd keeps the prompt graph and all response graphs live alongside model weights, caches, and distributed communication buffers. We present LongStraw, an objective-aware, architecture-aware s</div>
+</div>
+
+
+<h2 class="date-header">Tools (7)</h2>
+
+<div class="card">
+<h3><a href="https://github.com/QuesmaOrg/awesome-ai-tokenomics" target="_blank" rel="noopener">[QuesmaOrg/awesome-ai-tokenomics] A map of what AI tokens actually cost, and where they&#39;re wasted vs. well spent. Tools, research, practices, and copy-pas</a></h3>
+<div class="meta">Github · 2026-07-28
+<br><span class="tag">cost-optimization</span> 
+</div>
+<div class="summary">A map of what AI tokens actually cost, and where they&#39;re wasted vs. well spent. Tools, research, practices, and copy-paste setups for token-efficient agentic coding.</div>
+</div>
+
+<div class="card">
+<h3><a href="https://github.com/eulogik/fugusashi" target="_blank" rel="noopener">[eulogik/fugusashi] Fugusashi — Federated Learning of LLM Routing with Human-Interpretable Decisions. Open-source alternative to Sakana AI F</a></h3>
+<div class="meta">Github · 2026-07-28
+<br><span class="tag">cost-optimization</span> 
+</div>
+<div class="summary">Fugusashi — Federated Learning of LLM Routing with Human-Interpretable Decisions. Open-source alternative to Sakana AI Fugu.</div>
+</div>
+
+<div class="card">
+<h3><a href="https://github.com/skypilot-org/skypilot" target="_blank" rel="noopener">[skypilot-org/skypilot] The AI Compute Platform for frontier teams. SkyPilot turns fragmented AI compute into one AI supercomputer, so frontier </a></h3>
+<div class="meta">Github · 2026-07-28
+<br><span class="tag">cost-optimization</span> 
+</div>
+<div class="summary">The AI Compute Platform for frontier teams. SkyPilot turns fragmented AI compute into one AI supercomputer, so frontier AI teams build custom intelligence faster.</div>
+</div>
+
+<div class="card">
+<h3><a href="https://github.com/project-arbr/arbr-control-plane" target="_blank" rel="noopener">[project-arbr/arbr-control-plane] Open-source LLM control plane: observe every call, recommend savings, then apply only human-approved, reversible routing</a></h3>
+<div class="meta">Github · 2026-07-28
+<br><span class="tag">cost-optimization</span> 
+</div>
+<div class="summary">Open-source LLM control plane: observe every call, recommend savings, then apply only human-approved, reversible routing.</div>
+</div>
+
+<div class="card">
+<h3><a href="https://www.cloudzero.com/blog" target="_blank" rel="noopener">CloudZero Blog: Expert Cloud Cost Advice And Tips</a></h3>
+<div class="meta">Www.Cloudzero.Com · 2026-07-28
+<br><span class="tag">finops</span> <span class="tag">cloud cost</span> <span class="tag">cloud-finops</span> <span class="tag">kubernetes cost</span> 
+</div>
+<div class="summary">CloudZero Blog: Expert Cloud Cost Advice And Tips Only 22% of finance execs can tie AI spend to business outcomes. Are you one of them? Learn more in our new report Why CloudZero Solutions Finance Engineering Operations Minimize Waste Waste, found at the level it actually happens Reduce Risk Risk gets caught where it starts, not where it lands Drive Growth Every AI dollar tied to the outcome it produced Platform Platform Features Optimize Explorer Analytics AI Hub Streaming Telemetry Budgets &amp; F</div>
+</div>
+
+<div class="card">
+<h3><a href="https://www.vantage.sh/blog" target="_blank" rel="noopener">Blog | Vantage</a></h3>
+<div class="meta">Www.Vantage.Sh · 2026-07-28
+<br><span class="tag">finops</span> <span class="tag">cloud cost</span> <span class="tag">cloud-finops</span> <span class="tag">kubernetes cost</span> 
+</div>
+<div class="summary">Blog | Vantage Vantage Features Reporting Cost Reports Canvas Virtual Tagging FinOps Agent Budgets Unit Costs Kubernetes Network Cost Visibility Asset Inventory Optimization Automated Waste Detection Autopilot for AWS Savings Plans Platform Team Management MCP Data Exports Terraform Solutions By Persona For Developers For Finance For Management For MSPs By Use Case Cost Allocation Commitment Coverage Accountability AI Workflows Integrations Cloud AWS Azure Google Cloud Oracle Cloud +1 more AI Op</div>
+</div>
+
+<div class="card">
+<h3><a href="https://www.cloud-cost-optimization.org/" target="_blank" rel="noopener">Cloud Cost Optimization &amp; FinOps Automation</a></h3>
+<div class="meta">Www.Cloud Cost Optimization.Org · 2026-07-28
+<br><span class="tag">finops</span> <span class="tag">cloud cost</span> <span class="tag">cloud-finops</span> <span class="tag">kubernetes cost</span> 
+</div>
+<div class="summary">Cloud Cost Optimization &amp; FinOps Automation Skip to content $ Cloud Cost Optimization FinOps Automation Home Ingestion Anomaly &amp; Budgets Architecture Tagging $ Cloud Cost Optimization &amp; FinOps Automation Production-focused engineering for automating cloud billing, cost governance, and FinOps workflows
+      across AWS, GCP, and Azure — built for FinOps engineers, cloud architects, DevOps, and Python automation builders. FinOps Architecture Billing Ingestion Tagging &amp; Validation Anomaly &amp; Budgets</div>
+</div>
+
+
+<h2 class="date-header">Community (5)</h2>
+
+<div class="card">
+<h3><a href="https://www.duckbillgroup.com/blog/" target="_blank" rel="noopener">Blog - Duckbill</a></h3>
+<div class="meta">Www.Duckbillgroup.Com · 2026-07-28
+<br><span class="tag">finops</span> <span class="tag">cloud cost</span> <span class="tag">cloud-finops</span> <span class="tag">kubernetes cost</span> 
+</div>
+<div class="summary">Blog - Duckbill Skip to content Platform Skyway Your unified AI and cloud data platform You have questions. We have coffee. Join us for office hours — Thursdays at 10am PT. Register now Services Inference contracts AI model labs and compute negotiations Neocloud contracts GPU capacity deals on terms that hold up Hyperscaler contracts Cloud contract negotiations done right Use cases Strategic finance Forecast with confidence Procurement Get the best contract terms possible Engineering leadership </div>
+</div>
+
+<div class="card">
+<h3><a href="https://www.finops.org/community/finops-podcast/" target="_blank" rel="noopener">FinOpsPod: The FinOps Podcast</a></h3>
+<div class="meta">Www.Finops.Org · 2026-07-28
+<br><span class="tag">finops</span> <span class="tag">cloud cost</span> <span class="tag">cloud-finops</span> <span class="tag">kubernetes cost</span> 
+</div>
+<div class="summary">FinOpsPod: The FinOps Podcast Close Search Loading... AI Value AI for FinOps Community Training Framework FOCUS FinOps X Assets About Who We Are What is FinOps? Mission &amp; Structure Governing Board Technical Advisory Council Member Organizations Ambassadors Foundation Staff Latest Information Adopting FinOps: Getting Started Content Attribution FinOps Foundation Insights FinOps Landscape Cloud FinOps Book What’s New in FinOps Get Involved Join as an Individual Join as an Enterprise Get Certified </div>
+</div>
+
+<div class="card">
+<h3><a href="https://lighthousetechnology.ai/insights/" target="_blank" rel="noopener">FinOps, Cloud Cost &amp; AI Operations | IBM Gold Partner | Lighthouse Technology</a></h3>
+<div class="meta">Lighthousetechnology.Ai · 2026-07-28
+<br><span class="tag">finops</span> <span class="tag">cloud cost</span> <span class="tag">cloud-finops</span> <span class="tag">kubernetes cost</span> 
+</div>
+<div class="summary">FinOps, Cloud Cost &amp; AI Operations | IBM Gold Partner | Lighthouse Technology</div>
+</div>
+
+<div class="card">
+<h3><a href="https://learn.microsoft.com/en-us/cloud-computing/finops/" target="_blank" rel="noopener">FinOps documentation - Cloud Computing | Microsoft Learn</a></h3>
+<div class="meta">Learn.Microsoft.Com · 2026-07-28
+<br><span class="tag">finops</span> <span class="tag">cloud cost</span> <span class="tag">cloud-finops</span> <span class="tag">kubernetes cost</span> 
+</div>
+<div class="summary">FinOps documentation - Cloud Computing | Microsoft Learn Skip to main content This browser is no longer supported. Upgrade to Microsoft Edge to take advantage of the latest features, security updates, and technical support. Download Microsoft Edge More info about Internet Explorer and Microsoft Edge FinOps documentation FinOps combines financial management principles with cloud engineering and operations to provide organizations with a better understanding of their cloud spending. It also helps </div>
+</div>
+
+<div class="card">
+<h3><a href="https://x.finops.org/" target="_blank" rel="noopener">FinOps X 2026 - The Home of Technology Value</a></h3>
+<div class="meta">X.Finops.Org · 2026-07-28
+<br><span class="tag">finops</span> <span class="tag">cloud cost</span> <span class="tag">cloud-finops</span> <span class="tag">kubernetes cost</span> 
+</div>
+<div class="summary">FinOps X 2026 - The Home of Technology Value June 8-11 2026 San Diego, California Register FinOps X 2026 — It&#39;s a Wrap AI Value: The Era of FinOps for AI, Token Economics, and Agentic FinOps June 8-11 2026 | San Diego, California Day 1 Keynote Recap Day 2 Keynote Recap Join the community for Tokenomicon + FinOps X Amsterdam, Sept 22-23 Sponsors Speakers Agenda Venue Sponsors Speakers Agenda Venue Where everyone is talking about AI+Technology Value 2500+ Attendees 150+ Talks 50+ Sponsors 3 Days N</div>
+</div>
+
+
+<h2 class="date-header">Gcp (1)</h2>
+
+<div class="card">
+<h3><a href="https://cloud.google.com/blog/topics/cost-management" target="_blank" rel="noopener">Cost Management | Google Cloud Blog</a></h3>
+<div class="meta">Cloud.Google.Com · 2026-07-28
+<br><span class="tag">finops</span> <span class="tag">cloud cost</span> <span class="tag">cloud-finops</span> <span class="tag">kubernetes cost</span> 
+</div>
+<div class="summary">Cost Management | Google Cloud Blog Jump to Content Cloud Blog Contact sales Get started for free Cloud Blog Solutions &amp; technology AI &amp; Machine Learning API Management Application Development Application Modernization Chrome Enterprise Compute Containers &amp; Kubernetes Data Analytics Databases DevOps &amp; SRE Maps &amp; Geospatial Security Security &amp; Identity Threat Intelligence Infrastructure Infrastructure Modernization Networking Productivity &amp; Collaboration SAP on Google Cloud Storage &amp; Data Transfe</div>
+</div>
+
+
+<h2 class="date-header">Report (1)</h2>
+
+<div class="card">
+<h3><a href="https://data.finops.org/" target="_blank" rel="noopener">State of FinOps 2026 Report</a></h3>
+<div class="meta">Data.Finops.Org · 2026-07-28
+<br><span class="tag">finops</span> <span class="tag">cloud cost</span> <span class="tag">cloud-finops</span> <span class="tag">kubernetes cost</span> 
+</div>
+<div class="summary">State of FinOps 2026 Report 6th annual survey since 2020 1,192 respondents Representing $83bn+ in annual cloud spend View the Data Library Executive Summary About Team Priorities Technology Categories Intersecting Disciplines Tooling AI FOCUS Conclusion Data Library The 6th Annual State of FinOps survey is a snapshot from the global FinOps community. FinOps has accelerated into a proactive, technology-wide discipline. AI dominates the forward-looking agenda. Scope has definitively expanded beyon</div>
+</div>
+
+
+<a href="../index.html" class="back-link">← Back to timeline</a>
+
+<div class="footer">
+<span class="footer-brand">FinOps Intelligence Agent</span> · Built with data from RSS, GitHub, HN &amp; Reddit · <a href="../index.html">Home</a>
+</div>
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>
