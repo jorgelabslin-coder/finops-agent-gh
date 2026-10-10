@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search FinOps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>☁️</text></svg>">
+</head>
+<body>
+<div class="container">
+<div class="nav">
+<a href="index.html" class="nav-brand">FinOps Agent</a>
+<a href="index.html">Timeline</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="search.html">Search</a>
+<a href="tools.html">Tools</a>
+<a href="archive.html">Archive</a>
+</div>
+
+<div class="hero" style="padding:2rem 0 1.5rem;">
+<h1 style="font-size:clamp(1.8rem,3vw,2.5rem)">Search</h1>
+<p>Search across all collected FinOps intelligence</p>
+</div>
+
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Search titles, summaries, tags..." oninput="doSearch(this.value)">
+</div>
+<div id="results"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+<script>
+let fuse = null;
+let allItems = [];
+
+async function loadItems() {
+try {
+const resp = await fetch('day/items.json');
+if (!resp.ok) throw new Error('Not found');
+allItems = await resp.json();
+fuse = new Fuse(allItems, { keys: ['title', 'summary', 'tags', 'source_name'], threshold: 0.4 });
+} catch(e) {
+document.getElementById('results').innerHTML = '<p style="text-align:center;color:#64748b;padding:2rem;">Search index not available in static mode.</p>';
+}
+}
+
+function doSearch(q) {
+const el = document.getElementById('results');
+if (!q || !fuse) { el.innerHTML = ''; return; }
+const results = fuse.search(q).slice(0, 50);
+el.innerHTML = results.map(r => `
+<div class="card">
+<h3><a href="${r.item.url}" target="_blank" rel="noopener">${r.item.title}</a></h3>
+<div class="meta">${r.item.date} · ${r.item.source_name || r.item.source_id}</div>
+${r.item.summary ? `<div class="summary">${r.item.summary.slice(0,300)}</div>` : ''}
+</div>
+`).join('');
+}
+
+loadItems();
+</script>
+
+<div class="footer">
+<span class="footer-brand">FinOps Intelligence Agent</span> · Built with data from RSS, GitHub, HN &amp; Reddit · <a href="index.html">Home</a>
+</div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>
