@@ -1,7 +1,8 @@
 from pathlib import Path
 
+import logging
 import yaml
-from fastapi import FastAPI, Header, HTTPException, Query
+from fastapi import FastAPI, Header, HTTPException, Request, Query
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -10,18 +11,38 @@ from src.reporters.html_report import HTMLReporter
 
 import os
 import re
+import secrets
 import time
+
+logger = logging.getLogger("finops.server")
 
 _DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 _RATE_LIMIT_SECONDS = 60.0
 _last_collect_ts: dict = {"ts": 0.0}
+
+_SECURITY_HEADERS = {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+    "Content-Security-Policy": (
+        "default-src 'none'; "
+        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+        "font-src https://fonts.gstatic.com; "
+        "script-src 'unsafe-inline'; "
+        "base-uri 'none'; "
+        "form-action 'none'; "
+        "frame-ancestors 'none'"
+    ),
+}
 
 
 def _require_token(x_api_token: str = Header(default="")) -> None:
     expected = os.environ.get("FINOPS_API_TOKEN", "")
     if not expected:
         raise HTTPException(status_code=503, detail="API token not configured")
-    if x_api_token != expected:
+    if not secrets.compare_digest(x_api_token.encode("utf-8"), expected.encode("utf-8")):
+        logger.warning("API auth failed: missing or invalid token")
         raise HTTPException(status_code=401, detail="Invalid or missing API token")
 
 
@@ -35,6 +56,13 @@ def create_app(config_path: str = "config.yaml") -> FastAPI:
         config = yaml.safe_load(f)
 
     app = FastAPI(title="FinOps Intelligence Agent")
+
+    @app.middleware("http")
+    async def add_security_headers(request: Request, call_next):
+        response = await call_next(request)
+        for header, value in _SECURITY_HEADERS.items():
+            response.headers.setdefault(header, value)
+        return response
 
     db_path = config.get("storage", {}).get("db_path", "data/finops.db")
     db = Database(db_path)

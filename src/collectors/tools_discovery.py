@@ -1,4 +1,5 @@
 import hashlib
+import os
 import re
 from datetime import date, datetime, timezone
 
@@ -100,7 +101,7 @@ class ToolsDiscoveryCollector(BaseCollector):
     def _discover_from_github(self) -> list[dict]:
         tools = []
         headers = {"User-Agent": self.user_agent}
-        token = self.config.get("api_keys", {}).get("github", "")
+        token = self.config.get("api_keys", {}).get("github", "") or os.environ.get("GH_TOKEN", "")
         if token:
             headers["Authorization"] = f"Bearer {token}"
 

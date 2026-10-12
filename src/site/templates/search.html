@@ -11,10 +11,21 @@
 </div>
 <div id="results"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js" integrity="sha384-PCSoOZTpbkikBEtd/+uV3WNdc676i9KUf01KOA8CnJotvlx8rRrETbDuwdjqTYvt" crossorigin="anonymous"></script>
 <script>
 let fuse = null;
 let allItems = [];
+
+function esc(s) {
+return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function safeUrl(u) {
+try {
+const x = new URL(u, location.href);
+return (x.protocol === 'http:' || x.protocol === 'https:') ? u : '#';
+} catch(e) { return '#'; }
+}
 
 async function loadItems() {
 try {
@@ -33,9 +44,9 @@ if (!q || !fuse) { el.innerHTML = ''; return; }
 const results = fuse.search(q).slice(0, 50);
 el.innerHTML = results.map(r => `
 <div class="card">
-<h3><a href="${r.item.url}" target="_blank" rel="noopener">${r.item.title}</a></h3>
-<div class="meta">${r.item.date} · ${r.item.source_name || r.item.source_id}</div>
-${r.item.summary ? `<div class="summary">${r.item.summary.slice(0,300)}</div>` : ''}
+<h3><a href="${esc(safeUrl(r.item.url))}" target="_blank" rel="noopener">${esc(r.item.title)}</a></h3>
+<div class="meta">${esc(r.item.date)} · ${esc(r.item.source_name || r.item.source_id || '')}</div>
+${r.item.summary ? `<div class="summary">${esc(r.item.summary.slice(0,300))}</div>` : ''}
 </div>
 `).join('');
 }

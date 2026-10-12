@@ -2,7 +2,11 @@ data/
 __pycache__/
 *.pyc
 .env
+.env.*
+!.env.example
 *.db
+*.pem
+*.key
 .venv/
 
 ### AL ###

@@ -1,4 +1,5 @@
 import hashlib
+import os
 from datetime import datetime, timezone
 
 import httpx
@@ -17,7 +18,8 @@ class GitHubCollector(BaseCollector):
         min_stars = gh_config.get("min_stars", 5)
 
         headers = {"User-Agent": self.user_agent}
-        if token := self.config.get("api_keys", {}).get("github"):
+        token = self.config.get("api_keys", {}).get("github") or os.environ.get("GH_TOKEN", "")
+        if token:
             headers["Authorization"] = f"Bearer {token}"
 
         with httpx.Client(timeout=self.timeout) as client:

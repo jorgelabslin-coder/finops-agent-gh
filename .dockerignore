@@ -1,0 +1,12 @@
+.git
+.github
+.venv
+__pycache__
+*.pyc
+data/
+*.md
+.gitignore
+.alpackages/
+.alcache/
+.snapshots/
+.vscode/

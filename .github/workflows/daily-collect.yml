@@ -9,22 +9,24 @@ concurrency:
   group: finops-daily
   cancel-in-progress: false
 
-permissions:
-  contents: write
-
 jobs:
   collect-and-publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
           cache: 'pip'
 
       - name: Cache data directory
-        uses: actions/cache@v5
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ./data
           key: finops-data-${{ github.run_id }}
@@ -35,16 +37,18 @@ jobs:
           pip install -r requirements.txt
           playwright install --with-deps chromium
 
-      - name: Inject GITHUB_TOKEN for API access
-        run: python -c "import yaml,os;c=yaml.safe_load(open('config.yaml'));c.setdefault('api_keys',{})['github']=os.environ['GH_TOKEN'];yaml.dump(c,open('config.yaml','w'))"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Audit dependencies for known vulnerabilities
+        run: |
+          pip install pip-audit
+          pip-audit -r requirements.txt --progress-spinner off
 
       - name: Run daily collection
         run: python -m src.main --daily
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./data/site
