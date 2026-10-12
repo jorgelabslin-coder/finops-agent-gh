@@ -4,26 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{% block title %}FinOps Intelligence{% endblock %}</title>
+<meta name="description" content="Daily cloud cost intelligence collected from RSS, GitHub, Hacker News and Reddit.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="{{ css_path }}style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>☁️</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230E1517'/><path d='M6 22h20M6 16h13M6 10h7' stroke='%23E9A13B' stroke-width='3' stroke-linecap='round'/></svg>">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <div class="container">
-<div class="nav">
-<a href="{{ root_path }}index.html" class="nav-brand">FinOps Agent</a>
-<a href="{{ root_path }}index.html">Timeline</a>
-<a href="{{ root_path }}dashboard.html">Dashboard</a>
-<a href="{{ root_path }}search.html">Search</a>
-<a href="{{ root_path }}tools.html">Tools</a>
-<a href="{{ root_path }}archive.html">Archive</a>
-</div>
+<header class="nav">
+<a href="{{ root_path }}index.html" class="nav-brand">FinOps Intelligence</a>
+<nav class="nav-links" aria-label="Sections">
+<a href="{{ root_path }}index.html"{% if page in ['index', 'day', 'month'] %} class="active" aria-current="page"{% endif %}>Timeline</a>
+<a href="{{ root_path }}dashboard.html"{% if page == 'dashboard' %} class="active" aria-current="page"{% endif %}>Dashboard</a>
+<a href="{{ root_path }}search.html"{% if page == 'search' %} class="active" aria-current="page"{% endif %}>Search</a>
+<a href="{{ root_path }}tools.html"{% if page == 'tools' %} class="active" aria-current="page"{% endif %}>Tools</a>
+<a href="{{ root_path }}archive.html"{% if page == 'archive' %} class="active" aria-current="page"{% endif %}>Archive</a>
+</nav>
+</header>
+<main id="main">
 {% block content %}{% endblock %}
-<div class="footer">
-<span class="footer-brand">FinOps Intelligence Agent</span> · Built with data from RSS, GitHub, HN &amp; Reddit · <a href="{{ root_path }}index.html">Home</a>
+</main>
+<footer class="footer">
+<span>FinOps Intelligence Agent</span>
+<span>Collected from RSS, GitHub, Hacker News and Reddit</span>
+<a href="{{ root_path }}index.html">Home</a>
+</footer>
 </div>
-</div>
-<script src="{{ css_path }}app.js"></script>
 </body>
 </html>

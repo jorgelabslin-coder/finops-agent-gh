@@ -1,21 +1,26 @@
 {% extends "base.html" %}
 {% block title %}FinOps Archive{% endblock %}
 {% block content %}
-<div class="hero" style="padding:2rem 0 1.5rem;">
-<h1 style="font-size:clamp(1.8rem,3vw,2.5rem)">Archive</h1>
-<p>Browse collected intelligence by month and year</p>
-</div>
+<header class="masthead">
+<h1>Archive</h1>
+<p class="sub">Every issue by month, back to {{ dates[-1] if dates else 'the start' }}.</p>
+<ul class="figures">
+<li><b>{{ dates|length }}</b><span>days collected</span></li>
+<li><b>{{ years|length }}</b><span>years</span></li>
+</ul>
+</header>
 
 {% for year, months in years.items() %}
-<h2 class="date-header">{{ year }}</h2>
-<div class="archive-grid">
+<section class="year-group">
+<h2>{{ year }}</h2>
+<ul class="month-list">
 {% for month_key, month_data in months.items() %}
-<a href="month/{{ month_key }}.html" class="archive-card">
-<div class="month-name">{{ month_data.label }}</div>
-<div class="month-count">{{ month_data.count }} items</div>
-<div class="month-days">{{ month_data.days }} days</div>
-</a>
+<li><a href="month/{{ month_key }}.html" class="month-row">
+<span class="month-name">{{ month_data.label }}</span>
+<span class="month-figures">{{ month_data.count|plural('item') }} · {{ month_data.days|plural('day') }}</span>
+</a></li>
 {% endfor %}
-</div>
+</ul>
+</section>
 {% endfor %}
 {% endblock %}

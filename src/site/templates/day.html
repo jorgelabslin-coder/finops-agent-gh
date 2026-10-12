@@ -1,20 +1,34 @@
 {% extends "base.html" %}
-{% block title %}FinOps - {{ dt }}{% endblock %}
+{% block title %}{{ dt }} — FinOps Intelligence{% endblock %}
 {% block content %}
-<h1>{{ dt }}</h1>
-<p>{{ items|length }} items</p>
+<header class="masthead">
+<h1><time datetime="{{ dt }}">{{ dt }}</time></h1>
+<ul class="figures">
+<li><b>{{ items|length }}</b><span>{{ items|length|plural_word('item') }}</span></li>
+<li><b>{{ grouped|length }}</b><span>{{ grouped|length|plural_word('category') }}</span></li>
+</ul>
+</header>
 
 {% for cat, cat_items in grouped.items() %}
-<h2 class="date-header">{{ cat|capitalize }} ({{ cat_items|length }})</h2>
+<h2 class="section-title">{{ cat|capitalize }}<span class="count">{{ cat_items|length }}</span></h2>
+<div class="entries">
 {% for item in cat_items %}
-<div class="card">
-<h3><a href="{{ item.url | safe_url }}" target="_blank" rel="noopener">{{ item.title }}</a></h3>
-<div class="meta">{{ item.source_name or item.source_id }} · {{ item.date }}
-{% if item.tags %}<br>{% for tag in item.tags.split(',') %}<span class="tag">{{ tag.strip() }}</span> {% endfor %}{% endif %}
+<article class="entry">
+<h3 class="entry-title"><a href="{{ item.url | safe_url }}" target="_blank" rel="noopener">{{ item.title }}</a></h3>
+<p class="entry-meta">
+<span class="chip">{{ item.source_name or item.source_id }}</span>
+{% if item.date %}<span class="entry-cat"><time datetime="{{ item.date }}">{{ item.date }}</time></span>{% endif %}
+</p>
+{% if item.summary %}<p class="entry-summary">{{ item.summary[:500] }}</p>{% endif %}
+{% if item.tags %}
+<div class="entry-tags">
+{% for tag in item.tags.split(',') %}<span class="tag">{{ tag.strip() }}</span>{% endfor %}
 </div>
-{% if item.summary %}<div class="summary">{{ item.summary[:500] }}</div>{% endif %}
+{% endif %}
+</article>
+{% endfor %}
 </div>
 {% endfor %}
-{% endfor %}
-<a href="{{ root_path }}index.html" class="back-link">← Back to timeline</a>
+
+<a href="{{ root_path }}index.html" class="back-link">Back to timeline</a>
 {% endblock %}

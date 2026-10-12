@@ -1,83 +1,77 @@
 {% extends "base.html" %}
-{% block title %}FinOps Tools Catalog{% endblock %}
+{% block title %}FinOps Tools{% endblock %}
 {% block content %}
-<div class="hero" style="padding:2rem 0 1.5rem;">
-<h1 style="font-size:clamp(1.8rem,3vw,2.5rem)">Tools Catalog</h1>
-<p>Discovered FinOps tools from community intelligence</p>
-</div>
-
+<header class="masthead">
+<h1>Tools catalog</h1>
+<p class="sub">FinOps tools discovered during daily runs, from GitHub, vendor blogs and community lists.</p>
 {% if tools_stats %}
-<div class="stats">
-<div class="stat"><div class="stat-value">{{ tools_stats.total }}</div><div class="stat-label">Total Tools</div></div>
-<div class="stat"><div class="stat-value">{{ tools_stats.open_source }}</div><div class="stat-label">Open Source</div></div>
-{% for cat in tools_stats.by_category[:4] %}
-<div class="stat"><div class="stat-value">{{ cat.cnt }}</div><div class="stat-label">{{ cat.category|replace('-', ' ')|title }}</div></div>
-{% endfor %}
-</div>
+<ul class="figures">
+<li><b>{{ tools_stats.total }}</b><span>tools</span></li>
+<li><b>{{ tools_stats.open_source }}</b><span>open source</span></li>
+<li><b>{{ tools_stats.by_category|length }}</b><span>categories</span></li>
+</ul>
 {% endif %}
+</header>
 
 <div class="search-box">
-<input type="text" id="searchInput" placeholder="Search tools by name, vendor, description, tags..." oninput="filterTools()">
+<label class="visually-hidden" for="searchInput">Search tools</label>
+<input type="text" id="searchInput" placeholder="Search by name, vendor, description or tags" oninput="filterTools()">
 </div>
 
-<div class="filter-bar" style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.5rem;align-items:center;">
-<span style="font-size:0.8rem;color:#64748b;font-weight:500;">Filter:</span>
-<select id="categoryFilter" onchange="filterTools()" style="background:#0d0d18;border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:#e2e8f0;padding:0.4rem 0.8rem;font-size:0.8rem;font-family:inherit;">
-<option value="">All Categories</option>
+<div class="filter-bar">
+<label class="visually-hidden" for="categoryFilter">Category</label>
+<select class="select" id="categoryFilter" onchange="filterTools()">
+<option value="">All categories</option>
 {% set cats = tools_stats.by_category %}
 {% for cat in cats %}
 <option value="{{ cat.category }}">{{ cat.category|replace('-', ' ')|title }}</option>
 {% endfor %}
 </select>
 
-<select id="cloudFilter" onchange="filterTools()" style="background:#0d0d18;border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:#e2e8f0;padding:0.4rem 0.8rem;font-size:0.8rem;font-family:inherit;">
-<option value="">All Clouds</option>
+<label class="visually-hidden" for="cloudFilter">Cloud</label>
+<select class="select" id="cloudFilter" onchange="filterTools()">
+<option value="">All clouds</option>
 {% for c in tools_stats.by_cloud %}
 <option value="{{ c.cloud }}">{{ c.cloud|title }}</option>
 {% endfor %}
 </select>
 
-<label style="display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;color:#64748b;cursor:pointer;">
-<input type="checkbox" id="ossFilter" onchange="filterTools()" style="accent-color:#60a5fa;">
-Open Source only
-</label>
+<label class="check"><input type="checkbox" id="ossFilter" onchange="filterTools()"> Open source only</label>
 
-<span id="resultCount" style="font-size:0.8rem;color:#64748b;margin-left:auto;"></span>
+<span class="result-count" id="resultCount" role="status" aria-live="polite"></span>
 </div>
 
-<div id="toolsContainer">
+<h2 class="visually-hidden">All tools</h2>
+<div class="entries" id="toolsContainer">
 {% if tools %}
 {% for tool in tools %}
-<div class="card tool-card" data-name="{{ tool.name|lower }}" data-vendor="{{ tool.vendor|lower }}" data-category="{{ tool.category }}" data-cloud="{{ tool.cloud }}" data-open="{{ tool.open_source }}" data-tags="{{ tool.tags|lower }}" data-description="{{ (tool.description or '')|lower }}">
-<h3>
+<article class="entry tool-card" data-name="{{ tool.name|lower }}" data-vendor="{{ tool.vendor|lower }}" data-category="{{ tool.category }}" data-cloud="{{ tool.cloud }}" data-open="{{ tool.open_source }}" data-tags="{{ tool.tags|lower }}" data-description="{{ (tool.description or '')|lower }}">
+<h3 class="entry-title">
 <a href="{{ tool.url | safe_url }}" target="_blank" rel="noopener">{{ tool.name }}</a>
-{% if tool.open_source %}<span class="oss-badge" style="display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;font-size:0.65rem;font-weight:600;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(34,197,94,0.2);vertical-align:middle;margin-left:0.4rem;">OSS</span>{% endif %}
+{% if tool.open_source %}<span class="chip chip--oss">Open source</span>{% endif %}
 </h3>
-<div class="meta">
-{{ tool.vendor }} ·
-{% if tool.cloud %}<span class="cloud-badge" style="display:inline-block;background:rgba(96,165,250,0.1);color:#60a5fa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(96,165,250,0.15);vertical-align:middle;">{{ tool.cloud }}</span> ·{% endif %}
-<span class="cat-badge" style="display:inline-block;background:rgba(167,139,250,0.1);color:#a78bfa;font-size:0.65rem;font-weight:500;padding:0.1rem 0.5rem;border-radius:999px;border:1px solid rgba(167,139,250,0.15);vertical-align:middle;">{{ tool.category|replace('-', ' ')|title }}</span>
-</div>
-{% if tool.description %}<div class="summary">{{ tool.description[:300] }}{% if tool.description|length > 300 %}…{% endif %}</div>{% endif %}
+<p class="entry-meta">
+<span class="chip">{{ tool.vendor }}</span>
+{% if tool.cloud %}<span class="chip">{{ tool.cloud }}</span>{% endif %}
+<span class="entry-cat">{{ tool.category|replace('-', ' ')|title }}</span>
+</p>
+{% if tool.description %}<p class="entry-summary">{{ tool.description[:300] }}{% if tool.description|length > 300 %}…{% endif %}</p>{% endif %}
 {% if tool.github and tool.github != tool.url %}
-<p style="margin-top:0.5rem;"><a href="{{ tool.github | safe_url }}" target="_blank" class="view-all">GitHub →</a></p>
+<p class="entry-links"><a href="{{ tool.github | safe_url }}" target="_blank" rel="noopener" class="view-all">Source on GitHub</a></p>
 {% endif %}
 {% if tool.tags %}
-<div style="margin-top:0.5rem;">
-{% for tag in tool.tags.split(',')[:6] %}
-<span class="tag">{{ tag.strip() }}</span>
-{% endfor %}
+<div class="entry-tags">
+{% for tag in tool.tags.split(',')[:6] %}<span class="tag">{{ tag.strip() }}</span>{% endfor %}
 </div>
 {% endif %}
-</div>
+</article>
 {% endfor %}
 {% else %}
-<div class="empty-state" style="text-align:center;padding:3rem 1rem;color:#64748b;">
-<p style="font-size:1.1rem;margin-bottom:0.5rem;">No tools cataloged yet</p>
-<p>Tools are discovered during daily runs from GitHub repos, FinOps blog lists, and community sources.</p>
-</div>
+<p class="empty">No tools cataloged yet. Tools are discovered on the daily run from GitHub repositories, FinOps blogs and community lists.</p>
 {% endif %}
 </div>
+
+<p class="empty" id="noTools" hidden>No tool matches those filters. Clear the search box or pick “All categories”.</p>
 
 <script>
 function filterTools() {
@@ -105,7 +99,8 @@ card.style.display = match ? '' : 'none';
 if (match) visible++;
 });
 
-document.getElementById('resultCount').textContent = visible + ' tool' + (visible !== 1 ? 's' : '') + ' shown';
+document.getElementById('resultCount').textContent = visible + ' of ' + cards.length + ' tools';
+document.getElementById('noTools').hidden = visible !== 0;
 }
 
 document.addEventListener('DOMContentLoaded', filterTools);

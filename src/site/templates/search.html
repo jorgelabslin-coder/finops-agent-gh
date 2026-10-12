@@ -1,15 +1,18 @@
 {% extends "base.html" %}
-{% block title %}Search FinOps{% endblock %}
+{% block title %}Search — FinOps Intelligence{% endblock %}
 {% block content %}
-<div class="hero" style="padding:2rem 0 1.5rem;">
-<h1 style="font-size:clamp(1.8rem,3vw,2.5rem)">Search</h1>
-<p>Search across all collected FinOps intelligence</p>
-</div>
+<header class="masthead">
+<h1>Search</h1>
+<p class="sub">Full-text search across every collected item, straight from your browser.</p>
+</header>
 
 <div class="search-box">
-<input type="text" id="searchInput" placeholder="Search titles, summaries, tags..." oninput="doSearch(this.value)">
+<label class="visually-hidden" for="searchInput">Search items</label>
+<input type="text" id="searchInput" placeholder="Search titles, summaries, tags and sources" oninput="doSearch(this.value)" autocomplete="off">
 </div>
-<div id="results"></div>
+
+<p class="empty" id="searchHint">Type at least two characters to search the archive.</p>
+<div class="entries" id="results"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js" integrity="sha384-PCSoOZTpbkikBEtd/+uV3WNdc676i9KUf01KOA8CnJotvlx8rRrETbDuwdjqTYvt" crossorigin="anonymous"></script>
 <script>
@@ -27,28 +30,43 @@ return (x.protocol === 'http:' || x.protocol === 'https:') ? u : '#';
 } catch(e) { return '#'; }
 }
 
+function setResults(html) {
+document.getElementById('results').innerHTML = html;
+}
+
 async function loadItems() {
 try {
 const resp = await fetch('{{ root_path }}day/items.json');
 if (!resp.ok) throw new Error('Not found');
 allItems = await resp.json();
 fuse = new Fuse(allItems, { keys: ['title', 'summary', 'tags', 'source_name'], threshold: 0.4 });
+document.getElementById('searchHint').textContent = 'Type at least two characters to search ' + allItems.length + ' items.';
 } catch(e) {
-document.getElementById('results').innerHTML = '<p style="text-align:center;color:#64748b;padding:2rem;">Search index not available in static mode.</p>';
+document.getElementById('searchHint').className = 'empty empty--error';
+document.getElementById('searchHint').textContent = 'The search index could not be loaded. Reload the page, or browse the archive instead.';
 }
 }
 
 function doSearch(q) {
-const el = document.getElementById('results');
-if (!q || !fuse) { el.innerHTML = ''; return; }
+const hint = document.getElementById('searchHint');
+if (!q || !fuse) {
+setResults('');
+hint.hidden = false;
+return;
+}
 const results = fuse.search(q).slice(0, 50);
-el.innerHTML = results.map(r => `
-<div class="card">
-<h3><a href="${esc(safeUrl(r.item.url))}" target="_blank" rel="noopener">${esc(r.item.title)}</a></h3>
-<div class="meta">${esc(r.item.date)} · ${esc(r.item.source_name || r.item.source_id || '')}</div>
-${r.item.summary ? `<div class="summary">${esc(r.item.summary.slice(0,300))}</div>` : ''}
-</div>
-`).join('');
+if (!results.length) {
+setResults('<p class="empty">No item matches “' + esc(q) + '”. Try a shorter word or a source name.</p>');
+hint.hidden = true;
+return;
+}
+hint.hidden = true;
+setResults(results.map(r => `
+<article class="entry">
+<h3 class="entry-title"><a href="${esc(safeUrl(r.item.url))}" target="_blank" rel="noopener">${esc(r.item.title)}</a></h3>
+<p class="entry-meta"><span class="chip">${esc(r.item.source_name || '')}</span><span>${esc(r.item.date)}</span></p>
+${r.item.summary ? `<p class="entry-summary">${esc(r.item.summary.slice(0,300))}</p>` : ''}
+</article>`).join(''));
 }
 
 loadItems();

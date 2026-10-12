@@ -1,40 +1,46 @@
 {% extends "base.html" %}
-{% block title %}FinOps Dashboard{% endblock %}
+{% block title %}Dashboard — FinOps Intelligence{% endblock %}
 {% block content %}
-<div class="hero" style="padding:2rem 0 1.5rem;">
-<h1 style="font-size:clamp(1.8rem,3vw,2.5rem)">Dashboard</h1>
-<p>Intelligence overview across all collected data</p>
-</div>
-
-<div class="stats">
-<div class="stat animate-in"><div class="stat-value">{{ total_items }}</div><div class="stat-label">Total Items</div></div>
-<div class="stat animate-in animate-in-delay-1"><div class="stat-value">{{ total_days }}</div><div class="stat-label">Days</div></div>
-<div class="stat animate-in animate-in-delay-2"><div class="stat-value">{{ sources|length }}</div><div class="stat-label">Sources</div></div>
-<div class="stat animate-in animate-in-delay-3"><div class="stat-value">{{ tools|length }}</div><div class="stat-label">Tools</div></div>
-</div>
+<header class="masthead">
+<h1>Dashboard</h1>
+<p class="sub">How the archive is growing: volume, sources and categories over time.</p>
+<ul class="figures">
+<li><b>{{ total_items }}</b><span>items</span></li>
+<li><b>{{ total_days }}</b><span>days</span></li>
+<li><b>{{ sources|length }}</b><span>sources</span></li>
+<li><b>{{ tools|length }}</b><span>tools</span></li>
+</ul>
+</header>
 
 <div class="chart-grid">
-<div class="chart-card">
-<h2>Items per Day</h2>
-<canvas id="itemsPerDayChart" height="200"></canvas>
+<div class="chart-card chart-card--wide">
+<h2>Items collected per day</h2>
+<canvas id="itemsPerDayChart" height="120" role="img" aria-label="Line chart of items collected per day over the last 30 days"></canvas>
 </div>
 <div class="chart-card">
-<h2>Categories</h2>
-<canvas id="categoriesChart" height="200"></canvas>
+<h2>By category</h2>
+<canvas id="categoriesChart" height="220" role="img" aria-label="Doughnut chart of items by category"></canvas>
 </div>
 <div class="chart-card">
-<h2>Items by Source</h2>
-<canvas id="sourcesChart" height="200"></canvas>
+<h2>By source</h2>
+<canvas id="sourcesChart" height="220" role="img" aria-label="Bar chart of items by source"></canvas>
 </div>
 <div class="chart-card">
-<h2>Items per Month</h2>
-<canvas id="monthlyChart" height="200"></canvas>
+<h2>Per month</h2>
+<canvas id="monthlyChart" height="220" role="img" aria-label="Bar chart of items per month"></canvas>
 </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" integrity="sha384-e6nUZLBkQ86NJ6TVVKAeSaK8jWa3NhkYWZFomE39AvDbQWeie9PlQqM3pmYW5d1g" crossorigin="anonymous"></script>
 <script>
-const colors = ['#60a5fa','#fbbf24','#4ade80','#f472b6','#a78bfa','#fb923c','#2dd4bf','#f87171','#c084fc','#34d399','#e879f9','#fbbf24'];
+const palette = ['#E9A13B', '#C2A35B', '#7FB08A', '#4E9A93', '#8A9A96', '#D0764B'];
+const tick = '#93A19C';
+const grid = 'rgba(147,161,156,0.15)';
+const surface = '#161E20';
+
+Chart.defaults.font.family = "'IBM Plex Sans', sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = tick;
 
 new Chart(document.getElementById('itemsPerDayChart'), {
 type: 'line',
@@ -43,20 +49,20 @@ labels: {{ chart_dates_labels|safe }},
 datasets: [{
 label: 'Items',
 data: {{ chart_dates_data|safe }},
-borderColor: '#60a5fa',
-backgroundColor: 'rgba(96,165,250,0.1)',
+borderColor: palette[0],
+backgroundColor: 'rgba(233,161,59,0.12)',
 fill: true,
-tension: 0.3,
+tension: 0.25,
 pointRadius: 3,
-pointBackgroundColor: '#60a5fa'
+pointBackgroundColor: palette[0]
 }]
 },
 options: {
 responsive: true,
 plugins: { legend: { display: false } },
 scales: {
-x: { ticks: { color: '#64748b', maxTicksLimit: 14 }, grid: { color: 'rgba(255,255,255,0.03)' } },
-y: { ticks: { color: '#64748b', beginAtZero: true }, grid: { color: 'rgba(255,255,255,0.03)' } }
+x: { ticks: { maxTicksLimit: 14, color: tick }, grid: { color: grid } },
+y: { ticks: { color: tick, beginAtZero: true, precision: 0 }, grid: { color: grid }, border: { display: false } }
 }
 }
 });
@@ -67,15 +73,15 @@ data: {
 labels: {{ chart_categories_labels|safe }},
 datasets: [{
 data: {{ chart_categories_data|safe }},
-backgroundColor: colors.slice(0, {{ chart_categories_labels|length }}),
-borderColor: '#0d0d18',
+backgroundColor: palette.slice(0, {{ chart_categories_labels|length }}),
+borderColor: surface,
 borderWidth: 2
 }]
 },
 options: {
 responsive: true,
 plugins: {
-legend: { position: 'bottom', labels: { color: '#64748b', padding: 12 } }
+legend: { position: 'bottom', labels: { color: tick, padding: 12, usePointStyle: true } }
 }
 }
 });
@@ -87,17 +93,18 @@ labels: {{ chart_sources_labels|safe }},
 datasets: [{
 label: 'Items',
 data: {{ chart_sources_data|safe }},
-backgroundColor: colors.slice(0, {{ chart_sources_labels|length }}),
-borderRadius: 4,
+backgroundColor: '#4E9A93',
+borderRadius: 3,
 borderSkipped: false
 }]
 },
 options: {
+indexAxis: 'y',
 responsive: true,
 plugins: { legend: { display: false } },
 scales: {
-x: { ticks: { color: '#64748b' }, grid: { color: 'rgba(255,255,255,0.03)' } },
-y: { ticks: { color: '#64748b', beginAtZero: true }, grid: { color: 'rgba(255,255,255,0.03)' } }
+x: { ticks: { color: tick, beginAtZero: true, precision: 0 }, grid: { color: grid }, border: { display: false } },
+y: { ticks: { color: tick }, grid: { display: false } }
 }
 }
 });
@@ -109,8 +116,8 @@ labels: {{ chart_monthly_labels|safe }},
 datasets: [{
 label: 'Items',
 data: {{ chart_monthly_data|safe }},
-backgroundColor: '#4ade80',
-borderRadius: 4,
+backgroundColor: palette[0],
+borderRadius: 3,
 borderSkipped: false
 }]
 },
@@ -118,8 +125,8 @@ options: {
 responsive: true,
 plugins: { legend: { display: false } },
 scales: {
-x: { ticks: { color: '#64748b' }, grid: { color: 'rgba(255,255,255,0.03)' } },
-y: { ticks: { color: '#64748b', beginAtZero: true }, grid: { color: 'rgba(255,255,255,0.03)' } }
+x: { ticks: { color: tick }, grid: { display: false } },
+y: { ticks: { color: tick, beginAtZero: true, precision: 0 }, grid: { color: grid }, border: { display: false } }
 }
 }
 });
