@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — FinOps Intelligence</title>
+<meta name="description" content="Daily cloud cost intelligence collected from RSS, GitHub, Hacker News and Reddit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230E1517'/><path d='M6 22h20M6 16h13M6 10h7' stroke='%23E9A13B' stroke-width='3' stroke-linecap='round'/></svg>">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="container">
+<header class="nav">
+<a href="index.html" class="nav-brand">FinOps Intelligence</a>
+<nav class="nav-links" aria-label="Sections">
+<a href="index.html">Timeline</a>
+<a href="dashboard.html" class="active" aria-current="page">Dashboard</a>
+<a href="search.html">Search</a>
+<a href="tools.html">Tools</a>
+<a href="archive.html">Archive</a>
+</nav>
+</header>
+<main id="main">
+
+<header class="masthead">
+<h1>Dashboard</h1>
+<p class="sub">How the archive is growing: volume, sources and categories over time.</p>
+<ul class="figures">
+<li><b>3034</b><span>items</span></li>
+<li><b>135</b><span>days</span></li>
+<li><b>18</b><span>sources</span></li>
+<li><b>154</b><span>tools</span></li>
+</ul>
+</header>
+
+<div class="chart-grid">
+<div class="chart-card chart-card--wide">
+<h2>Items collected per day</h2>
+<canvas id="itemsPerDayChart" height="120" role="img" aria-label="Line chart of items collected per day over the last 30 days"></canvas>
+</div>
+<div class="chart-card">
+<h2>By category</h2>
+<canvas id="categoriesChart" height="220" role="img" aria-label="Doughnut chart of items by category"></canvas>
+</div>
+<div class="chart-card">
+<h2>By source</h2>
+<canvas id="sourcesChart" height="220" role="img" aria-label="Bar chart of items by source"></canvas>
+</div>
+<div class="chart-card">
+<h2>Per month</h2>
+<canvas id="monthlyChart" height="220" role="img" aria-label="Bar chart of items per month"></canvas>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" integrity="sha384-e6nUZLBkQ86NJ6TVVKAeSaK8jWa3NhkYWZFomE39AvDbQWeie9PlQqM3pmYW5d1g" crossorigin="anonymous"></script>
+<script>
+const palette = ['#E9A13B', '#C2A35B', '#7FB08A', '#4E9A93', '#8A9A96', '#D0764B'];
+const tick = '#93A19C';
+const grid = 'rgba(147,161,156,0.15)';
+const surface = '#161E20';
+
+Chart.defaults.font.family = "'IBM Plex Sans', sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = tick;
+
+new Chart(document.getElementById('itemsPerDayChart'), {
+type: 'line',
+data: {
+labels: ["2026-09-18", "2026-09-19", "2026-09-20", "2026-09-21", "2026-09-22", "2026-09-23", "2026-09-24", "2026-09-25", "2026-09-26", "2026-09-27", "2026-09-28", "2026-09-29", "2026-09-30", "2026-10-01", "2026-10-02", "2026-10-03", "2026-10-04", "2026-10-05", "2026-10-06", "2026-10-07", "2026-10-08", "2026-10-09", "2026-10-10", "2026-10-11", "2026-10-12", "2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-17"],
+datasets: [{
+label: 'Items',
+data: [40, 14, 13, 29, 58, 40, 42, 42, 17, 12, 49, 64, 49, 49, 37, 13, 12, 41, 54, 50, 43, 32, 15, 14, 48, 12, 63, 29, 37, 13],
+borderColor: palette[0],
+backgroundColor: 'rgba(233,161,59,0.12)',
+fill: true,
+tension: 0.25,
+pointRadius: 3,
+pointBackgroundColor: palette[0]
+}]
+},
+options: {
+responsive: true,
+plugins: { legend: { display: false } },
+scales: {
+x: { ticks: { maxTicksLimit: 14, color: tick }, grid: { color: grid } },
+y: { ticks: { color: tick, beginAtZero: true, precision: 0 }, grid: { color: grid }, border: { display: false } }
+}
+}
+});
+
+new Chart(document.getElementById('categoriesChart'), {
+type: 'doughnut',
+data: {
+labels: ["report", "community", "tools", "azure", "gcp", "research"],
+datasets: [{
+data: [84, 526, 718, 86, 88, 1532],
+backgroundColor: palette.slice(0, 60),
+borderColor: surface,
+borderWidth: 2
+}]
+},
+options: {
+responsive: true,
+plugins: {
+legend: { position: 'bottom', labels: { color: tick, padding: 12, usePointStyle: true } }
+}
+}
+});
+
+new Chart(document.getElementById('sourcesChart'), {
+type: 'bar',
+data: {
+labels: ["Data.Finops.Org", "X.Finops.Org", "Learn.Microsoft.Com", "Lighthousetechnology.Ai", "Www.Finops.Org", "Www.Cloud Cost Optimization.Org", "Techcommunity.Microsoft.Com", "Cloud.Google.Com", "Www.Vantage.Sh", "Www.Cloudzero.Com", "Www.Duckbillgroup.Com", "Github", "Platform Engineering Blog", "Arxiv Cloud Computing", "Www.Prosperops.Com", "Www.Forbes.Com", "The Duckbill Group", "Wring Blog"],
+datasets: [{
+label: 'Items',
+data: [84, 84, 84, 88, 88, 88, 86, 88, 107, 107, 107, 359, 61, 1532, 7, 1, 13, 50],
+backgroundColor: '#4E9A93',
+borderRadius: 3,
+borderSkipped: false
+}]
+},
+options: {
+indexAxis: 'y',
+responsive: true,
+plugins: { legend: { display: false } },
+scales: {
+x: { ticks: { color: tick, beginAtZero: true, precision: 0 }, grid: { color: grid }, border: { display: false } },
+y: { ticks: { color: tick }, grid: { display: false } }
+}
+}
+});
+
+new Chart(document.getElementById('monthlyChart'), {
+type: 'bar',
+data: {
+labels: ["2025-07", "2025-08", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08", "2026-09", "2026-10"],
+datasets: [{
+label: 'Items',
+data: [3, 1, 2, 2, 1, 2, 1, 51, 3, 3, 12, 429, 927, 1035, 562],
+backgroundColor: palette[0],
+borderRadius: 3,
+borderSkipped: false
+}]
+},
+options: {
+responsive: true,
+plugins: { legend: { display: false } },
+scales: {
+x: { ticks: { color: tick }, grid: { display: false } },
+y: { ticks: { color: tick, beginAtZero: true, precision: 0 }, grid: { color: grid }, border: { display: false } }
+}
+}
+});
+</script>
+
+</main>
+<footer class="footer">
+<span>FinOps Intelligence Agent</span>
+<span>Collected from RSS, GitHub, Hacker News and Reddit</span>
+<a href="index.html">Home</a>
+</footer>
+</div>
+</body>
+</html>
