@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search — FinOps Intelligence</title>
+<meta name="description" content="Daily cloud cost intelligence collected from RSS, GitHub, Hacker News and Reddit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230E1517'/><path d='M6 22h20M6 16h13M6 10h7' stroke='%23E9A13B' stroke-width='3' stroke-linecap='round'/></svg>">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="container">
+<header class="nav">
+<a href="index.html" class="nav-brand">FinOps Intelligence</a>
+<nav class="nav-links" aria-label="Sections">
+<a href="index.html">Timeline</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="search.html" class="active" aria-current="page">Search</a>
+<a href="tools.html">Tools</a>
+<a href="archive.html">Archive</a>
+</nav>
+</header>
+<main id="main">
+
+<header class="masthead">
+<h1>Search</h1>
+<p class="sub">Full-text search across every collected item, straight from your browser.</p>
+</header>
+
+<div class="search-box">
+<label class="visually-hidden" for="searchInput">Search items</label>
+<input type="text" id="searchInput" placeholder="Search titles, summaries, tags and sources" oninput="doSearch(this.value)" autocomplete="off">
+</div>
+
+<p class="empty" id="searchHint">Type at least two characters to search the archive.</p>
+<div class="entries" id="results"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js" integrity="sha384-PCSoOZTpbkikBEtd/+uV3WNdc676i9KUf01KOA8CnJotvlx8rRrETbDuwdjqTYvt" crossorigin="anonymous"></script>
+<script>
+let fuse = null;
+let allItems = [];
+
+function esc(s) {
+return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function safeUrl(u) {
+try {
+const x = new URL(u, location.href);
+return (x.protocol === 'http:' || x.protocol === 'https:') ? u : '#';
+} catch(e) { return '#'; }
+}
+
+function setResults(html) {
+document.getElementById('results').innerHTML = html;
+}
+
+async function loadItems() {
+try {
+const resp = await fetch('day/items.json');
+if (!resp.ok) throw new Error('Not found');
+allItems = await resp.json();
+fuse = new Fuse(allItems, { keys: ['title', 'summary', 'tags', 'source_name'], threshold: 0.4 });
+document.getElementById('searchHint').textContent = 'Type at least two characters to search ' + allItems.length + ' items.';
+} catch(e) {
+document.getElementById('searchHint').className = 'empty empty--error';
+document.getElementById('searchHint').textContent = 'The search index could not be loaded. Reload the page, or browse the archive instead.';
+}
+}
+
+function doSearch(q) {
+const hint = document.getElementById('searchHint');
+if (!q || !fuse) {
+setResults('');
+hint.hidden = false;
+return;
+}
+const results = fuse.search(q).slice(0, 50);
+if (!results.length) {
+setResults('<p class="empty">No item matches “' + esc(q) + '”. Try a shorter word or a source name.</p>');
+hint.hidden = true;
+return;
+}
+hint.hidden = true;
+setResults(results.map(r => `
+<article class="entry">
+<h3 class="entry-title"><a href="${esc(safeUrl(r.item.url))}" target="_blank" rel="noopener">${esc(r.item.title)}</a></h3>
+<p class="entry-meta"><span class="chip">${esc(r.item.source_name || '')}</span><span>${esc(r.item.date)}</span></p>
+${r.item.summary ? `<p class="entry-summary">${esc(r.item.summary.slice(0,300))}</p>` : ''}
+</article>`).join(''));
+}
+
+loadItems();
+</script>
+
+</main>
+<footer class="footer">
+<span>FinOps Intelligence Agent</span>
+<span>Collected from RSS, GitHub, Hacker News and Reddit</span>
+<a href="index.html">Home</a>
+</footer>
+</div>
+</body>
+</html>
